@@ -1,0 +1,95 @@
+<!-- <button (click)="toggleMenu()" class="btn-Menu"><i class="fa fa-bars" ></i></button> -->
+<div class="sidebar"  >
+  <ng-scrollbar class="virtual-scroll" thumbClass="white-scrollbars">
+    <div class="PartOne" >
+        <mat-accordion class="acordionD">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header >
+                <mat-panel-title>
+                 <h3>Datos de Contrato</h3>
+
+                </mat-panel-title>
+
+              </mat-expansion-panel-header>
+              <mat-list role="list" >
+                <mat-list-item role="listitem"><strong>Id</strong><br>{{contract.id}}</mat-list-item>
+                <mat-list-item role="listitem"><strong>Codigo:</strong><br>{{contract.reference}}</mat-list-item>
+                <mat-list-item role="listitem"><strong>Fecha Inicial:</strong><br>{{dateIni}}</mat-list-item>
+                <mat-list-item role="listitem"><strong>Fecha Final:</strong><br>{{DateEnd}}</mat-list-item>
+                <mat-list-item role="listitem"><strong>Contratista:</strong><br>{{contract.vendor}}</mat-list-item>
+                <mat-list-item role="listitem"><strong>Estado de Contrato:</strong><br>{{contract.status}}</mat-list-item>
+                <mat-list-item role="listitem"><strong>Descripción:</strong><br>{{contract.subject}}</mat-list-item>
+              </mat-list>
+            </mat-expansion-panel>
+          </mat-accordion>
+        <mat-accordion class="acordionC">
+
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h3>Lista de chequeo</h3>
+                <mat-divider></mat-divider>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <!--Precontractual documentos  -->
+
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <h3>Precontractual</h3>
+                    <mat-divider></mat-divider>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <app-side-information-documents [contractualDocumentTypes]="precontractualDocuments">
+
+                </app-side-information-documents>
+
+              </mat-expansion-panel>
+            <!-- Fin precuntractual  documentos-->
+
+            <!--Contractual documentos -->
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <h3>Contractual</h3>
+                    <mat-divider></mat-divider>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <app-side-information-documents [contractualDocumentTypes]="contractualDocuments">
+
+                </app-side-information-documents>
+
+              </mat-expansion-panel>
+            <!-- Fin Contractual documentos -->
+
+            <!-- Postcontractual documentos -->
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <h3>Postcontractual</h3>
+                    <mat-divider></mat-divider>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <app-side-information-documents [contractualDocumentTypes]="postcontractualDocuments">
+
+                </app-side-information-documents>
+
+              </mat-expansion-panel>
+            <!-- Fin postcontractual documentos-->
+
+          </mat-expansion-panel>
+
+        </mat-accordion>
+    </div>
+  </ng-scrollbar>
+
+</div>
