@@ -1,5 +1,11 @@
 # digital-repository-front
 
+Requisitos:
+------------------
+1. Instalar Node.js versión LTS (https://nodejs.org/es), reiniciar el computador luego de la instalación.
+2. Instalar AngularJS (https://angular.io/cli).
+3. Instalar VSCode (https://code.visualstudio.com/).
+   
 Pasos para levantar el front-end:
 ------------------
 1. Abrir una terminal en VSCode.
