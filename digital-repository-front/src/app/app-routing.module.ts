@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './components/home/home.component';
-import { SearcContractsComponent } from './components/searc-contracts/searc-contracts.component';
 import { CreateContractComponent } from './components/create-contract/create-contract.component';
-import { SettingSystemComponent } from './components/setting-system/setting-system.component';
-import { LayoutComponent } from './components/layout/layout.component';
-import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
 import { EditContractComponent } from './components/edit-contract/edit-contract.component';
+import { HomeComponent } from './components/home/home.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { SearcContractsComponent } from './components/searc-contracts/searc-contracts.component';
+import { SettingSystemComponent } from './components/setting-system/setting-system.component';
+import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
+import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
 
 
 
 const routes: Routes = [
   // {path:'',component:HomeComponent},
   { path: 'home', component: HomeComponent },
+  { path: 'homePage', component: Modulo2ComponentComponent },
   { path: 'createCont', component: CreateContractComponent },
   {
     path: '',
