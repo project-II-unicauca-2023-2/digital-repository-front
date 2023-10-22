@@ -1,0 +1,16 @@
+<p>{{title}}</p>
+<circle-progress
+  [percent]=porcentaje
+  [title]="score+'/'+scoreMax"
+  [radius]="100"
+  [outerStrokeWidth]="16"
+  [showInnerStroke]="true"
+  [outerStrokeColor]=colorPrincipal
+  [innerStrokeColor]=colorSecundario
+  [animation]="true"
+  [animationDuration]="300"
+  [showSubtitle]="false"
+  [showUnits]="true"
+  [responsive]="true"
+  [titleFontSize]="50+''"
+></circle-progress>

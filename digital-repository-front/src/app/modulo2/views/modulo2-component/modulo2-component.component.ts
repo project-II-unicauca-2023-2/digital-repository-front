@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./modulo2-component.component.css']
 })
 export class Modulo2ComponentComponent {
-
 }

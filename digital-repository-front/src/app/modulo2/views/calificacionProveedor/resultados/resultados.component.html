@@ -1,0 +1,47 @@
+ <div id="contenido">
+   
+    <div id="BORRARestructura">
+        <div id="BORRARaside"></div>
+        <div id="resultados">
+            <div class="centrar" >
+                <app-titulo-linea  [title]="title"></app-titulo-linea>
+            </div>
+            <div id="criterios">
+                <div *ngFor="let key of obtenerClaves()" class="progresoCriterio">
+                    <app-progreso-circular [title]="key" [score]="miDiccionario[key]" [scoreMax]="5" color="azul"></app-progreso-circular>
+                </div>
+            </div>
+            <div id="total">
+                <div class="col">
+                    <div class="progresoTotal">
+                        <app-progreso-circular title="Puntaje de Evaluacion Total:" [score]="getTotal()" [scoreMax]="maximo" color="rojo"></app-progreso-circular>                
+                        <div class="example-button-row centrar">
+                            <button mat-fab extended color="primary" (click)="openDialog('250ms', '100ms')">
+                              <mat-icon>print</mat-icon>
+                              Imprimir
+                            </button>
+                            
+                          </div>
+                    </div>
+                   
+                </div>
+                <div class="col">
+                    <img id="imgCheck" src="../../../../../assets/img/check.png"/>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+<form action="/action_page.php">
+    <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">Option 1</mat-radio-button>
+        <mat-radio-button value="2">Option 2</mat-radio-button>
+    </mat-radio-group>
+    <br>
+    <input type="radio" id="java" name="lenguaje" value="java">
+    <label for="java">Option 1</label><br>
+    <input type="radio" id="python" name="lenguaje" value="python">
+    <label for="python">Option 2</label><br>
+  </form>

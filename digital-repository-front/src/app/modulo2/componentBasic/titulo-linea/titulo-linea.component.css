@@ -1,0 +1,22 @@
+*{
+	display: block;
+}
+.contenedor {
+	display: inline-block;/*para que los dos elementos queden uno ensima de otro*/
+}
+.texto { 
+	text-transform: capitalize;
+	color:rgba(0, 0, 102.00000151991844, 1);
+	width:100%;
+	font-family:Titillium Web;
+	text-align:center;
+	font-size:30px;
+	letter-spacing:0;
+    padding: 0 15px;/**se hace padding para que la linea no sea exactramente como el titulo sino que tenga un espacio en derecha e izquierda**/
+}
+.linea { 
+	width:100%;
+	position: relative ;
+	bottom: -4px;	
+    margin-bottom: 15px;/**ya que la posicion es relativa al añadir un margen debajo de la linea ecitara que quede sobre algun elemento y dar espacio al titulo**/
+}

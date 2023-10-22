@@ -57,6 +57,7 @@ import { SharedModuleModule } from './shared-module/shared-module.module';
 //import { TableModule} from './modules/table/table.module';
 import { MatCardModule } from '@angular/material/card';
 import { TableModule } from '@coreui/angular';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { DialogEditComponent } from './components/dialog-edit/dialog-edit.component';
 import { DialogComponent } from './components/dialog/dialog.component';
@@ -65,10 +66,15 @@ import { EditContractComponent } from './components/edit-contract/edit-contract.
 import { LayoutComponent } from './components/layout/layout.component';
 import { PdfViewerDialogComponent } from './components/pdf-viewer-dialog/pdf-viewer-dialog.component';
 import { SideInformationDocumentsComponent } from './components/side-information-documents/side-information-documents.component';
+import { ProgresoCircularComponent } from './modulo2/componentBasic/progreso-circular/progreso-circular.component';
+import { TituloLineaComponent } from './modulo2/componentBasic/titulo-linea/titulo-linea.component';
 import { NavBarComponent } from './modulo2/containers/nav-bar/nav-bar.component';
+import { ResultadosComponent } from './modulo2/views/calificacionProveedor/resultados/resultados.component';
 import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
 import { FilaService } from './services/fila.service';
 
+import { MatRadioModule } from '@angular/material/radio';
+import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,9 +93,25 @@ import { FilaService } from './services/fila.service';
     SideInformationDocumentsComponent,
     Modulo2ComponentComponent,
     NavBarComponent,
+    ProgresoCircularComponent,
+    TituloLineaComponent,
+    ResultadosComponent,
+    DialogSiNoComponent,
 
   ],
   imports: [
+    MatRadioModule,
+    NgCircleProgressModule.forRoot({
+      //realizamos la importacion del modulo que maneja grafico de progreso en un diagrama circular
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+      units: "PUNTOS",
+      
+    }),
     MatStepperModule,
     ReactiveFormsModule,
     MatFormFieldModule,

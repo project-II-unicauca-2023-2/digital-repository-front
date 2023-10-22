@@ -1,0 +1,6 @@
+p{
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;     /* Alinea los elementos verticalmente en el centro */
+    justify-content: center; /*Alinea en el centro de la pantalla*/
+}

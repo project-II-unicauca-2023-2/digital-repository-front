@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { SearcContractsComponent } from './components/searc-contracts/searc-contracts.component';
 import { SettingSystemComponent } from './components/setting-system/setting-system.component';
+import { ResultadosComponent } from './modulo2/views/calificacionProveedor/resultados/resultados.component';
 import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
 import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
 
@@ -15,7 +16,11 @@ import { ListContractComponent } from './shared-module/components/list-contract/
 const routes: Routes = [
   // {path:'',component:HomeComponent},
   { path: 'home', component: HomeComponent },
-  { path: 'homePage', component: Modulo2ComponentComponent },
+  { path: 'homePage', 
+    component: Modulo2ComponentComponent,
+    children: [
+      { path: 'resultados', component: ResultadosComponent },
+    ] },
   { path: 'createCont', component: CreateContractComponent },
   {
     path: '',
