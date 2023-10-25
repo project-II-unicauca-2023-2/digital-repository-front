@@ -1,4 +1,5 @@
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -75,6 +76,8 @@ import { FilaService } from './services/fila.service';
 
 import { MatRadioModule } from '@angular/material/radio';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
+import { CardDialogComponent } from './components/card-dialog/card-dialog.component';
+import { ThirdPartyEvaluationComponent } from './components/third-party-evaluation/third-party-evaluation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +100,8 @@ import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialo
     TituloLineaComponent,
     ResultadosComponent,
     DialogSiNoComponent,
+    CardDialogComponent,
+    ThirdPartyEvaluationComponent,
 
   ],
   imports: [
@@ -110,7 +115,7 @@ import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialo
       innerStrokeColor: "#C7E596",
       animationDuration: 300,
       units: "PUNTOS",
-      
+
     }),
     MatStepperModule,
     ReactiveFormsModule,
@@ -133,6 +138,8 @@ import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialo
     MatDividerModule,
     MatListModule,
     PdfViewerModule,
+    MatGridListModule,
+    MatCardModule,
     ToastrModule.forRoot(),
     LucideAngularModule.pick({
       Home,

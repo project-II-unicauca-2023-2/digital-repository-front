@@ -1,0 +1,38 @@
+
+<div>
+  <mat-grid-list cols="2" rowHeight="200px" class = 'custom-blue'>
+    <mat-grid-tile *ngFor="let tile of tiles">
+        <div class = 'cuadrito'>
+          <div class = 'cuadritoP'>
+            {{tile.left}}
+          </div>
+          <div class = 'cuadritoP2'>
+            {{tile.right}}
+          </div>
+        </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div class = "cuadro-Botones">
+  <mat-card >
+    <mat-card-content >
+      <section >
+        <mat-radio-group [(ngModel)]="labelPosition" class="separar-botones">
+          <mat-radio-button class="botones" value="after">1. No cumple</mat-radio-button>
+          <mat-radio-button class="botones" value="before">2. Minimamente</mat-radio-button>
+          <mat-radio-button class="botones" value="before">3. Parcialemnte</mat-radio-button>
+          <mat-radio-button class="botones" value="before">4. Plenamente</mat-radio-button>
+          <mat-radio-button class="botones" value="before">5. Supera expectativas</mat-radio-button>
+        </mat-radio-group>
+      </section>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="caja-boton ">
+  <button mat-fab extended class="boton-siguiente letras-boton">
+    <mat-icon>favorite</mat-icon>
+    Siguiente
+  </button>
+</div>
