@@ -1,3 +1,4 @@
+
 .custom-blue {
   background-color: #000066;
 }
@@ -54,7 +55,18 @@
   align-items: center;
 }
 
+
+mat-divider {
+  height: 30px; 
+  margin: 0 10px; 
+}
+.container {
+  display: flex;
+  align-items: center;
+}
+
 .botones{
+  margin-right: 10px;
   display: flex;
   width: 154px;
   height: 38px;
@@ -101,4 +113,8 @@
   font-weight: 600;
   line-height: 100%; /* 16px */
   letter-spacing: 0.16px;
+}
+
+.icono-azul {
+  color: rgb(1, 95, 126); 
 }

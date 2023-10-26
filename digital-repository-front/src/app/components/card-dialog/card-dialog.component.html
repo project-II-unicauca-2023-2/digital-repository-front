@@ -18,12 +18,18 @@
   <mat-card >
     <mat-card-content >
       <section >
-        <mat-radio-group [(ngModel)]="labelPosition" class="separar-botones">
-          <mat-radio-button class="botones" value="after">1. No cumple</mat-radio-button>
-          <mat-radio-button class="botones" value="before">2. Minimamente</mat-radio-button>
-          <mat-radio-button class="botones" value="before">3. Parcialemnte</mat-radio-button>
-          <mat-radio-button class="botones" value="before">4. Plenamente</mat-radio-button>
-          <mat-radio-button class="botones" value="before">5. Supera expectativas</mat-radio-button>
+        <mat-radio-group [(ngModel)]="labelPosition" >
+          <div class="container">
+            <mat-radio-button class="botones" value="after">1. No cumple</mat-radio-button>
+            <mat-divider [vertical]="true"></mat-divider>
+            <mat-radio-button class="botones" value="before">2. Minimamente</mat-radio-button>
+            <mat-divider [vertical]="true"></mat-divider>
+            <mat-radio-button class="botones" value="before">3. Parcialemnte</mat-radio-button>
+            <mat-divider [vertical]="true"></mat-divider>
+            <mat-radio-button class="botones" value="before">4. Plenamente</mat-radio-button>
+            <mat-divider [vertical]="true"></mat-divider>
+            <mat-radio-button class="botones" value="before">5. Supera expectativas</mat-radio-button>
+          </div>
         </mat-radio-group>
       </section>
     </mat-card-content>
@@ -32,7 +38,7 @@
 
 <div class="caja-boton ">
   <button mat-fab extended class="boton-siguiente letras-boton">
-    <mat-icon>favorite</mat-icon>
+    <mat-icon class="material-icons-filled icono-azul">keyboard_double_arrow_right</mat-icon>
     Siguiente
   </button>
 </div>

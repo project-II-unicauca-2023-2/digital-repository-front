@@ -78,6 +78,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 import { CardDialogComponent } from './components/card-dialog/card-dialog.component';
 import { ThirdPartyEvaluationComponent } from './components/third-party-evaluation/third-party-evaluation.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
