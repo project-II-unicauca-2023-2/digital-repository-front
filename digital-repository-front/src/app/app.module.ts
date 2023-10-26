@@ -75,6 +75,10 @@ import { FilaService } from './services/fila.service';
 
 import { MatRadioModule } from '@angular/material/radio';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
+
+import { Asidem2Component } from './modulo2/containers/asidem2/asidem2.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +101,7 @@ import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialo
     TituloLineaComponent,
     ResultadosComponent,
     DialogSiNoComponent,
+    Asidem2Component,
 
   ],
   imports: [
@@ -162,6 +167,7 @@ import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialo
     MatDatepickerModule,
     MatNativeDateModule,
     NgScrollbarModule,MatCardModule,
+    MatSidenavModule,
   ],
   providers: [
     IconSetService,

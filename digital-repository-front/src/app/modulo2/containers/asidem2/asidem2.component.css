@@ -1,0 +1,169 @@
+/* importar todos los estilos angular material */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@media screen and (max-width: 768px) {
+    .mat-sidenav {
+        display: none;
+    }
+}
+
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Agrupar la sidenav y el contenido principal de la página */
+.mat-sidenav-container {
+    /* display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw; */
+    display: flex;
+    width: 317px;
+    height: 619px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* Hacer que el contenido principal de la página ocupe todo el espacio disponible */
+.mat-sidenav-content {
+    flex-grow: 1;
+    /* height: auto; */
+}
+
+/* Reducir el tamaño de la sidenav si el contenido principal de la página es demasiado grande */
+.mat-sidenav {
+    flex-shrink: 1;
+    
+}
+
+/* Estilos de la sidenav */
+.mat-card {
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fdfeff;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.mat-card-title {
+    text-align: center;
+    display: flex;
+    width: 257px;
+    height: 81px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-divider {
+    height: 4px;
+    width: 85%;
+    background-color: #bf0000;
+    line-height: 100px;
+    /* Centra verticalmente el mat-divider */
+    margin-left: auto;
+    /* Establece un margen a la izquierda */
+    margin-right: auto;
+    /* Establece un margen a la derecha */
+}
+
+.mat-card-content {
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+/* Estilos del contenido principal de la página */
+/* .input {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+} */
+
+.text-1 {
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Titillium Web', sans-serif;
+    color: #006;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+.text-2 {
+    width: 118.523px;
+    height: 36px;
+    text-align: left;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    color: #000066;
+
+    position: center;
+    display: flex;
+    align-items: center;
+    width: auto;
+    /* height: 71px; */
+}
+
+.text-3 {
+    height: 44px;
+    /* position: relative; */
+    /* Establece la posición relativa */
+    font-size: 16px;
+    color: #000024;
+    font-family: "Open Sans", sans-serif;
+    text-shadow: 1px 10px 10px rgba(169, 169, 169, 0.5);
+    left: 10%;
+    /* Ajusta la distancia desde la izquierda usando porcentaje */
+    top: 10%;
+    /* Ajusta la distancia desde la parte superior usando porcentaje */
+    font-weight: 400;
+
+}
+
+.contenedor-numero-contrato {
+    position: center;
+    width: auto;
+    height: 71px;
+}
+
+.contenedor-nombre-contratista {
+    position: center;
+    width: auto;
+    height: 71px;
+
+}
+
+.contenedor-nit {
+    position: center;
+    width: auto;
+    height: 71px;
+}
+
+.contenedor-cedula {
+    position: center;
+    width: auto;
+    height: 71px;
+
+}
+
+.contenedor-fecha-inicio {
+    position: center;
+    width: auto;
+    height: 71px;
+
+}
+
+.contenedor-fecha-fin {
+    position: center;
+    width: auto;
+    height: 71px;
+
+}
