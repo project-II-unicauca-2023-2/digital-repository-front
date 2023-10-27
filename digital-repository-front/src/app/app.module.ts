@@ -23,6 +23,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { Asidem2Component } from './modulo2/containers/asidem2/asidem2.component';
+import { CardDialogComponent } from './modulo2/containers/card-dialog/card-dialog.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {
   CalendarDays,
@@ -101,6 +102,7 @@ import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialo
     ResultadosComponent,
     DialogSiNoComponent,
     Asidem2Component,
+    CardDialogComponent,
 
   ],
   imports: [
