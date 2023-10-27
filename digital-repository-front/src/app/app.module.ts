@@ -22,6 +22,8 @@ import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { Asidem2Component } from './modulo2/containers/asidem2/asidem2.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import {
   CalendarDays,
   Check,
@@ -98,6 +100,7 @@ import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialo
     TituloLineaComponent,
     ResultadosComponent,
     DialogSiNoComponent,
+    Asidem2Component,
 
   ],
   imports: [
@@ -136,6 +139,7 @@ import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialo
     PdfViewerModule,
     MatGridListModule,
     MatCardModule,
+
     ToastrModule.forRoot(),
     LucideAngularModule.pick({
       Home,
