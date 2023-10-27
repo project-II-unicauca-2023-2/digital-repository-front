@@ -1,4 +1,5 @@
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -75,10 +76,6 @@ import { FilaService } from './services/fila.service';
 
 import { MatRadioModule } from '@angular/material/radio';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
-
-import { Asidem2Component } from './modulo2/containers/asidem2/asidem2.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,7 +98,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     TituloLineaComponent,
     ResultadosComponent,
     DialogSiNoComponent,
-    Asidem2Component,
 
   ],
   imports: [
@@ -115,7 +111,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
       innerStrokeColor: "#C7E596",
       animationDuration: 300,
       units: "PUNTOS",
-      
+
     }),
     MatStepperModule,
     ReactiveFormsModule,
@@ -138,6 +134,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatDividerModule,
     MatListModule,
     PdfViewerModule,
+    MatGridListModule,
+    MatCardModule,
     ToastrModule.forRoot(),
     LucideAngularModule.pick({
       Home,
