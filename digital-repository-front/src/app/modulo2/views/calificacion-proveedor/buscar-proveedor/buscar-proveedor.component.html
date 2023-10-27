@@ -1,9 +1,6 @@
     <div class="cuerpo">
       <div class="cont-contenido">
-        <div class="title">
-          <div class="cont-text"><div class="text-wrapper">Evaluación De Proveedores</div></div>
-          <div class="cont-line"><img class="line" src="https://c.animaapp.com/CHMf4e2F/img/line-3.svg" /></div>
-        </div>
+        <app-titulo-linea title="Evaluación De Proveedores" class="titulo"></app-titulo-linea>
         <div class="cont-descripcion">
           <p class="para-realizar-la">
             Para Realizar La Evaluación De Proveedores, Ingrese Un Número De Contrato Válido Y Presione
@@ -20,7 +17,10 @@
         </div>
         <div class="boton-busqueda">
           <img class="vector" src="https://c.animaapp.com/bEroUezc/img/vector.svg" />
-          <div class="boton">EVALUAR</div>
+          <button mat-fab extended color="primary">
+            <mat-icon>search
+            </mat-icon>
+          </button>
         </div>
       </div>
     </div>
