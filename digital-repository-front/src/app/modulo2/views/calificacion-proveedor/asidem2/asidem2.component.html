@@ -1,103 +1,37 @@
 <mat-sidenav-container>
-  <mat-card>
-      <mat-card-title>
-          <p class="text-1">Evaluación De Proveedores</p>
-          <mat-divider></mat-divider>
-      </mat-card-title>
-      <mat-card-content>
-          <div class="contenedor-numero-contrato">
-              <mat-label class="text-2">Número de Contrato/Fecha:</mat-label>
-              <mat-card-content class="text-3">5.5-31.3/00 9 del 2023</mat-card-content>
-          </div>
-          <div class="contenedor-nombre-contratista">
-              <mat-label class="text-2">Nombre del Contratista:</mat-label>
-              <mat-card-content class="text-3">JORGE MEJÍA ARIAS</mat-card-content>
-          </div>
+    <mat-card>
+        <mat-card-title>
+            <p class="text-1">Evaluación De Proveedores</p>
+            <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content>
+            <div class="contenedor-campos">
+                <mat-label class="text-2">Número de Contrato/Fecha:</mat-label>
+                <mat-card-content class="text-3">{{numContrato}}</mat-card-content>
+            </div>
+            <div class="contenedor-campos">
+                <mat-label class="text-2">Nombre del Contratista:</mat-label>
+                <mat-card-content class="text-3">{{nombreContratista}}</mat-card-content>
+            </div>
 
-          <div class="contenedor-nit">
-              <mat-label class="text-2">NIT:</mat-label>
-              <mat-card-content class="text-3">000000000000000</mat-card-content>
-          </div>
+            <div class="contenedor-campos">
+                <mat-label class="text-2">NIT:</mat-label>
+                <mat-card-content class="text-3">{{nitContratista}}</mat-card-content>
+            </div>
 
-          <div class="contenedor-cedula">
-              <mat-label class="text-2">Cédula:</mat-label>
-              <mat-card-content class="text-3">1061781100</mat-card-content>
-          </div>
+            <div class="contenedor-campos">
+                <mat-label class="text-2">Cédula:</mat-label>
+                <mat-card-content class="text-3">{{cedulaContratista}}</mat-card-content>
+            </div>
 
-          <div class="contenedor-fecha-inicio">
-              <mat-label class="text-2">Fecha de Inicio:</mat-label>
-              <mat-card-content class="text-3">14/06/2023</mat-card-content>
-          </div>
-          <div class="contenedor-fecha-fin">
-              <mat-label class="text-2">Fecha de Fin:</mat-label>
-              <mat-card-content class="text-3">13/07/2023</mat-card-content>
-          </div>
-      </mat-card-content>
-  </mat-card>
+            <div class="contenedor-campos">
+                <mat-label class="text-2">Fecha de Inicio:</mat-label>
+                <mat-card-content class="text-3">{{ fechaInicio | date:'dd/MM/yyyy' }}</mat-card-content>
+            </div>
+            <div class="contenedor-campos">
+                <mat-label class="text-2">Fecha de Fin:</mat-label>
+                <mat-card-content class="text-3">{{ fechaFin | date:'dd/MM/yyyy' }}</mat-card-content>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </mat-sidenav-container>
-
-
-
-
-
-<!-- <mat-sidenav-container>
-  <mat-card>
-      <mat-card-title>
-          <p class="text-1">Evaluación De Proveedores</p>
-          <mat-divider></mat-divider>
-      </mat-card-title>
-      <mat-card-content>
-          <mat-card-content>
-              
-              <mat-label class="text-2">Número de Contrato/Fecha:</mat-label>
-              <mat-card-content class="text-3">5.5-31.3/00 9 del 2023</mat-card-content>
-             
-          </mat-card-content>
-          <mat-card-content>
-              
-              <mat-label class="text-2">Nombre del Contratista:</mat-label>
-              <mat-card-content class="text-3">JORGE MEJÍA ARIAS</mat-card-content>
-              
-          </mat-card-content>
-          <mat-card-content>
-             
-              <mat-label class="text-2">NIT:</mat-label>
-              <mat-card-content class="text-3">000000000000000</mat-card-content>
-              
-          </mat-card-content>
-
-          <mat-card-content>
-              
-              <mat-label class="text-2">Cédula:</mat-label>
-              <mat-card-content class="text-3">1061781100</mat-card-content>
-              
-          </mat-card-content>
-
-          <mat-card-content>
-              
-              <mat-label class="text-2">Fecha de Inicio:</mat-label>
-              <mat-card-content class="text-3">14/06/2023</mat-card-content>
-              
-          </mat-card-content>
-          <mat-card-content>
-              
-              <mat-label class="text-2">Fecha de Fin:</mat-label>
-              <mat-card-content class="text-3">13/07/2023</mat-card-content>
-              
-          </mat-card-content>
-          <mat-card-content>
-              
-              <mat-label class="text-2">Fecha de Inicio:</mat-label>
-              <mat-card-content class="text-3">14/06/2023</mat-card-content>
-              
-          </mat-card-content>
-
-          <mat-card-content>
-              
-              <mat-label class="text-2">Fecha de Fin:</mat-label>
-              <mat-card-content class="text-3">13/07/2023</mat-card-content>
-              
-          </mat-card-content>
-      </mat-card-content>
-  </mat-card>
-</mat-sidenav-container> -->
