@@ -22,7 +22,7 @@ import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { Asidem2Component } from './modulo2/containers/asidem2/asidem2.component';
+import { Asidem2Component } from './modulo2/views/calificacion-proveedor/asidem2/asidem2.component';
 import { CardDialogComponent } from './modulo2/containers/card-dialog/card-dialog.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {
@@ -73,12 +73,13 @@ import { SideInformationDocumentsComponent } from './components/side-information
 import { ProgresoCircularComponent } from './modulo2/componentBasic/progreso-circular/progreso-circular.component';
 import { TituloLineaComponent } from './modulo2/componentBasic/titulo-linea/titulo-linea.component';
 import { NavBarComponent } from './modulo2/containers/nav-bar/nav-bar.component';
-import { ResultadosComponent } from './modulo2/views/calificacionProveedor/resultados/resultados.component';
+import { ResultadosComponent } from './modulo2/views/calificacion-proveedor/resultados/resultados.component';
 import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
 import { FilaService } from './services/fila.service';
 
 import { MatRadioModule } from '@angular/material/radio';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
+import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,6 +104,7 @@ import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialo
     DialogSiNoComponent,
     Asidem2Component,
     CardDialogComponent,
+    CalificacionProveedorComponent,
 
   ],
   imports: [

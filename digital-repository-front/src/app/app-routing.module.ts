@@ -7,11 +7,11 @@ import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { SearcContractsComponent } from './components/searc-contracts/searc-contracts.component';
 import { SettingSystemComponent } from './components/setting-system/setting-system.component';
-import { ResultadosComponent } from './modulo2/views/calificacionProveedor/resultados/resultados.component';
+import { ResultadosComponent } from './modulo2/views/calificacion-proveedor/resultados/resultados.component';
 import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
 import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
-import { Asidem2Component } from './modulo2/containers/asidem2/asidem2.component';
 import { CardDialogComponent } from './modulo2/containers/card-dialog/card-dialog.component';
+import { Asidem2Component } from './modulo2/views/calificacion-proveedor/asidem2/asidem2.component';
 
 
 
