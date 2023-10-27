@@ -13,6 +13,7 @@ import { ListContractComponent } from './shared-module/components/list-contract/
 import { CardDialogComponent } from './modulo2/containers/card-dialog/card-dialog.component';
 import { Asidem2Component } from './modulo2/views/calificacion-proveedor/asidem2/asidem2.component';
 import { BuscarProveedorComponent } from './modulo2/views/calificacion-proveedor/buscar-proveedor/buscar-proveedor.component';
+import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
 
 
 
@@ -23,9 +24,10 @@ const routes: Routes = [
     component: Modulo2ComponentComponent,
     children: [
       { path: 'resultados', component: ResultadosComponent },
-      {path: 'asidem2',component:Asidem2Component},
+      { path: 'asidem2',component:Asidem2Component },
       { path: 'contract', component: CardDialogComponent },
       { path: 'buscarContrato', component: BuscarProveedorComponent },
+      { path: 'calificacion', component: CalificacionProveedorComponent },
     ] },
   { path: 'createCont', component: CreateContractComponent },
   {
