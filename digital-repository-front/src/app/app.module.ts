@@ -80,6 +80,7 @@ import { FilaService } from './services/fila.service';
 import { MatRadioModule } from '@angular/material/radio';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
+import { BuscarProveedorComponent } from './modulo2/views/calificacion-proveedor/buscar-proveedor/buscar-proveedor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,6 +106,7 @@ import { CalificacionProveedorComponent } from './modulo2/views/calificacion-pro
     Asidem2Component,
     CardDialogComponent,
     CalificacionProveedorComponent,
+    BuscarProveedorComponent,
 
   ],
   imports: [

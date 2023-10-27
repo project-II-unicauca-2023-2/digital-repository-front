@@ -1,0 +1,217 @@
+/* You can add global styles to this file, and also import other style files */
+.cuerpo {
+  display: flex;
+  flex-direction: column;
+  width: 930px;
+  height: 687px;
+  align-items: center; /* Centrar horizontalmente en el contenedor */
+  justify-content: center; /* Centrar verticalmente en el contenedor */
+  gap: 40px;
+  padding: 50px 0px;
+  position: relative;
+}
+
+.cuerpo .cont-contenido {
+  flex-direction: column;
+  height: 191px;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.cuerpo .title {
+  display: flex;
+  flex-direction: column;
+  width: 378px;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0px;
+  flex-grow: 1;
+  position: relative;
+  flex: 1;
+}
+
+.cuerpo .cont-text {
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  margin-top: -4.5px;
+  margin-bottom: -4.5px;
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.cuerpo .text-wrapper {
+  margin-top: -1px;
+  font-family: "Titillium Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000066;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  flex: 1;
+}
+
+.cuerpo .cont-line {
+  flex-direction: column;
+  height: 1px;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: stretch;
+  width: 100%;
+  margin-bottom: -5.5px;
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+
+.cuerpo .cont-descripcion {
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.cuerpo .para-realizar-la {
+  position: relative;
+  flex: 1;
+  margin-top: -1px;
+  font-family: "Open Sans-Light", Helvetica;
+  font-weight: 300;
+  color: #000000;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.cuerpo .cont-busqueda {
+  width: 882px;
+  height: 391px;
+  align-items: flex-start;
+  padding: 10px;
+  margin-bottom: -35px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.cuerpo .input {
+  display: flex;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+  background-color: var(--foundation-bluelight);
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px #00000040;
+}
+.input input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.cuerpo .texto {
+  position: relative;
+  flex: 1;
+  margin-top: -6px;
+  margin-bottom: -2px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--foundationbluedarker);
+  font-size: 16px;
+  letter-spacing: 0.16px;
+  line-height: 24px;
+}
+
+.cuerpo .vector {
+  position: relative;
+  width: 12.5px;
+  height: 7.72px;
+}
+
+.cuerpo .boton-busqueda {
+  display: flex;
+  width: 141px;
+  height: 43px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  background-color: var(--foundation-rednormal-hover);
+  border-radius: 80px;
+}
+
+.boton-busqueda {
+  display: flex;
+  width: 141px;
+  height: 43px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  background-color: var(--foundation-rednormal-hover);
+  border-radius: 80px;
+}
+
+.boton-busqueda .vector {
+  display: flex;
+  position: relative;
+  width: 25px;
+  height: 30px;
+  margin-top: -2px;
+}
+
+
+.boton {
+  font-family: var(--estilo-label-font-family);
+  font-weight: var(--estilo-label-font-weight);
+  background-color: #AC0000;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  border-radius: 80px;
+ }
+
+ .boton:hover{
+  background-color: #7A0000;
+  color: white;
+ }
