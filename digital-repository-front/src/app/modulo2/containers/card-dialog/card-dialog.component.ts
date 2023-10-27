@@ -1,9 +1,4 @@
-import { Component } from '@angular/core';
-
-export interface Tile {
-  right : String;
-  left : String;
-}
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-dialog',
@@ -11,13 +6,23 @@ export interface Tile {
   styleUrls: ['./card-dialog.component.css']
 })
 export class CardDialogComponent {
-  tiles: Tile[] = [
-    {right: 'One', left: 'si'}
-  ];
-
+  @Input() criterio: string="";
+  @Input() descripcionCriterio: string="";
+  @Input() contBotones:number=0;
   checked = false;
   indeterminate = false;
   labelPosition: 'before' | 'after' = 'after';
   disabled = false;
+  dicPuntaje: { [key: number]: string } = {
+    1: "No cumple",
+    2: "Minimamente",
+    3: "Parcialmente",
+    4: "Plenamente",
+    5: "Supera expectativas"
+  };
+  
+  getPuntaje() {
+    return Object.keys(this.dicPuntaje);
+  }
 
 }

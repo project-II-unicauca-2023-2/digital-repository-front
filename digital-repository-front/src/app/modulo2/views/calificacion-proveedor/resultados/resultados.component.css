@@ -1,6 +1,4 @@
-#contenido{
-   
-}
+
 .centrar{    
     width: 100%;
     display: flex;
@@ -10,8 +8,10 @@
 #resultados{
     width: 70%;
     margin: 1%;
+    padding: 20px;
 }
 #criterios{
+    background-color: white;
     display: flex;
     justify-content: center;     /* Centra los elementos horizontalmente */
     align-items: center;         /* Alinea los elementos verticalmente en el centro */
@@ -44,7 +44,7 @@
 .progresoTotal{
     min-width: 150px;
     width: 50%;             /*para tener 2 columnas*/
-    height: 25vh;
+    height: 100%;
 }
 #total{
     display: flex;

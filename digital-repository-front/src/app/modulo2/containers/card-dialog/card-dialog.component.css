@@ -5,7 +5,7 @@
 
 .cuadrito{
   display: flex;
-  width: 940px;
+  width: 100%;
   padding: 10px;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@
 
 .cuadritoP{
   display: flex;
-  width: 237px;
+  width: 30%;
   height: 117px;
   flex-direction: column;
   justify-content: center;
@@ -26,7 +26,7 @@
 
 .cuadritoP2{
   display: flex;
-  width: 584px;
+  width: 70%;
   height: 103px;
   padding: 10px;
   justify-content: center;
@@ -89,13 +89,13 @@ mat-divider {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  align-self: stretch;
+  align-self: stretch;  
+  justify-content:right;
 }
 
-.boton-siguiente{
+.boton{
   display: flex;
-  width: 141px;
-  height: 43px;
+  max-width: 200px;
   padding: 10px;
   justify-content: center;
   align-items: center;
@@ -117,4 +117,17 @@ mat-divider {
 
 .icono-azul {
   color: rgb(1, 95, 126); 
+}
+
+@media (max-width: 1000px) {              /* se activará cuando el ancho de la pantalla sea igual o menor que 768 píxeles,*/
+  .container {
+      flex-direction: column;          /* Cambia la dirección a vertical cuando se alcanza el ancho máximo */
+      align-items: flex-start;         /* Alinea los elementos a la izquierda en el eje vertical */
+ 
+  }
+  
+}
+.scroll{
+  max-height: 100px; 
+  overflow: auto;
 }
