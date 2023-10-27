@@ -37,7 +37,7 @@
 /* Reducir el tamaño de la sidenav si el contenido principal de la página es demasiado grande */
 .mat-sidenav {
     flex-shrink: 1;
-    
+
 }
 
 /* Estilos de la sidenav */
@@ -128,42 +128,8 @@
 
 }
 
-.contenedor-numero-contrato {
+.contenedor-campos {
     position: center;
     width: auto;
     height: 71px;
-}
-
-.contenedor-nombre-contratista {
-    position: center;
-    width: auto;
-    height: 71px;
-
-}
-
-.contenedor-nit {
-    position: center;
-    width: auto;
-    height: 71px;
-}
-
-.contenedor-cedula {
-    position: center;
-    width: auto;
-    height: 71px;
-
-}
-
-.contenedor-fecha-inicio {
-    position: center;
-    width: auto;
-    height: 71px;
-
-}
-
-.contenedor-fecha-fin {
-    position: center;
-    width: auto;
-    height: 71px;
-
 }
