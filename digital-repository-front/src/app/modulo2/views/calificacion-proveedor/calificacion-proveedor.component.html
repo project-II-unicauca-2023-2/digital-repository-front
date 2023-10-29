@@ -1,8 +1,10 @@
 <div id="contenido-calificacion" style="padding: 2%;">
-<app-buscar-proveedor *ngIf="indexVistaActual===0"></app-buscar-proveedor><!--VISTA DE BUSQUEDA:Vicible al iniciar-->
+<app-buscar-proveedor *ngIf="indexVistaActual===0"
+  (emisorIdContrato)="recibidoIdContratoValido($event)">
+</app-buscar-proveedor><!--VISTA DE BUSQUEDA:Vicible al iniciar-->
   <div style="display: flex;">
     <div style="width: 30%; display: flex; justify-content: center; margin: AUTO;   ">
-      <app-asidem2 *ngIf="indexVistaActual!==0"></app-asidem2><!--VISTA DE BUSQUEDA:Vicible al iniciar-->
+      <app-asidem2 *ngIf="indexVistaActual!==0" [numContrato]="numContrato"></app-asidem2><!--VISTA DE BUSQUEDA:Vicible al iniciar-->
     </div>
     <div style="width: 70%; padding: auto;">
       <ng-container *ngFor="let tile of tiles; let i = index"><!--VISTA DE Calificacion:Vicible al sumar la primera vista al indice-->
@@ -11,7 +13,7 @@
               [criterio]="tile.criterio" 
               [descripcionCriterio]="tile.descripcion"
               [contBotones]="i === 0 ? 1 : i === tiles.length - 1 ? 3 : 2"
-              
+              (emisorNavegacion)="recibidoBotonNavegacion($event)"
             ></app-card-dialog>
         </ng-container>
       <app-resultados *ngIf="indexVistaActual===indexVistaMax"></app-resultados><!--VISTA DE RESULTADOS:visible en la ultima posicion-->

@@ -7,13 +7,12 @@ import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { SearcContractsComponent } from './components/searc-contracts/searc-contracts.component';
 import { SettingSystemComponent } from './components/setting-system/setting-system.component';
-import { ResultadosComponent } from './modulo2/views/calificacion-proveedor/resultados/resultados.component';
-import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
-import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
-import { CardDialogComponent } from './modulo2/containers/card-dialog/card-dialog.component';
-import { Asidem2Component } from './modulo2/views/calificacion-proveedor/asidem2/asidem2.component';
-import { BuscarProveedorComponent } from './modulo2/views/calificacion-proveedor/buscar-proveedor/buscar-proveedor.component';
 import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
+import { DashboardComponent } from './modulo2/views/dashboard/dashboard.component';
+import { DescargaCalificacionesComponent } from './modulo2/views/descarga-calificaciones/descarga-calificaciones.component';
+import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
+import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
+import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
 
 
 
@@ -23,10 +22,9 @@ const routes: Routes = [
   { path: 'homePage',
     component: Modulo2ComponentComponent,
     children: [
-      { path: 'resultados', component: ResultadosComponent },
-      { path: 'asidem2',component:Asidem2Component },
-      { path: 'contract', component: CardDialogComponent },
-      { path: 'buscarContrato', component: BuscarProveedorComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'subirInfo',component:SubirInfoComponent },
+      { path: 'descargaFormato', component: DescargaCalificacionesComponent },
       { path: 'calificacion', component: CalificacionProveedorComponent },
     ] },
   { path: 'createCont', component: CreateContractComponent },

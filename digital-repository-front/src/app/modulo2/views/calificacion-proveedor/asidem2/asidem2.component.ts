@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 
 
 @Component({
@@ -9,7 +9,8 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe] // Agrega DatePipe a la lista de proveedores
 })
 export class Asidem2Component implements OnInit {
-  numContrato: string;
+
+  @Input() numContrato: string;
   nombreContratista : string;
   nitContratista : string;
   cedulaContratista : string;
@@ -27,7 +28,6 @@ export class Asidem2Component implements OnInit {
    }
 
   ngOnInit() {
-    this.numContrato='5.5-31.3/00 9 del 2023';
     this.nombreContratista='JORGE MEJÍA ARIAS';
     this.nitContratista= '0000000000';
     this.cedulaContratista= '1061781100';

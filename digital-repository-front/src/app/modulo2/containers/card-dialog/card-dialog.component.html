@@ -36,15 +36,18 @@
 
 <div class="caja-boton ">
   <!--MOSTRAR BOTONES TIPO:{{contBotones}}-->
-  <button mat-fab extended class="boton letras-boton"  *ngIf="contBotones === 3 ||contBotones === 2">
+  <button mat-fab extended class="boton letras-boton"  *ngIf="contBotones === 3 ||contBotones === 2"
+    (click)="navegar(-1)">
     Atras
     <mat-icon class="material-icons-filled icono-azul">keyboard_double_arrow_left</mat-icon>
   </button>
-  <button mat-fab extended class="boton letras-boton" *ngIf="contBotones === 1 ||contBotones === 2">
+  <button mat-fab extended class="boton letras-boton" *ngIf="contBotones === 1 ||contBotones === 2"
+    (click)="navegar(1)">
     <mat-icon class="material-icons-filled icono-azul">keyboard_double_arrow_right</mat-icon>
     Siguiente
   </button>  
-  <button mat-fab extended class="boton letras-boton"  *ngIf="contBotones === 3">
+  <button mat-fab extended class="boton letras-boton"  *ngIf="contBotones === 3"
+    (click)="navegar(1)">
     <mat-icon  class="material-icons-filled icono-azul">assignment</mat-icon>
     Enviar Calificacion
   </button>

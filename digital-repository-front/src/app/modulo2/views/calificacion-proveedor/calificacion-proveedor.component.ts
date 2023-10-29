@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 export interface Tile {
   criterio : string;
   descripcion : string;
@@ -18,7 +18,40 @@ export class CalificacionProveedorComponent {
   
    indexVistaActual: number = 0; // por defecto la primera vista se ve 0
    indexVistaMax: number = (this.tiles.length-1) +2; //total de calificaciones(-1 POR SER INDICE)+ 2 vistas mas (busqueda y resultados)
-  constructor(){
+  
+   numContrato:string="";
+  /**
+   * navega a la proxima pagina y hace un llamado a recupera datos necesarios
+   * @param contrato es el identificador del contrato ya balidado por la primera interfaz
+   */
+
+  recibidoIdContratoValido(contrato: string) {
+    console.log("Contrato recibido: ", contrato);
+    this.numContrato=contrato;
+    this.indexVistaActual=this.indexVistaActual+1
+  }
+  recibidoBotonNavegacion(direccionNavegacion: number){
+    this.comprobarvista()
+    this.indexVistaActual=this.indexVistaActual+direccionNavegacion;
+  }
+  /**
+   * comprueba que sea vista valida
+   */
+  comprobarvista(){
 
   }
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeUnloadHandler(event: Event) {
+    event.returnValue = true; 
+    return '¿Está seguro de abandonar la página? Los datos no guardados se perderán.';
+  }
+  ngOnInit() {
+    window.onbeforeunload = () => this.confirmExit();
+  }
+
+  confirmExit() {
+    return '¿Está seguro de abandonar la página? Los datos no guardados se perderán.';
+  }
+  
 }

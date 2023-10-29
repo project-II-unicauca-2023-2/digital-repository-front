@@ -81,6 +81,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
 import { BuscarProveedorComponent } from './modulo2/views/calificacion-proveedor/buscar-proveedor/buscar-proveedor.component';
+import { DescargaCalificacionesComponent } from './modulo2/views/descarga-calificaciones/descarga-calificaciones.component';
+import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
+import { DashboardComponent } from './modulo2/views/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,6 +110,9 @@ import { BuscarProveedorComponent } from './modulo2/views/calificacion-proveedor
     CardDialogComponent,
     CalificacionProveedorComponent,
     BuscarProveedorComponent,
+    DescargaCalificacionesComponent,
+    SubirInfoComponent,
+    DashboardComponent,
 
   ],
   imports: [

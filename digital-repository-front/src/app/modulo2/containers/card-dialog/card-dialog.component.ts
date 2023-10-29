@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card-dialog',
@@ -9,6 +9,8 @@ export class CardDialogComponent {
   @Input() criterio: string="";
   @Input() descripcionCriterio: string="";
   @Input() contBotones:number=0;
+  @Output() emisorNavegacion = new EventEmitter<number>();
+
   checked = false;
   indeterminate = false;
   labelPosition: 'before' | 'after' = 'after';
@@ -24,5 +26,11 @@ export class CardDialogComponent {
   getPuntaje() {
     return Object.keys(this.dicPuntaje);
   }
-
+  /***
+   * informa al contenedor padre que a que indice se debe mover
+   */
+  navegar(varNavegacion:number)
+  {
+    this.emisorNavegacion.emit(varNavegacion);
+  }
 }

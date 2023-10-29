@@ -14,11 +14,9 @@
           <mat-form-field class="example-full-width"  style="
           width: 100%;">
             <mat-label>Ingrese máscara de contrato</mat-label>
-            <input matInput placeholder="Ej. Contrato" >
-          </mat-form-field>
-        
-        
-        <button mat-fab extended color="primary" >
+            <input matInput placeholder="Ej. Contrato" [(ngModel)]="contratoValido" >
+          </mat-form-field>        
+        <button mat-fab extended color="primary" (click)="validarContrato()" >
           <mat-icon>search
           </mat-icon>
         </button>
