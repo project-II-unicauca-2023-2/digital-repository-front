@@ -9,18 +9,18 @@
           </p>
         </div>
       </div>
-      <div class="cont-busqueda">
-        <div class="input">
-          <input>
-          <input type="text" placeholder="Escribe el número de contrato aquí">
-          <img class="vector" src="https://c.animaapp.com/KQLzLEAc/img/vector-2@2x.png" />
-        </div>
-        <div class="boton-busqueda">
-          <img class="vector" src="https://c.animaapp.com/bEroUezc/img/vector.svg" />
-          <button mat-fab extended color="primary" >
-            <mat-icon>search
-            </mat-icon>
-          </button>
-        </div>
+      <div id="contBuscar">
+        
+          <mat-form-field class="example-full-width"  style="
+          width: 100%;">
+            <mat-label>Ingrese máscara de contrato</mat-label>
+            <input matInput placeholder="Ej. Contrato" >
+          </mat-form-field>
+        
+        
+        <button mat-fab extended color="primary" >
+          <mat-icon>search
+          </mat-icon>
+        </button>
       </div>
     </div>

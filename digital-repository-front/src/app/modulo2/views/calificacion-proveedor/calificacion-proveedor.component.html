@@ -1,16 +1,20 @@
-<div id="contenido-calificacion">
-<app-buscar-proveedor></app-buscar-proveedor>
+<div id="contenido-calificacion" style="padding: 2%;">
+<app-buscar-proveedor *ngIf="indexVistaActual===0"></app-buscar-proveedor><!--VISTA DE BUSQUEDA:Vicible al iniciar-->
   <div style="display: flex;">
-    <div style="width: 30%; display: flex; justify-content: center;    ">
-      <app-asidem2></app-asidem2>
+    <div style="width: 30%; display: flex; justify-content: center; margin: AUTO;   ">
+      <app-asidem2 *ngIf="indexVistaActual!==0"></app-asidem2><!--VISTA DE BUSQUEDA:Vicible al iniciar-->
     </div>
     <div style="width: 70%; padding: auto;">
-      <app-card-dialog *ngFor="let tile of tiles; let i = index" 
-        [criterio]="tile.criterio" 
-        [descripcionCriterio]="tile.descripcion"
-        [contBotones]="i === 0 ? 1 : i === tiles.length - 1 ? 3 : 2"
-      ></app-card-dialog>
-      <app-resultados></app-resultados>
+      <ng-container *ngFor="let tile of tiles; let i = index"><!--VISTA DE Calificacion:Vicible al sumar la primera vista al indice-->
+        
+            <app-card-dialog  *ngIf="indexVistaActual ===1+i " 
+              [criterio]="tile.criterio" 
+              [descripcionCriterio]="tile.descripcion"
+              [contBotones]="i === 0 ? 1 : i === tiles.length - 1 ? 3 : 2"
+              
+            ></app-card-dialog>
+        </ng-container>
+      <app-resultados *ngIf="indexVistaActual===indexVistaMax"></app-resultados><!--VISTA DE RESULTADOS:visible en la ultima posicion-->
     </div>
   </div>
 

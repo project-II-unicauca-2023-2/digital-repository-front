@@ -3,12 +3,9 @@
   display: flex;
   flex-direction: column;
   width: 100vh;
-  height: 100vh;
+  height: 100%;
   align-items: center; /* Centrar horizontalmente en el contenedor */
   justify-content: center; /* Centrar verticalmente en el contenedor */
-  gap: 40px;
-  padding: 50px 0px;
-  position: relative;
   margin: auto;
 }
 
@@ -21,7 +18,6 @@
   width: 100%;
   display: flex;
   gap: 10px;
-  position: relative;
 }
 
 .titulo{
@@ -35,7 +31,6 @@
   justify-content: center;
   padding: 50px 0px;
   flex-grow: 1;
-  position: relative;
   flex: 1;
   margin: auto;
 }
@@ -50,7 +45,6 @@
   margin-bottom: -4.5px;
   display: flex;
   gap: 10px;
-  position: relative;
 }
 
 .cuerpo .text-wrapper {
@@ -62,7 +56,6 @@
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
-  position: relative;
   flex: 1;
 }
 
@@ -76,7 +69,6 @@
   margin-bottom: -5.5px;
   display: flex;
   gap: 10px;
-  position: relative;
 }
 
 
@@ -88,11 +80,9 @@
   flex: 0 0 auto;
   display: flex;
   gap: 10px;
-  position: relative;
 }
 
 .cuerpo .para-realizar-la {
-  position: relative;
   flex: 1;
   margin-top: -1px;
   font-family: "Open Sans-Light", Helvetica;
@@ -114,7 +104,6 @@
   overflow: hidden;
   display: flex;
   gap: 10px;
-  position: relative;
 }
 
 .cuerpo .input {
@@ -124,29 +113,15 @@
   justify-content: center;
   gap: 10px;
   padding: 10px;
-  position: relative;
   flex: 1;
   flex-grow: 1;
   background-color: var(--foundation-bluelight);
   border-radius: 30px;
   box-shadow: 0px 4px 4px #00000040;
 }
-.input input {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  flex: 1;
-  flex-grow: 1;
-  border: none;
-  outline: none;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-}
+
 
 .cuerpo .texto {
-  position: relative;
   flex: 1;
   margin-top: -6px;
   margin-bottom: -2px;
@@ -159,14 +134,12 @@
 }
 
 .cuerpo .vector {
-  position: relative;
   width: 12.5px;
   height: 7.72px;
 }
 
 .cuerpo .boton-busqueda {
   display: flex;
-  width: 141px;
   height: 43px;
   align-items: flex-end;
   justify-content: flex-end;
@@ -185,14 +158,12 @@
   justify-content: flex-end;
   gap: 10px;
   padding: 10px;
-  position: relative;
   background-color: var(--foundation-rednormal-hover);
   border-radius: 80px;
 }
 
 .boton-busqueda .vector {
   display: flex;
-  position: relative;
   width: 25px;
   height: 30px;
   margin-top: -2px;
@@ -219,4 +190,8 @@
  .boton:hover{
   background-color: #7A0000;
   color: white;
+ }
+ #contBuscar{
+  display: flex;
+  width: 100%;
  }
