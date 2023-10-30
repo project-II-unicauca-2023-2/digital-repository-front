@@ -77,6 +77,8 @@ import { ResultadosComponent } from './modulo2/views/calificacion-proveedor/resu
 import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
 import { FilaService } from './services/fila.service';
 
+import { FooterComponent } from './modulo2/containers/footer/footer.component';
+
 import { MatRadioModule } from '@angular/material/radio';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
@@ -113,6 +115,7 @@ import { DashboardComponent } from './modulo2/views/dashboard/dashboard.componen
     DescargaCalificacionesComponent,
     SubirInfoComponent,
     DashboardComponent,
+    FooterComponent,
 
   ],
   imports: [
