@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response} from 'src/app/class/response';
-import { Observable, catchError, throwError, BehaviorSubject } from 'rxjs';
+import { Observable, catchError, throwError, BehaviorSubject, map } from 'rxjs';
 import { Contract } from '../class/contract';
 import { responseDocument } from '../class/models/responseDocument';
 import { UpdateContract } from '../class/models/UpdateContract';
@@ -162,6 +162,29 @@ export class ContractService {
   getSelectedContractId(): number | null {
     return this.selectedContractId;
   }
+
+  //get existe evaluacion
+  getExisteEvaluacion(id:string): Observable<boolean>{
+    return  this.httpClient.get<any>(this.urlAPI + "/existingEvaluationContractByMask?referenceMask=" + id).pipe(
+      map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
+      catchError((e) => {
+      console.log('error','error');
+      return throwError(e);
+    })
+    )
+  }
+
+  getExisteContrato(id:string): Observable<boolean>{
+    return  this.httpClient.get<any>(this.urlAPI + "/existingContractByMask?referenceMask=" + id).pipe(
+      map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
+      catchError((e) => {
+      console.log('errorContrao','error');
+      return throwError(e);
+    })
+    )
+  }
+
+
 }
 
 
