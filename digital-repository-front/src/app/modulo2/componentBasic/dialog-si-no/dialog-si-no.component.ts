@@ -41,6 +41,11 @@ export class DialogSiNoComponent implements OnInit {
       this.respuestaPositiva="Cancelar";
       this.mostrarBotonContinuar=false;
     }
+    if (this.tipo =="soloOpcionAceptar" ){
+      this.respuestaNegativa="aceptar";
+      this.aceptaCondiciones=true;
+      this.mostrarBotonContinuar=false;
+    }
   }
   
   onConfirmClick(): void {

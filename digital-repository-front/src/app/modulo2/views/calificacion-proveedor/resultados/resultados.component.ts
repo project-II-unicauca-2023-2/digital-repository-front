@@ -20,6 +20,12 @@ export class ResultadosComponent {
     cumplimiento: 2
   };
 
+  constructor(
+    public dialog: MatDialog,    
+    private pdfService: PdfService,
+    private excelService :ExcelService,
+    private http: HttpClient
+    ) {}
   obtenerClaves() {
     return Object.keys(this.miDiccionario);
   }
@@ -30,12 +36,6 @@ export class ResultadosComponent {
     return parseFloat(promedio.toFixed(1))
   }
 
-  constructor(
-    public dialog: MatDialog,    
-    private pdfService: PdfService,
-    private excelService :ExcelService,
-    private http: HttpClient
-    ) {}
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
   const dialogRef = this.dialog.open(DialogSiNoComponent, {
       width: '250px',
@@ -46,17 +46,6 @@ export class ResultadosComponent {
       },
       enterAnimationDuration,
       exitAnimationDuration,
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // Aquí manejamos el resultado
-        console.log('Se recibe el Resultado: ', result);
-        if (result === true) {
-          //this.pdfService.generarPDFsDeTabla(this.tablas.toArray());
-          //this.excelService.replaceCellsInExcel();
-          this.excelService.createNewExcel();
-        }
-      }
     });
   }
   
