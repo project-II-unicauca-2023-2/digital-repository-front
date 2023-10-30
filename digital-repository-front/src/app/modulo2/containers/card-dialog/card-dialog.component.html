@@ -18,10 +18,11 @@
   <mat-card style="width: 100%;" >
     <mat-card-content style="width: 100%;" >
       <section style="justify-content: center;">
-        <mat-radio-group [(ngModel)]="labelPosition"  >
+        <mat-radio-group [(ngModel)]="seleccionadoRadio"  >
           <div class="container">
-            <ng-container *ngFor="let key of getPuntaje()">
-              <mat-radio-button class="botones" [value]=key>
+            <ng-container *ngFor="let key of getPuntaje(); let i = index">
+              <mat-radio-button class="botones" [value]=key
+               (change)="almacenaValor(key)" [checked]="seleccionado === i">
                 {{ key }}. {{dicPuntaje[+(key)]}} <!-- el "+" sirve para parcear a number -->
               </mat-radio-button>
               <mat-divider [vertical]="true"></mat-divider>
