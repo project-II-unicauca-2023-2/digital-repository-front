@@ -14,6 +14,7 @@
               [descripcionCriterio]="tile.descripcion"
               [contBotones]="i === 0 ? 1 : i === tiles.length - 1 ? 3 : 2"
               [seleccionadoRadio]="calificacionesArray[i]"
+              [seleccionadoRadioTodos]="calificacionesArray"
               (emisorNavegacion)="recibidoBotonNavegacion($event)"
               (emisorValor)="ingresarCalificacionCriterio($event, i )"
             ></app-card-dialog>

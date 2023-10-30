@@ -36,13 +36,13 @@ export class ResultadosComponent {
     private excelService :ExcelService,
     private http: HttpClient
     ) {}
-
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const dialogRef = this.dialog.open(DialogSiNoComponent, {
+  const dialogRef = this.dialog.open(DialogSiNoComponent, {
       width: '250px',
       data: {
         titulo: 'Calificacion de Proveedor',
-        pregunta: 'Desea Imprimir la calificacion'
+        pregunta: 'Desea Imprimir la calificacion',
+        tipo: "pregunta"
       },
       enterAnimationDuration,
       exitAnimationDuration,

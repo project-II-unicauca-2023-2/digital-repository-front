@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogSiNoComponent } from '../../componentBasic/dialog-si-no/dialog-si-no.component';
 
 @Component({
   selector: 'app-card-dialog',
@@ -12,6 +14,7 @@ export class CardDialogComponent implements OnInit {
   @Output() emisorNavegacion = new EventEmitter<number>();
   @Output() emisorValor = new EventEmitter<number>();
   @Input() seleccionadoRadio!:number;
+  @Input() seleccionadoRadioTodos!:number[];
   seleccionado=0;
   checked = false;
   indeterminate = false;
@@ -23,10 +26,11 @@ export class CardDialogComponent implements OnInit {
     4: "Plenamente",
     5: "Supera expectativas"
   };
-  constructor(){
+  constructor(
+    public dialog: MatDialog,    ){
   }
   ngOnInit(): void {
-    alert(this.seleccionadoRadio +" <- FORMULRIO RECIBE EL ");
+    //alert(this.seleccionadoRadio +" <- FORMULRIO RECIBE EL ");
   }
   getPuntaje() {
     return Object.keys(this.dicPuntaje);
@@ -47,5 +51,38 @@ export class CardDialogComponent implements OnInit {
     this.seleccionadoRadio = value; // Actualiza el valor seleccionado
     console.log('El valor seleccionado es: ' + this.seleccionadoRadio);
 
+  }
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    let contarCeros = this.seleccionadoRadioTodos.filter(item => item === 0).length; // Filtra los elementos iguales a cero y cuenta su longitud
+    let textoAlerta= "";
+    let tipo= "";
+    if(contarCeros === 0){
+      textoAlerta=""
+      tipo= "aceptacion"
+    }else{
+      textoAlerta= "Hay " + contarCeros + " criterios sin evaluar"
+      tipo= "cancelar"
+    }
+    const dialogRef = this.dialog.open(DialogSiNoComponent, {
+      width: '40%',
+      data: {
+        titulo: 'Finalizacion de la Evaluacion de Proveedor',
+        pregunta: 'Una vez aceptado, el formulario de calificación de proveedor se considera finalizado y no será posible realizar modificaciones. Le recomendamos revisar detenidamente la información antes de proceder con el envío, ya que implicará la aceptación de los términos sin posibilidad de rectificación posterior.',
+        tipo: "aceptacion",
+        textoAlerta: textoAlerta
+      },
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Aquí manejamos el resultado
+        console.log('Se recibe el Resultado: ', result);
+        if (result === true) {
+          // que continue en esta pgina o lo deje abndonr
+          this.navegar(1);
+        }
+      }
+    });
   }
 }

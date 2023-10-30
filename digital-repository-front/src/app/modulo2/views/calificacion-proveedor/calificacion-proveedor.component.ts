@@ -53,7 +53,7 @@ export class CalificacionProveedorComponent implements OnInit {
   ingresarCalificacionCriterio(calificado:number, indice:number){
     console.log("caificacionResivida"+calificado+" para criterio '"+this.tiles[indice].criterio+"'");
     this.calificacionesArray[indice]=calificado
-    alert(this.calificacionesArray);
+    //alert(this.calificacionesArray);
   }
   @HostListener('window:beforeunload', ['$event'])
   beforeUnloadHandler(event: Event) {
