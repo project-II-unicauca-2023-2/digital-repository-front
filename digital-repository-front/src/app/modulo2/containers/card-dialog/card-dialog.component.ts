@@ -56,19 +56,24 @@ export class CardDialogComponent implements OnInit {
     let contarCeros = this.seleccionadoRadioTodos.filter(item => item === 0).length; // Filtra los elementos iguales a cero y cuenta su longitud
     let textoAlerta= "";
     let tipo= "";
-    if(contarCeros === 0){
-      textoAlerta=""
+    //alert(this.seleccionadoRadioTodos.length.toString() + " " + (this.seleccionadoRadioTodos[this.seleccionadoRadioTodos.length - 1] === 0));
+    if((this.contBotones===3)&&(this.seleccionadoRadioTodos[this.seleccionadoRadioTodos.length-1]===0)
+    && this.seleccionadoRadio !==0){/**hasta no precionar otro boton no se almacen entonces toc averiguar si se preciono en la ultima interfz */
+      contarCeros=contarCeros-1 /// quiere decir que se evluo en la ultima interfaz pero no se ha registado
+    }
+    if((contarCeros === 0)){
       tipo= "aceptacion"
     }else{
-      textoAlerta= "Hay " + contarCeros + " criterios sin evaluar"
-      tipo= "cancelar"
+        textoAlerta= "Hay " + contarCeros + " criterios sin evaluar"
+        tipo= "cancelar"
+     
     }
     const dialogRef = this.dialog.open(DialogSiNoComponent, {
       width: '40%',
       data: {
         titulo: 'Finalizacion de la Evaluacion de Proveedor',
         pregunta: 'Una vez aceptado, el formulario de calificación de proveedor se considera finalizado y no será posible realizar modificaciones. Le recomendamos revisar detenidamente la información antes de proceder con el envío, ya que implicará la aceptación de los términos sin posibilidad de rectificación posterior.',
-        tipo: "aceptacion",
+        tipo: tipo,
         textoAlerta: textoAlerta
       },
       enterAnimationDuration,
