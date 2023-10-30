@@ -47,6 +47,20 @@ export class ResultadosComponent {
       enterAnimationDuration,
       exitAnimationDuration,
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Aquí manejamos el resultado
+        console.log('Se recibe el Resultado: ', result);
+        if (result === true) {
+         this.excelService.createNewExcel();
+        }
+      }
+    });
+
+
+
   }
   
 }
+
