@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Response} from 'src/app/class/response';
-import { Observable, catchError, throwError, BehaviorSubject, map } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
+import { Response } from 'src/app/class/response';
 import { Contract } from '../class/contract';
-import { responseDocument } from '../class/models/responseDocument';
 import { UpdateContract } from '../class/models/UpdateContract';
+import { responseDocument } from '../class/models/responseDocument';
+import { datosAside } from '../modulo2/models/datosAside';
 @Injectable({
   providedIn: 'root'
 })
@@ -168,7 +169,7 @@ export class ContractService {
     return  this.httpClient.get<any>(this.urlAPI + "/existingEvaluationContractByMask?referenceMask=" + id).pipe(
       map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
       catchError((e) => {
-      console.log('error','error');
+      console.log('error en el servicio contrato get Existencia de evaluacion','error');
       return throwError(e);
     })
     )
@@ -178,7 +179,17 @@ export class ContractService {
     return  this.httpClient.get<any>(this.urlAPI + "/existingContractByMask?referenceMask=" + id).pipe(
       map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
       catchError((e) => {
-      console.log('errorContrao','error');
+      console.log('error en el servicio contrato get Existencia','error');
+      return throwError(e);
+    })
+    )
+  }
+
+  getDatosAside(id:string): Observable<datosAside>{
+    return  this.httpClient.get<any>(this.urlAPI + "/dataContractVendorByMask?referenceMask=" + id).pipe(
+      map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
+      catchError((e) => {
+      console.log('error en el servicio contrato gaet dtos del aside','error');
       return throwError(e);
     })
     )

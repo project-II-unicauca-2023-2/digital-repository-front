@@ -1,5 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { datosAside } from 'src/app/modulo2/models/datosAside';
+import { ContractService } from 'src/app/services/contract.service';
 
 
 @Component({
@@ -14,10 +16,10 @@ export class Asidem2Component implements OnInit {
   nombreContratista : string;
   nitContratista : string;
   cedulaContratista : string;
-  fechaInicio: Date;
-  fechaFin: Date;
-
-  constructor() {
+  fechaInicio!: Date | null;
+  fechaFin!: Date | null;
+  datosAsideEncontrados!: datosAside;
+  constructor( private servicioContrato:ContractService) {
 
     this.numContrato = '';
     this.nombreContratista = '';
@@ -28,10 +30,14 @@ export class Asidem2Component implements OnInit {
    }
 
   ngOnInit() {
-    this.nombreContratista='JORGE MEJÍA ARIAS';
-    this.nitContratista= '0000000000';
-    this.cedulaContratista= '1061781100';
-    this.fechaInicio = new Date('2023-06-14');
-    this.fechaFin = new Date('2023-07-13');
+    this.servicioContrato.getDatosAside(this.numContrato).subscribe((datos: datosAside) => {//consulta a la bse de datos para saber si el contraro no tiene aun evluacion
+  
+      this.nombreContratista=datos.name;
+      this.nitContratista= datos.identification;
+      this.cedulaContratista= datos.identification;
+      this.fechaInicio = datos.initialDate;
+      this.fechaFin =datos.finalDate;
+      
+    });
   }
 }
