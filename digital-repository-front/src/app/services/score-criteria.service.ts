@@ -2,7 +2,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
-import { scoreCriteria } from '../modulo2/models/scoreCriteria';
+import { totalCriteriaScore } from '../modulo2/models/totalCriteriaScore';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class ScoreCriteriaService {
       }),
   
     };
-  getResultadosEvaluacion(id:string): Observable<scoreCriteria[]>{
+  getResultadosEvaluacion(id:string): Observable<totalCriteriaScore>{
     return  this.httpClient.get<any>(this.urlAPI + "/scoreCriteriaDataByMask?referenceMask=" + id).pipe(
       map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
       catchError((e) => {

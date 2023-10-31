@@ -1,15 +1,19 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSiNoComponent } from 'src/app/modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
+import { totalCriteriaScore } from 'src/app/modulo2/models/totalCriteriaScore';
 import { ExcelService } from 'src/app/modulo2/services/excel/excel.service';
 import { PdfService } from 'src/app/modulo2/services/pdf/pdf.service';
+import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 @Component({
   selector: 'app-resultados',
   templateUrl: './resultados.component.html',
   styleUrls: ['./resultados.component.css']
 })
-export class ResultadosComponent {
+export class ResultadosComponent implements OnInit  {
+  
+  @Input() numContrato!: string;
   @ViewChildren('miTablaI') tablas!: QueryList<ElementRef>; 
   title = "Resultado de calificacion al Proveedor";
   valor = 4;
@@ -19,17 +23,26 @@ export class ResultadosComponent {
     ejecucion: 5,
     cumplimiento: 2
   };
-
+  datosResultado!:totalCriteriaScore;
   constructor(
     public dialog: MatDialog,    
     private pdfService: PdfService,
     private excelService :ExcelService,
-    private http: HttpClient
+    private http: HttpClient,
+    private servicioScore:ScoreCriteriaService
     ) {}
+    ngOnInit() {
+      this.servicioScore.getResultadosEvaluacion(this.numContrato).subscribe((datos: totalCriteriaScore) => {
+        this.datosResultado = datos; // Asignar los datos recibidos a la variable datosResultado
+        console.log(this.datosResultado);
+      });
+    }
   obtenerClaves() {
     return Object.keys(this.miDiccionario);
+
   }
   getTotal(){    
+    // return datosResultado.totalScore
     const values = Object.values(this.miDiccionario);
     const promedio = values.reduce((acc, curr) => acc + curr, 0) / values.length;
     

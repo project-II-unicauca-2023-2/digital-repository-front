@@ -19,7 +19,7 @@
               (emisorValor)="ingresarCalificacionCriterio($event, i )"
             ></app-card-dialog>
         </ng-container>
-      <app-resultados *ngIf="indexVistaActual===indexVistaMax"></app-resultados><!--VISTA DE RESULTADOS:visible en la ultima posicion-->
+      <app-resultados *ngIf="indexVistaActual===indexVistaMax" [numContrato]="numContrato"></app-resultados><!--VISTA DE RESULTADOS:visible en la ultima posicion-->
     </div>
   </div>
 
