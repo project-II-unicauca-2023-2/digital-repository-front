@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSiNoComponent } from 'src/app/modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 import { ContractService } from 'src/app/services/contract.service';
@@ -11,10 +11,7 @@ import { ContractService } from 'src/app/services/contract.service';
 export class BuscarProveedorComponent implements OnInit {
 
   contratoValido = "" //variable que almacena el contrato valido y es emitido
-  contratoEncontradoSinEvalucion = false; //bandera que permite continuar a la otra interfaz
-  prueba = true;
-
-
+  contratoEncontradoSinEvalucion = false; //bandera que permite continuar a la otra interfaz cuando el contrto no tiene un evaluacion pero existe
 
   @Output() emisorIdContrato = new EventEmitter<string>();
   constructor(public dialog: MatDialog, private servicioContrato: ContractService) {
@@ -34,41 +31,24 @@ export class BuscarProveedorComponent implements OnInit {
 
   validarContrato() {
 
-    this.servicioContrato.getExisteContrato(this.contratoValido).subscribe((existeEvaluacion: boolean) => {
-      this.prueba = existeEvaluacion;
-
-      let seValido = false;
-      console.log("asdasdjklaskldaksdjklasjdklaskljd ");
-      this.servicioContrato.getExisteEvaluacion(this.contratoValido).subscribe((existeEvaluacion: boolean) => {
-        this.prueba = existeEvaluacion;
-
-        if (!this.prueba) {
-          this.contratoEncontradoSinEvalucion = true;
-        }
-        else {
-          this.contratoEncontradoSinEvalucion = false;
-        }
-
-        if (this.contratoEncontradoSinEvalucion) {
-          seValido = true;
-          this.emisorIdContrato.emit(this.contratoValido);
-        } else {
-          this.openDialog('500ms', '500ms')
-        }
-      });
-
-      if (this.prueba) {
-        this.contratoEncontradoSinEvalucion = true;
+    this.servicioContrato.getExisteContrato(this.contratoValido).subscribe((existeContrato: boolean) => {///consult a l base de datos para saver si existe
+      this.contratoEncontradoSinEvalucion = false;
+      if(existeContrato){
+        this.servicioContrato.getExisteEvaluacion(this.contratoValido).subscribe((existeEvaluacion: boolean) => {//consulta a la bse de datos para saber si el contraro no tiene aun evluacion
+  
+          if (!existeEvaluacion) {//se permite continuar solo cuando no ha sido registradas evaluaciones 
+            this.contratoEncontradoSinEvalucion = true;
+          }
+  
+          if (this.contratoEncontradoSinEvalucion) {
+            this.emisorIdContrato.emit(this.contratoValido);// hace la emicion de la varible
+          } else {
+            this.openDialog('500ms', '500ms')// en caso contrario muestr error sin salir de la vista
+          }
+        });
       }
-      else {
-        this.contratoEncontradoSinEvalucion = false;
-      }
-
-      if (this.contratoEncontradoSinEvalucion) {
-        // seValido=true;
-        this.emisorIdContrato.emit(this.contratoValido);
-      } else {
-        this.openDialog('500ms', '500ms')
+      else{
+        this.openDialog('500ms', '500ms')// en caso contrario muestr error sin salir de la vista
       }
     });
 

@@ -1,6 +1,5 @@
     
-    {{prueba}}
-    <div class="cuerpo">
+       <div class="cuerpo">
       <div class="cont-contenido">
         <app-titulo-linea title="Evaluación De Proveedores" class="titulo"></app-titulo-linea>
         <div class="cont-descripcion">
@@ -16,7 +15,7 @@
           <mat-form-field class="example-full-width"  style="
           width: 100%;">
             <mat-label>Ingrese máscara de contrato</mat-label>
-            <input matInput placeholder="Ej. Contrato" [(ngModel)]="contratoValido" >
+            <input matInput placeholder="Ej. 	5.5-31.1/1" [(ngModel)]="contratoValido" >
           </mat-form-field>        
         <button mat-fab extended color="primary" (click)="validarContrato()" >
           <mat-icon>search
