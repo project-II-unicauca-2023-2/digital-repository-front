@@ -18,6 +18,8 @@
   <mat-card style="width: 100%;" >
     <mat-card-content style="width: 100%;" >
       <section style="justify-content: center;">
+        
+
         <mat-radio-group [(ngModel)]="seleccionadoRadio"  >
           <div class="container">
             <ng-container *ngFor="let key of getPuntaje(); let i = index">
@@ -29,7 +31,6 @@
             </ng-container>
           </div>
         </mat-radio-group>
-
       </section>
     </mat-card-content>
   </mat-card>

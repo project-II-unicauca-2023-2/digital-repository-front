@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DialogSiNoComponent } from 'src/app/modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 import { ContractService } from 'src/app/services/contract.service';
 
@@ -14,7 +15,10 @@ export class BuscarProveedorComponent implements OnInit {
   contratoEncontradoSinEvalucion = false; //bandera que permite continuar a la otra interfaz cuando el contrto no tiene un evaluacion pero existe
 
   @Output() emisorIdContrato = new EventEmitter<string>();
-  constructor(public dialog: MatDialog, private servicioContrato: ContractService) {
+  constructor(public dialog: MatDialog, 
+    private servicioContrato: ContractService,
+    private ruta :Router
+    ) {
 
   }
   ngOnInit(): void {
@@ -30,7 +34,7 @@ export class BuscarProveedorComponent implements OnInit {
    */
 
   validarContrato() {
-
+    let mensajeError="";
     this.servicioContrato.getExisteContrato(this.contratoValido).subscribe((existeContrato: boolean) => {///consult a l base de datos para saver si existe
       this.contratoEncontradoSinEvalucion = false;
       if(existeContrato){
@@ -43,12 +47,17 @@ export class BuscarProveedorComponent implements OnInit {
           if (this.contratoEncontradoSinEvalucion) {
             this.emisorIdContrato.emit(this.contratoValido);// hace la emicion de la varible
           } else {
-            this.openDialog('500ms', '500ms')// en caso contrario muestr error sin salir de la vista
+            mensajeError=" El contrto tiene ya una evaluacion registrada";
+            this.openDialog('500ms', '500ms', mensajeError,"preguntaPersonalizable","Abrir Evaluacion")// en caso contrario muestr error sin salir de la vista
           }
         });
       }
-      else{
-        this.openDialog('500ms', '500ms')// en caso contrario muestr error sin salir de la vista
+      else{  
+        //mensajeError=" El contrto tiene ya una evaluacion registrada";
+        //this.openDialog('500ms', '500ms', mensajeError,"preguntaPersonalizable","Abrir Evaluacion")// en caso contrario muestr error sin salir de la vista
+   
+        mensajeError=" El contrto No existe en la base de datos asegurese de tener bien escrita la mascara";
+        this.openDialog('500ms', '500ms',mensajeError,"soloOpcionAceptar","")// en caso contrario muestr error sin salir de la vista
       }
     });
 
@@ -63,25 +72,26 @@ export class BuscarProveedorComponent implements OnInit {
   emitirNoContrato() {
     this.emisorIdContrato.emit(this.contratoValido);
   }
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, mensajeError:string, tipo:string,respuestaPositiva:string): void {
     const dialogRef = this.dialog.open(DialogSiNoComponent, {
-      width: '250px',
+      width: '400px',
       data: {
         titulo: 'Calificacion de Proveedor',
-        pregunta: 'Contranto no existente o ya tiene una evaluacion registrada',
-        tipo: "soloOpcionAceptar"
+        pregunta: mensajeError,
+        tipo:tipo ,
+        respuestaPositiva:respuestaPositiva
       },
       enterAnimationDuration,
       exitAnimationDuration,
     });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // Aquí manejamos el resultado
-        console.log('Se recibe el Resultado: ', result);
-        if (result === true) {
-
+    if(tipo=="preguntaPersonalizable"){
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          // Aquí manejamos el resultado
+          console.log('Se recibe el Resultado: ', result);
+          this.ruta.navigate(['/homePage/Evaluacion', this.contratoValido ]);
         }
-      }
-    });
+      });
+    }
   }
 }

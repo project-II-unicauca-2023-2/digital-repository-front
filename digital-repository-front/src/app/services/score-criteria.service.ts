@@ -4,6 +4,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { totalCriteriaScore } from '../modulo2/models/totalCriteriaScore';
 
+interface dicCriteria {
+  dicPuntaje: { [key: number]: string };
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +16,7 @@ export class ScoreCriteriaService {
   private cart = new BehaviorSubject<number>(1);
 
   cart$ = this.cart.asObservable();
+  
   constructor(
     private httpClient: HttpClient) { }
 
@@ -31,5 +36,22 @@ export class ScoreCriteriaService {
       
     )
   }
+  getDominioCalificacion(): Observable<dicCriteria> {
+    return this.httpClient.get<any>(this.urlAPI + '/calificationDomain').pipe(
+      map((response: any) => {
+        const listCalificationDomain = response.data.listCalificationDomain;
+        const dicPuntaje: { [key: number]: string } = {};
+        listCalificationDomain.forEach((item: any) => {
+          dicPuntaje[item.value] = item.label;
+        });
+        return { dicPuntaje };
+      }),
+      catchError((e) => {
+        console.log('error en el servicio obtener dominio de scorecriteria', 'error');
+        return throwError(e);
+      })
+    );
+  }
+  
   
 }

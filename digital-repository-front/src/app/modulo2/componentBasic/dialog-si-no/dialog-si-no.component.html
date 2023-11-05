@@ -1,4 +1,9 @@
-<h1 mat-dialog-title>{{titulo}}</h1>
+<div id = "encabezado">
+  <button mat-button mat-dialog-close style="margin-top: auto;">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <h1 mat-dialog-title>{{titulo}}</h1>
+</div>
 <div mat-dialog-content>
   <span *ngIf="asterisco" style="color: orangered;">*</span>
   {{pregunta}}
@@ -11,6 +16,6 @@
 </div>
 <div mat-dialog-actions *ngIf="aceptaCondiciones">
   <button mat-button mat-dialog-close>{{respuestaNegativa}}</button>
-  <button mat-button mat-dialog-close cdkFocusInitial (click)="onConfirmClick()" *ngIf="mostrarBotonContinuar">{{respuestaPositiva}}</button>
+  <button mat-button mat-dialog-close color="primary" cdkFocusInitial (click)="onConfirmClick()" *ngIf="mostrarBotonContinuar">{{respuestaPositiva}}</button>
 </div>
 

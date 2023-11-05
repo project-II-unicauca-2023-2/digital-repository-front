@@ -23,6 +23,7 @@ export class DialogSiNoComponent implements OnInit {
     this.pregunta = data.pregunta;
     this.tipo = data.tipo;
     this.textoAlerta= data.textoAlerta;
+    this.respuestaPositiva=data.respuestaPositiva
   }
   ngOnInit(): void {
     if (this.tipo =="pregunta" ){
@@ -45,6 +46,10 @@ export class DialogSiNoComponent implements OnInit {
       this.respuestaNegativa="aceptar";
       this.aceptaCondiciones=true;
       this.mostrarBotonContinuar=false;
+    }
+    if (this.tipo =="preguntaPersonalizable" ){
+      this.aceptaCondiciones=true;
+      this.respuestaNegativa="Cancelar";
     }
   }
   

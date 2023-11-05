@@ -86,6 +86,7 @@ import { BuscarProveedorComponent } from './modulo2/views/calificacion-proveedor
 import { DescargaCalificacionesComponent } from './modulo2/views/descarga-calificaciones/descarga-calificaciones.component';
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
 import { DashboardComponent } from './modulo2/views/dashboard/dashboard.component';
+import { MostrarDescargarComponent } from './modulo2/views/descarga-calificaciones/mostrar-descargar/mostrar-descargar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +117,7 @@ import { DashboardComponent } from './modulo2/views/dashboard/dashboard.componen
     SubirInfoComponent,
     DashboardComponent,
     FooterComponent,
+    MostrarDescargarComponent,
 
   ],
   imports: [
