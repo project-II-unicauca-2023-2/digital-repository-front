@@ -2,9 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSiNoComponent } from 'src/app/modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
+import { datosAside } from 'src/app/modulo2/models/datosAside';
 import { totalCriteriaScore } from 'src/app/modulo2/models/totalCriteriaScore';
 import { ExcelService } from 'src/app/modulo2/services/excel/excel.service';
 import { PdfService } from 'src/app/modulo2/services/pdf/pdf.service';
+import { ContractService } from 'src/app/services/contract.service';
 import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 @Component({
   selector: 'app-resultados',
@@ -15,6 +17,7 @@ export class ResultadosComponent implements OnInit  {
   
   @Input() numContrato!: string;
   @ViewChildren('miTablaI') tablas!: QueryList<ElementRef>; 
+  datosContratista!: datosAside;
   title = "Resultado de calificacion al Proveedor";
   valor = 4;
   maximo = 5;
@@ -29,7 +32,8 @@ export class ResultadosComponent implements OnInit  {
     private pdfService: PdfService,
     private excelService :ExcelService,
     private http: HttpClient,
-    private servicioScore:ScoreCriteriaService
+    private servicioScore:ScoreCriteriaService,
+    private servicioContrato:ContractService
     ) {}
     ngOnInit() {
       this.servicioScore.getResultadosEvaluacion(this.numContrato).subscribe((datos: totalCriteriaScore) => {
@@ -51,10 +55,10 @@ export class ResultadosComponent implements OnInit  {
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
   const dialogRef = this.dialog.open(DialogSiNoComponent, {
-      width: '250px',
+      width: '450px',
       data: {
         titulo: 'Calificacion de Proveedor',
-        pregunta: 'Desea Imprimir la calificacion',
+        pregunta: 'Desea Imprimir la calificacion en el formato "PA-GA-5-FOR-39 v2.0"',
         tipo: "pregunta"
       },
       enterAnimationDuration,
@@ -66,7 +70,11 @@ export class ResultadosComponent implements OnInit  {
         // Aquí manejamos el resultado
         console.log('Se recibe el Resultado: ', result);
         if (result === true) {
-         this.excelService.createNewExcel();
+          this.servicioContrato.getDatosAside(this.numContrato).subscribe((datos: datosAside) => {//consulta a la bse de datos para saber si el contraro no tiene aun evluacion
+  
+            this.excelService.createNewExcel(datos,this.datosResultado);
+            
+          });
         }
       }
     });
