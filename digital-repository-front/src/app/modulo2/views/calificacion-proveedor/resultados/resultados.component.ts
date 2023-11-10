@@ -16,6 +16,7 @@ import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 export class ResultadosComponent implements OnInit  {
   
   @Input() numContrato!: string;
+  @Input() datosContrato!: datosAside;
   @ViewChildren('miTablaI') tablas!: QueryList<ElementRef>; 
   datosContratista!: datosAside;
   title = "Resultado de calificacion al Proveedor";
@@ -70,11 +71,10 @@ export class ResultadosComponent implements OnInit  {
         // Aquí manejamos el resultado
         console.log('Se recibe el Resultado: ', result);
         if (result === true) {
-          this.servicioContrato.getDatosAside(this.numContrato).subscribe((datos: datosAside) => {//consulta a la bse de datos para saber si el contraro no tiene aun evluacion
-  
-            this.excelService.createNewExcel(datos,this.datosResultado);
-            
-          });
+          console.log(this.datosContrato
+            );
+          this.excelService.createNewExcel(this.datosContrato,this.datosResultado);
+          
         }
       }
     });

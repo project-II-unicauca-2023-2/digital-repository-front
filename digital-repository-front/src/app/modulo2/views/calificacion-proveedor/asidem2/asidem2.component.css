@@ -5,6 +5,9 @@
         display: none;
     }
 }
+#contPrincipalAside{
+    padding: 15px;
+}
 
 /* Reset de estilos */
 * {

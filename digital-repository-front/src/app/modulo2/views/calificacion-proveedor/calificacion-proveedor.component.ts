@@ -1,9 +1,14 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
+import { datosAside } from '../../models/datosAside';
 export interface Tile {
   criterio : string;
   descripcion : string;
 }
 
+interface dicCriteria {
+  dicPuntaje: { [key: number]: string };
+}
 @Component({
   selector: 'app-calificacion-proveedor',
   templateUrl: './calificacion-proveedor.component.html',
@@ -18,14 +23,39 @@ export class CalificacionProveedorComponent implements OnInit {
    calificacionesArray: number[] = [];
    indexVistaActual: number = 0; // por defecto la primera vista se ve 0
    indexVistaMax: number = (this.tiles.length-1) +2; //total de calificaciones(-1 POR SER INDICE)+ 2 vistas mas (busqueda y resultados)
-  
+   dicPuntajes!: { [key: number]: string } ; //almacena que puntaje y valor tendran los radios de calificacion
    numContrato:string="";
-  constructor(){
+   datosContrato!:datosAside;
+  constructor(
+    private servicioCriterios: ScoreCriteriaService){
     this.calificacionesArray = new Array(this.tiles.length).fill(0);
   }
-   
-  ngOnInit() {
+  ngOnInit(): void {
     window.onbeforeunload = () => this.confirmExit();
+    //alert(this.seleccionadoRadio +" <- FORMULRIO RECIBE EL ");
+    //capturamos los puntajes con que se evaluara en caso de pasar a el segundo c omponenete
+    this.servicioCriterios.getDominioCalificacion().subscribe(
+      (data: dicCriteria) => {
+        //  los datos recibidos
+        const diccionario: { [key: number]: string } = data.dicPuntaje;
+        // Ejemplo de uso del diccionario
+        console.log(diccionario);
+  
+        // mostrar  valores por clave
+        console.log(diccionario[1]); // Acceder a "No cumple"
+        console.log(diccionario[2]); // Acceder a "Minimamente"
+        console.log(diccionario[3]); // Acceder a "Parcialmente"
+        console.log(diccionario[4]); // Acceder a "Plenamente"
+        console.log(diccionario[5]); // Acceder a "Supera expectativas"
+  
+        // asigno el diccionario
+        this.dicPuntajes = diccionario;
+      },
+      (error) => {
+        // Manejo de errores
+        console.error('Ocurrió un error al obtener los datos:', error);
+      }
+    );
   }
   /**
    * navega a la proxima pagina y hace un llamado a recupera datos necesarios
@@ -38,20 +68,23 @@ export class CalificacionProveedorComponent implements OnInit {
     this.indexVistaActual=this.indexVistaActual+1
   }
   recibidoBotonNavegacion(direccionNavegacion: number){
-    this.comprobarvista()
+
     this.indexVistaActual=this.indexVistaActual+direccionNavegacion;
   }
   /**
-   * comprueba que sea vista valida
+   * reciimos los datos del contrato del aside 
+   * @param datosContratoAside 
    */
-  comprobarvista(){
+  recibidoDatosContrato(datosContratoAside: datosAside){
+    this.datosContrato=datosContratoAside ;
 
   }
+  
   /**
    * cuando un criterio es calificado lo llenamos en el arreglo
    */
   ingresarCalificacionCriterio(calificado:number, indice:number){
-    console.log("caificacionResivida"+calificado+" para criterio '"+this.tiles[indice].criterio+"'");
+    console.log("calificacionResivida en servicio"+calificado+" para criterio '"+this.tiles[indice].criterio+"'");
     this.calificacionesArray[indice]=calificado
     //alert(this.calificacionesArray);
   }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 import { DialogSiNoComponent } from '../../componentBasic/dialog-si-no/dialog-si-no.component';
@@ -11,7 +11,7 @@ interface dicCriteria {
   templateUrl: './card-dialog.component.html',
   styleUrls: ['./card-dialog.component.css']
 })
-export class CardDialogComponent implements OnInit, OnChanges {
+export class CardDialogComponent implements  OnChanges {
   @Input() criterio: string="";
   @Input() descripcionCriterio: string="";
   @Input() contBotones:number=0;
@@ -19,48 +19,16 @@ export class CardDialogComponent implements OnInit, OnChanges {
   @Output() emisorValor = new EventEmitter<number>();
   @Input() seleccionadoRadio!:number;
   @Input() seleccionadoRadioTodos!:number[];
+  @Input() dicPuntajes!: { [key: number]: string } ;
   seleccionado=0;
   checked = false;
   indeterminate = false;
   disabled = false;
-  dicPuntaje: { [key: number]: string } = {
-    1: "No cumple",
-    2: "Minimamente",
-    3: "Parcialmente",
-    4: "Plenamente",
-    5: "Supera expectativas"
-  };
   diccionarioCriterios!: { [key: number]: string };
   constructor(
     public dialog: MatDialog, 
     private servicioCriterios: ScoreCriteriaService
     ){
-  }
-  ngOnInit(): void {
-    //alert(this.seleccionadoRadio +" <- FORMULRIO RECIBE EL ");
-    this.servicioCriterios.getDominioCalificacion().subscribe(
-      (data: dicCriteria) => {
-        // Aquí puedes utilizar los datos recibidos
-        const diccionario: { [key: number]: string } = data.dicPuntaje;
-        // Ejemplo de uso del diccionario
-        console.log(diccionario);
-  
-        // Aquí puedes realizar otras operaciones utilizando el diccionario
-        // Por ejemplo, acceder a los valores por clave
-        console.log(diccionario[1]); // Acceder a "No cumple"
-        console.log(diccionario[2]); // Acceder a "Minimamente"
-        console.log(diccionario[3]); // Acceder a "Parcialmente"
-        console.log(diccionario[4]); // Acceder a "Plenamente"
-        console.log(diccionario[5]); // Acceder a "Supera expectativas"
-  
-        // También puedes asignar el diccionario a una variable de clase para usarla en otros métodos de la clase
-        this.diccionarioCriterios = diccionario;
-      },
-      (error) => {
-        // Manejo de errores
-        console.error('Ocurrió un error al obtener los datos:', error);
-      }
-    );
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['seleccionado'] && !changes['seleccionado'].firstChange) {
@@ -68,16 +36,9 @@ export class CardDialogComponent implements OnInit, OnChanges {
     }
   }
   getPuntaje() {
-    return Object.keys(this.dicPuntaje);
+    return Object.keys(this.dicPuntajes);
   }
   
-  getPuntaje2() {
-    if (this.diccionarioCriterios) {
-      return Object.keys(this.diccionarioCriterios);
-    } else {
-      return [];
-    }
-  }
   /***
    * informa al contenedor padre que a que indice se debe mover
    */

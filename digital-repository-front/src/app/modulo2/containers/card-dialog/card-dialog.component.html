@@ -25,7 +25,7 @@
             <ng-container *ngFor="let key of getPuntaje(); let i = index">
               <mat-radio-button class="botones" [value]=key
                (change)="almacenaValor(key)" [checked]="seleccionado === i">
-                {{ key }}. {{dicPuntaje[+(key)]}} <!-- el "+" sirve para parcear a number -->
+                {{ key }}. {{dicPuntajes[+(key)]}} <!-- el "+" sirve para parcear a number -->
               </mat-radio-button>
               <mat-divider [vertical]="true"></mat-divider>
             </ng-container>

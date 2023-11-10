@@ -4,7 +4,12 @@
 </app-buscar-proveedor><!--VISTA DE BUSQUEDA:Vicible al iniciar-->
   <div style="display: flex;">
     <div style="width: 30%; display: flex; justify-content: center; margin: AUTO;   ">
-      <app-asidem2 *ngIf="indexVistaActual!==0" [numContrato]="numContrato"></app-asidem2><!--VISTA DE BUSQUEDA:Vicible al iniciar-->
+      <app-asidem2 *ngIf="indexVistaActual!==0" [numContrato]="numContrato"
+      
+      (emisorDatosContrato)="recibidoDatosContrato($event)"
+      >
+
+      </app-asidem2><!--VISTA DE BUSQUEDA:Vicible al iniciar-->
     </div>
     <div style="width: 70%; padding: auto;">
       <ng-container *ngFor="let tile of tiles; let i = index"><!--VISTA DE Calificacion:Vicible al sumar la primera vista al indice-->
@@ -15,11 +20,15 @@
               [contBotones]="i === 0 ? 1 : i === tiles.length - 1 ? 3 : 2"
               [seleccionadoRadio]="calificacionesArray[i]"
               [seleccionadoRadioTodos]="calificacionesArray"
+              [dicPuntajes]="dicPuntajes"
               (emisorNavegacion)="recibidoBotonNavegacion($event)"
               (emisorValor)="ingresarCalificacionCriterio($event, i )"
             ></app-card-dialog>
         </ng-container>
-      <app-resultados *ngIf="indexVistaActual===indexVistaMax" [numContrato]="numContrato"></app-resultados><!--VISTA DE RESULTADOS:visible en la ultima posicion-->
+      <app-resultados *ngIf="indexVistaActual===indexVistaMax" 
+        [numContrato]="numContrato"
+        [datosContrato]="datosContrato">
+      </app-resultados><!--VISTA DE RESULTADOS:visible en la ultima posicion-->
     </div>
   </div>
 
