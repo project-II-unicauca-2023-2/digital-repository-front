@@ -1,1 +1,16 @@
-<app-resultados [numContrato]="numContrato"></app-resultados>
+<div id="contenedor">
+   
+       <div id="aside">
+        <app-asidem2  [numContrato]="numContrato"
+        
+        (emisorDatosContrato)="recibidoDatosContrato($event)"
+        >
+        </app-asidem2>
+    </div>
+    <div id="contenido">
+        <app-resultados
+        [numContrato]="numContrato"
+        [datosContrato]="datosContrato"
+        ></app-resultados>
+    </div>
+</div>

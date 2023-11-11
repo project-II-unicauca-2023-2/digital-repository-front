@@ -14,7 +14,7 @@ export class Asidem2Component implements OnInit {
 
   @Input() numContrato: string;
   @Output() emisorDatosContrato = new EventEmitter<datosAside>();
-
+  error:string="ERROR DATO NO DEFINIDO";
   datosAsideEncontrados!: datosAside;
   constructor( private servicioContrato:ContractService) {
 

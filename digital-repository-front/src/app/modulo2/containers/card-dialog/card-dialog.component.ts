@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 import { DialogSiNoComponent } from '../../componentBasic/dialog-si-no/dialog-si-no.component';
@@ -31,7 +32,8 @@ export class CardDialogComponent implements  OnChanges, OnInit {
 
   constructor(
     public dialog: MatDialog, 
-    private servicioCriterios: ScoreCriteriaService
+    private servicioCriterios: ScoreCriteriaService,
+    private ruta:Router
     ){
   }
   ngOnInit(): void {
@@ -124,7 +126,10 @@ export class CardDialogComponent implements  OnChanges, OnInit {
             }
           );
           //redirige a proxima interfaz
-          this.navegar(1);
+          //this.navegar(1);
+          //
+          
+          this.ruta.navigate(['/homePage/Evaluacion', this.numContrato ]);
         }
       }
     });

@@ -55,6 +55,14 @@ export class ExcelService {
         worksheet.getCell('I10').value = datos.finalDate;
         worksheet.getCell('A11').value = worksheet.getCell('A11').value+ " "+datos.subject;
         worksheet.getCell('J47').value = resultadosEvaluacion.totalScore;
+
+        let casillasCriterios:string[]=['C','G','J'];
+        
+        let casillasCriteriosName:string[]=['A','E','H'];
+        for (let j:number=0 ;j<casillasCriterios.length;j++){
+          worksheet.getCell(casillasCriterios[j]+'46').value     =resultadosEvaluacion.listaScoreCriteria[j].rate;
+          worksheet.getCell(casillasCriteriosName[j]+'45').value =resultadosEvaluacion.listaScoreCriteria[j].name.toUpperCase();
+        }
         // worksheet.getCell('C8').value = 'Test';
 
         // Guardar la copia del archivo Excel

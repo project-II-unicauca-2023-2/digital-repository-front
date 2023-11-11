@@ -7,11 +7,16 @@ import { scoreCriteria } from 'src/app/modulo2/models/scoreCriteria';
 import { totalCriteriaScore } from 'src/app/modulo2/models/totalCriteriaScore';
 import { ExcelService } from 'src/app/modulo2/services/excel/excel.service';
 import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
+
+interface dicCriteria {
+  dicPuntaje: { [key: number]: string };
+}
 @Component({
   selector: 'app-resultados',
   templateUrl: './resultados.component.html',
   styleUrls: ['./resultados.component.css']
 })
+
 export class ResultadosComponent implements OnInit  {
   
   @Input() numContrato!: string;
@@ -44,6 +49,24 @@ export class ResultadosComponent implements OnInit  {
         this.misCriterios=this.datosResultado.listaScoreCriteria;
         console.log("onInitTiene los criterios sacados son ;"+ this.misCriterios);
         this.cdr.detectChanges();
+        this.servicioScore.getDominioCalificacion().subscribe(
+          (data: dicCriteria) => {
+            
+            const diccionario: { [key: number]: string } = data.dicPuntaje;
+            const keys = Object.keys(data.dicPuntaje);
+          
+            // Convertimos las claves a números y encontramos el máximo
+            this.maximo = Math.max(...keys.map(Number));
+          
+
+            console.log("maximo segun criterias "+this.maximo);
+      
+          },
+          (error) => {
+            // Manejo de errores
+            console.error('Ocurrió un error al obtener los datos:', error);
+          }
+        );
       });
     }
     ngOnChanges(changes: SimpleChanges) {

@@ -11,22 +11,22 @@
             </div>
             <div class="contenedor-campos">
                 <mat-label class="text-2">Nombre del Contratista:</mat-label>
-                <mat-card-content class="text-3">{{datosAsideEncontrados.name}}</mat-card-content>
+                <mat-card-content class="text-3">{{datosAsideEncontrados?.name ||error}}</mat-card-content>
             </div>
 
             <div class="contenedor-campos">
                 <mat-label class="text-2">Identificacion:</mat-label>
-                <mat-card-content class="text-3">{{datosAsideEncontrados.identification}}</mat-card-content>
+                <mat-card-content class="text-3">{{datosAsideEncontrados?.identification  ||error}}</mat-card-content>
             </div>
 
 
             <div class="contenedor-campos">
                 <mat-label class="text-2">Fecha de Inicio:</mat-label>
-                <mat-card-content class="text-3">{{ datosAsideEncontrados.initialDate| date:'dd/MM/yyyy' }}</mat-card-content>
+                <mat-card-content class="text-3">{{ datosAsideEncontrados?.initialDate| date:'dd/MM/yyyy'  ||error}}</mat-card-content>
             </div>
             <div class="contenedor-campos">
                 <mat-label class="text-2">Fecha de Fin:</mat-label>
-                <mat-card-content class="text-3">{{ datosAsideEncontrados.finalDate| date:'dd/MM/yyyy' }}</mat-card-content>
+                <mat-card-content class="text-3">{{ datosAsideEncontrados?.finalDate| date:'dd/MM/yyyy' || error }}</mat-card-content>
             </div>
         </mat-card-content>
     </mat-card>

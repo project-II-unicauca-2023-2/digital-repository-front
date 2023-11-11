@@ -1,0 +1,14 @@
+#contenedor{
+    height: 100vh;
+    display: flex;
+}
+#aside{
+    width: 30%; 
+    display: flex; 
+    justify-content: center;
+     margin: AUTO;  
+}
+#contenido{
+    width: 70%; 
+    padding: auto;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { datosAside } from 'src/app/modulo2/models/datosAside';
 
 @Component({
   selector: 'app-mostrar-descargar',
@@ -8,12 +9,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MostrarDescargarComponent implements OnInit{
   numContrato:string="";
+  datosContrato!:datosAside;
   constructor( private ruta:ActivatedRoute){
 
   }
   ngOnInit(): void {
     this.numContrato=this.ruta.snapshot.params['contrato'];
-    alert(this.numContrato)
+    //alert(this.numContrato)
   }
+  recibidoDatosContrato(datosContratoAside: datosAside){
+    this.datosContrato=datosContratoAside ;
 
+  }
 }
