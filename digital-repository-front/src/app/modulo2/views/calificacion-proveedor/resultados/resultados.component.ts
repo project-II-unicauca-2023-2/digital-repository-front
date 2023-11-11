@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSiNoComponent } from 'src/app/modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 import { datosAside } from 'src/app/modulo2/models/datosAside';
+import { scoreCriteria } from 'src/app/modulo2/models/scoreCriteria';
 import { totalCriteriaScore } from 'src/app/modulo2/models/totalCriteriaScore';
 import { ExcelService } from 'src/app/modulo2/services/excel/excel.service';
-import { PdfService } from 'src/app/modulo2/services/pdf/pdf.service';
-import { ContractService } from 'src/app/services/contract.service';
 import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 @Component({
   selector: 'app-resultados',
@@ -27,33 +26,64 @@ export class ResultadosComponent implements OnInit  {
     ejecucion: 5,
     cumplimiento: 2
   };
+  misCriterios!:scoreCriteria[];
   datosResultado!:totalCriteriaScore;
   constructor(
     public dialog: MatDialog,    
-    private pdfService: PdfService,
     private excelService :ExcelService,
     private http: HttpClient,
     private servicioScore:ScoreCriteriaService,
-    private servicioContrato:ContractService
-    ) {}
+    private cdr: ChangeDetectorRef
+    ) {
+      
+    }
     ngOnInit() {
       this.servicioScore.getResultadosEvaluacion(this.numContrato).subscribe((datos: totalCriteriaScore) => {
         this.datosResultado = datos; // Asignar los datos recibidos a la variable datosResultado
-        console.log(this.datosResultado);
+        console.log("onInit Tiene la respuesta completa de  ;"+JSON.stringify(this.datosResultado));
+        this.misCriterios=this.datosResultado.listaScoreCriteria;
+        console.log("onInitTiene los criterios sacados son ;"+ this.misCriterios);
+        this.cdr.detectChanges();
       });
+    }
+    ngOnChanges(changes: SimpleChanges) {
+      if(changes['datosResultado'] ) {
+        // Realiza las acciones necesarias cuando datosResultado cambia
+        this.getcriterios();
+        console.log('Datos resultado cambiado:', this.datosResultado);
+      }
     }
   obtenerClaves() {
     return Object.keys(this.miDiccionario);
 
   }
   getTotal(){    
-    // return datosResultado.totalScore
-    const values = Object.values(this.miDiccionario);
-    const promedio = values.reduce((acc, curr) => acc + curr, 0) / values.length;
-    
-    return parseFloat(promedio.toFixed(1))
+     // Verificar si datosResultado está definido antes de acceder a totalScore
+  if (this.datosResultado && this.datosResultado.totalScore) {
+   // console.log(this.datosResultado.totalScore+ " "+this.datosResultado.scoreCriteriaArray);
+    return this.datosResultado.totalScore;
+  } else {
+    // Si datosResultado no está definido o totalScore es undefined, devolver un valor predeterminado
+    return 0; 
   }
-
+    //const values = Object.values(this.miDiccionario);
+    //const promedio = values.reduce((acc, curr) => acc + curr, 0) / values.length;
+    
+    //return parseFloat(promedio.toFixed(1))
+  }
+  getcriterios(){    
+ if (this.datosResultado && this.datosResultado.listaScoreCriteria) {
+  
+   return this.datosResultado.listaScoreCriteria;
+ } else {
+   // Si datosResultado no está definido o totalScore es undefined, devolver un valor predeterminado
+   return []; 
+ }
+   //const values = Object.values(this.miDiccionario);
+   //const promedio = values.reduce((acc, curr) => acc + curr, 0) / values.length;
+   
+   //return parseFloat(promedio.toFixed(1))
+ }
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
   const dialogRef = this.dialog.open(DialogSiNoComponent, {
       width: '450px',

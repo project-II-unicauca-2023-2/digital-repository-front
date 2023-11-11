@@ -1,6 +1,6 @@
 
 import { scoreCriteria } from "./scoreCriteria";
 export class totalCriteriaScore {
-    scoreCriteriaArray!: scoreCriteria [];
+    listaScoreCriteria!: scoreCriteria [];
     totalScore!:number;
 }

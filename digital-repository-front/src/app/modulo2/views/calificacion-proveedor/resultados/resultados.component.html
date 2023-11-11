@@ -4,9 +4,10 @@
         <app-titulo-linea  [title]="title"></app-titulo-linea>
     </div>
     <div id="criterios">
-        <div *ngFor="let key of obtenerClaves()" class="progresoCriterio">
-            <app-progreso-circular [title]="key" [score]="miDiccionario[key]" [scoreMax]="5" color="azul"></app-progreso-circular>
-        </div>
+        
+            <div id="criteriosIndividuales" *ngFor="let scoreCriteriaItem of getcriterios(); let i = index" class="progresoCriterio">
+              <app-progreso-circular [title]="getcriterios()[i].name" [score]="getcriterios()[i].rate" [scoreMax]="5" color="azul"></app-progreso-circular>
+            </div>
     </div>
     <div id="total">
         <div class="col">

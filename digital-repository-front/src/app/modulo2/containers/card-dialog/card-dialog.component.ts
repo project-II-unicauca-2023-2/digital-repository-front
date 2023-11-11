@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
@@ -11,7 +11,7 @@ import { listCriteriaRate } from '../../models/listCriteriaRate';
   templateUrl: './card-dialog.component.html',
   styleUrls: ['./card-dialog.component.css']
 })
-export class CardDialogComponent implements  OnChanges {
+export class CardDialogComponent implements  OnChanges, OnInit {
   @Input() criterio: string="";
   @Input() descripcionCriterio: string="";
   @Input() contBotones:number=0; // trae 1 al ser el primero, 2 al ser cualquiera del medio, 3 al ser el ultimo por que varian los botones que se muestran segun ese criterio
@@ -33,6 +33,9 @@ export class CardDialogComponent implements  OnChanges {
     public dialog: MatDialog, 
     private servicioCriterios: ScoreCriteriaService
     ){
+  }
+  ngOnInit(): void {
+    //alert(this.numContrato);
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['seleccionado'] && !changes['seleccionado'].firstChange) {

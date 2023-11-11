@@ -1,7 +1,7 @@
 <p>{{title}}</p>
 <circle-progress
   [percent]=porcentaje
-  [title]="score+'/'+scoreMax"
+  [title]="score.toFixed(1)+'/'+scoreMax"
   [radius]="100"
   [outerStrokeWidth]="16"
   [showInnerStroke]="true"
