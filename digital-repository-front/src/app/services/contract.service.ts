@@ -6,6 +6,7 @@ import { Contract } from '../class/contract';
 import { UpdateContract } from '../class/models/UpdateContract';
 import { responseDocument } from '../class/models/responseDocument';
 import { datosAside } from '../modulo2/models/datosAside';
+import { descriptionCriteriaContract } from '../modulo2/models/descriptionCriteriaContract';
 @Injectable({
   providedIn: 'root'
 })
@@ -194,7 +195,15 @@ export class ContractService {
     })
     )
   }
-
+  getTipoContratoCriteriosCoorespondientes(id:string): Observable<descriptionCriteriaContract>{
+    return  this.httpClient.get<any>(this.urlAPI + "/aboutVendor?referenceMask=" + id).pipe(
+      map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
+      catchError((e) => {
+      console.log('error buscandoCriterios','error');
+      return throwError(e);
+    })
+    )
+  }
 
 }
 

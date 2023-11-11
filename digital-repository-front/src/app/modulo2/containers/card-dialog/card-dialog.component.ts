@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 import { DialogSiNoComponent } from '../../componentBasic/dialog-si-no/dialog-si-no.component';
 import { calificacion } from '../../models/calificacion';
+import { descriptionCriteriaContract } from '../../models/descriptionCriteriaContract';
 import { listCriteriaRate } from '../../models/listCriteriaRate';
 
 @Component({
@@ -22,6 +23,7 @@ export class CardDialogComponent implements  OnChanges, OnInit {
   @Input() seleccionadoRadioTodos!:listCriteriaRate[]; // todas contiene las anteriores selecciones
   @Input() dicPuntajes!: { [key: number]: string } ; // tiene las calificaciones de cada radio booton con su value
   @Input() numContrato!: string;
+  @Input() criteriosDescripcion!: descriptionCriteriaContract; //contiene los id de criterios a calificar y el numero de contrato que se califico
   seleccionado=0;
   checked = false;
   indeterminate = false;
@@ -99,10 +101,9 @@ export class CardDialogComponent implements  OnChanges, OnInit {
         if (result === true) {
           let valoresCalificaciones: listCriteriaRate[] = [...this.seleccionadoRadioTodos];
           valoresCalificaciones[valoresCalificaciones.length-1].rate=this.seleccionadoRadio;
-
-          valoresCalificaciones[0].criteriaId=1;
-          valoresCalificaciones[1].criteriaId=2;
-          valoresCalificaciones[2].criteriaId=3;
+          for(let i=0;i<this.criteriosDescripcion.criteria.length;i++){
+            valoresCalificaciones[i].criteriaId=this.criteriosDescripcion.criteria[i].id;
+          }
           
           //enviar la calidifacion a la bd
           const calificacionEnviada: calificacion = {
@@ -116,6 +117,7 @@ export class CardDialogComponent implements  OnChanges, OnInit {
                 console.log(res)
                 if (res.status == 200) {
                   console.log('Contrato agregado Correctamente', '');
+                  this.ruta.navigate(['/homePage/Evaluacion', this.numContrato ]);
                 }
               } ,
               error: (error)=>{
@@ -129,7 +131,6 @@ export class CardDialogComponent implements  OnChanges, OnInit {
           //this.navegar(1);
           //
           
-          this.ruta.navigate(['/homePage/Evaluacion', this.numContrato ]);
         }
       }
     });

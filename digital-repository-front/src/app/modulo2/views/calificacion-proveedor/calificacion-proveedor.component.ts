@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ContractService } from 'src/app/services/contract.service';
 import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 import { datosAside } from '../../models/datosAside';
+import { descriptionCriteriaContract } from '../../models/descriptionCriteriaContract';
 import { listCriteriaRate } from '../../models/listCriteriaRate';
 export interface Tile {
   criterio : string;
@@ -28,8 +30,10 @@ export class CalificacionProveedorComponent implements OnInit {
    dicPuntajes!: { [key: number]: string } ; //almacena que puntaje y valor tendran los radios de calificacion
    numContrato:string="";
    datosContrato!:datosAside;
+   criteriosDescripcion!:descriptionCriteriaContract;
   constructor(
-    private servicioCriterios: ScoreCriteriaService){
+    private servicioCriterios: ScoreCriteriaService,
+    private servicioContrato: ContractService){
     let cantCriterios=this.tiles.length;
     //this.calificacionesArray = new Array(this.tiles.length).fill(0);
     this.calificacionesHechas = Array.from({ length: cantCriterios }, () => ({ criteriaId: -1, rate: 0 }));
@@ -62,12 +66,26 @@ export class CalificacionProveedorComponent implements OnInit {
       }
     );
   }
+  actualizarCriterios(contrato: string){
+    this.servicioContrato.getTipoContratoCriteriosCoorespondientes(contrato).subscribe(
+      (data: descriptionCriteriaContract) => {
+        this.criteriosDescripcion=data;
+        // Ejemplo de uso del diccionario
+        console.log(JSON.stringify(this.criteriosDescripcion));
+      },
+      (error) => {
+        // Manejo de errores
+        console.error('Ocurrió un error al obtener los criterios:', error);
+      }
+    );
+  }
   /**
    * navega a la proxima pagina y hace un llamado a recupera datos necesarios
    * @param contrato es el identificador del contrato ya balidado por la primera interfaz
    */
 
   recibidoIdContratoValido(contrato: string) {
+    this.actualizarCriterios(contrato);
     console.log("Contrato recibido: ", contrato);
     this.numContrato=contrato;
     this.indexVistaActual=this.indexVistaActual+1

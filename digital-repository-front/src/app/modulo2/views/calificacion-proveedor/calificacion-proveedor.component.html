@@ -12,16 +12,17 @@
       </app-asidem2><!--VISTA DE BUSQUEDA:Vicible al iniciar-->
     </div>
     <div style="width: 70%; padding: auto;">
-      <ng-container *ngFor="let tile of tiles; let i = index"><!--VISTA DE Calificacion:Vicible al sumar la primera vista al indice-->
+      <ng-container *ngFor="let tile of criteriosDescripcion?.criteria; let i = index"><!--VISTA DE Calificacion:Vicible al sumar la primera vista al indice-->
         
             <app-card-dialog  *ngIf="indexVistaActual ===1+i " 
-              [criterio]="tile.criterio" 
-              [descripcionCriterio]="tile.descripcion"
+              [criterio]="tile.name" 
+              [descripcionCriterio]="tile.description"
               [contBotones]="i === 0 ? 1 : i === tiles.length - 1 ? 3 : 2"
               [seleccionadoRadio]="calificacionesHechas[i].rate"
               [seleccionadoRadioTodos]="calificacionesHechas"
               [dicPuntajes]="dicPuntajes"
               [numContrato]="numContrato"
+              [criteriosDescripcion]="criteriosDescripcion"
               (emisorNavegacion)="recibidoBotonNavegacion($event)"
               (emisorValor)="ingresarCalificacionCriterio($event, i )"
             ></app-card-dialog>
