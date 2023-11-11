@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 import { datosAside } from '../../models/datosAside';
+import { listCriteriaRate } from '../../models/listCriteriaRate';
 export interface Tile {
   criterio : string;
   descripcion : string;
@@ -20,7 +21,8 @@ export class CalificacionProveedorComponent implements OnInit {
     {criterio: 'criterio 2 ', descripcion: 'Nulla facilisi. Aenean vel justo at risus tincidunt lobortis. Ut non tincidunt ante, vitae aliquet enim. Maecenas non semper ante. Sed vitae augue nec massa tincidunt posuere. Vivamus fringilla, turpis at volutpat accumsan, ipsum nisi luctus tellus, sit amet commodo nulla metus ut neque.'},
     {criterio: 'criterio 3 ', descripcion: 'Quisque non neque et sapien scelerisque finibus ut sit amet nunc. Nunc eu erat tristique, finibus neque in, tincidunt odio. Nullam sagittis sem in leo vulputate, sit amet tincidunt massa rhoncus. Integer nec hendrerit purus, sed tempor justo. In convallis risus vitae aliquet molestie. Sed malesuada dolor in nibh aliquet, a bibendum dui auctor.'},
   ];
-   calificacionesArray: number[] = [];
+   //calificacionesArray: number[] = [];// contiene la calificacion hecha de cada criterio
+   calificacionesHechas:listCriteriaRate[];
    indexVistaActual: number = 0; // por defecto la primera vista se ve 0
    indexVistaMax: number = (this.tiles.length-1) +2; //total de calificaciones(-1 POR SER INDICE)+ 2 vistas mas (busqueda y resultados)
    dicPuntajes!: { [key: number]: string } ; //almacena que puntaje y valor tendran los radios de calificacion
@@ -28,7 +30,10 @@ export class CalificacionProveedorComponent implements OnInit {
    datosContrato!:datosAside;
   constructor(
     private servicioCriterios: ScoreCriteriaService){
-    this.calificacionesArray = new Array(this.tiles.length).fill(0);
+    let cantCriterios=this.tiles.length;
+    //this.calificacionesArray = new Array(this.tiles.length).fill(0);
+    this.calificacionesHechas = Array.from({ length: cantCriterios }, () => ({ criteriaId: -1, rate: 0 }));
+    
   }
   ngOnInit(): void {
     window.onbeforeunload = () => this.confirmExit();
@@ -42,11 +47,11 @@ export class CalificacionProveedorComponent implements OnInit {
         console.log(diccionario);
   
         // mostrar  valores por clave
-        console.log(diccionario[1]); // Acceder a "No cumple"
-        console.log(diccionario[2]); // Acceder a "Minimamente"
-        console.log(diccionario[3]); // Acceder a "Parcialmente"
-        console.log(diccionario[4]); // Acceder a "Plenamente"
-        console.log(diccionario[5]); // Acceder a "Supera expectativas"
+        //console.log(diccionario[1]); // Acceder a "No cumple"
+        //console.log(diccionario[2]); // Acceder a "Minimamente"
+        //console.log(diccionario[3]); // Acceder a "Parcialmente"
+        //console.log(diccionario[4]); // Acceder a "Plenamente"
+        //console.log(diccionario[5]); // Acceder a "Supera expectativas"
   
         // asigno el diccionario
         this.dicPuntajes = diccionario;
@@ -84,8 +89,10 @@ export class CalificacionProveedorComponent implements OnInit {
    * cuando un criterio es calificado lo llenamos en el arreglo
    */
   ingresarCalificacionCriterio(calificado:number, indice:number){
-    console.log("calificacionResivida en servicio"+calificado+" para criterio '"+this.tiles[indice].criterio+"'");
-    this.calificacionesArray[indice]=calificado
+    //console.log("calificacionResivida en servicio"+calificado+" para criterio '"+this.tiles[indice].criterio+"'");
+    this.calificacionesHechas[indice].rate=calificado;
+    console.log(JSON.stringify(this.calificacionesHechas, null, 2));
+    //this.calificacionesArray[indice]=calificado
     //alert(this.calificacionesArray);
   }
   @HostListener('window:beforeunload', ['$event'])

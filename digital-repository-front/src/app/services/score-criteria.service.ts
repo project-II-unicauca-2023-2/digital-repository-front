@@ -2,6 +2,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
+import { responseDocument } from '../class/models/responseDocument';
+import { calificacion } from '../modulo2/models/calificacion';
 import { totalCriteriaScore } from '../modulo2/models/totalCriteriaScore';
 
 interface dicCriteria {
@@ -52,6 +54,17 @@ export class ScoreCriteriaService {
       })
     );
   }
-  
+  addCalificaciones(calificados: calificacion): Observable<responseDocument>{
+    //alert("guardando");
+    const body = JSON.stringify(calificados);
+    console.log("guardando"+body);
+    return this.httpClient.post<responseDocument>(this.urlAPI+"/registerCalification/", body, this.httpHeader).pipe(
+      catchError((e) => {
+        console.log('Error Guardando Calificacion', e.error.mensaje, 'error');
+        return throwError(e);
+
+      })
+    )
+  }
   
 }

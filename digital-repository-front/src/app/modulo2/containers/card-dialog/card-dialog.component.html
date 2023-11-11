@@ -23,7 +23,7 @@
         <mat-radio-group [(ngModel)]="seleccionadoRadio"  >
           <div class="container">
             <ng-container *ngFor="let key of getPuntaje(); let i = index">
-              <mat-radio-button class="botones" [value]=key
+              <mat-radio-button class="botones" [value]="+key"
                (change)="almacenaValor(key)" [checked]="seleccionado === i">
                 {{ key }}. {{dicPuntajes[+(key)]}} <!-- el "+" sirve para parcear a number -->
               </mat-radio-button>

@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 import { DialogSiNoComponent } from '../../componentBasic/dialog-si-no/dialog-si-no.component';
+import { calificacion } from '../../models/calificacion';
+import { listCriteriaRate } from '../../models/listCriteriaRate';
 
-interface dicCriteria {
-  dicPuntaje: { [key: number]: string };
-}
 @Component({
   selector: 'app-card-dialog',
   templateUrl: './card-dialog.component.html',
@@ -14,17 +14,21 @@ interface dicCriteria {
 export class CardDialogComponent implements  OnChanges {
   @Input() criterio: string="";
   @Input() descripcionCriterio: string="";
-  @Input() contBotones:number=0;
-  @Output() emisorNavegacion = new EventEmitter<number>();
-  @Output() emisorValor = new EventEmitter<number>();
-  @Input() seleccionadoRadio!:number;
-  @Input() seleccionadoRadioTodos!:number[];
-  @Input() dicPuntajes!: { [key: number]: string } ;
+  @Input() contBotones:number=0; // trae 1 al ser el primero, 2 al ser cualquiera del medio, 3 al ser el ultimo por que varian los botones que se muestran segun ese criterio
+  @Output() emisorNavegacion = new EventEmitter<number>(); //emisor que envia el indice para navegar entre interfaces
+  @Output() emisorValor = new EventEmitter<number>(); //emisor que envia valor que se debe guardar en la posicion
+  @Input() seleccionadoRadio!:number; //Este numero es el que si nos movemos atrass o adelante la oopcion puesta paresca almaceda y se cargue en los radis
+  @Input() seleccionadoRadioTodos!:listCriteriaRate[]; // todas contiene las anteriores selecciones
+  @Input() dicPuntajes!: { [key: number]: string } ; // tiene las calificaciones de cada radio booton con su value
+  @Input() numContrato!: string;
   seleccionado=0;
   checked = false;
   indeterminate = false;
   disabled = false;
-  diccionarioCriterios!: { [key: number]: string };
+ toastrSvc!: ToastrService;
+  //diccionarioCriterios!: { [key: number]: string };
+  
+
   constructor(
     public dialog: MatDialog, 
     private servicioCriterios: ScoreCriteriaService
@@ -53,17 +57,17 @@ export class CardDialogComponent implements  OnChanges {
    */
   almacenaValor(value: any) {
     this.seleccionadoRadio = value; // Actualiza el valor seleccionado
-    console.log('El valor seleccionado es: ' + this.seleccionadoRadio);
+    //console.log('El valor seleccionado es: ' + this.seleccionadoRadio);
 
   }
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    let contarCeros = this.seleccionadoRadioTodos.filter(item => item === 0).length; // Filtra los elementos iguales a cero y cuenta su longitud
+    let contarCeros = this.seleccionadoRadioTodos.filter(item => item.rate === 0).length; // Filtra los elementos iguales a cero y cuenta su longitud
     let textoAlerta= "";
     let tipo= "";
     //alert(this.seleccionadoRadioTodos.length.toString() + " " + (this.seleccionadoRadioTodos[this.seleccionadoRadioTodos.length - 1] === 0));
-    if((this.contBotones===3)&&(this.seleccionadoRadioTodos[this.seleccionadoRadioTodos.length-1]===0)
+    if((this.contBotones===3)&&(this.seleccionadoRadioTodos[this.seleccionadoRadioTodos.length-1].rate===0)
     && this.seleccionadoRadio !==0){/**hasta no precionar otro boton no se almacen entonces toc averiguar si se preciono en la ultima interfz */
-      contarCeros=contarCeros-1 /// quiere decir que se evluo en la ultima interfaz pero no se ha registado
+      contarCeros=contarCeros-1 /// quiere decir que se evaluo en la ultima interfaz pero no se ha registado
     }
     if((contarCeros === 0)){
       tipo= "aceptacion"
@@ -88,7 +92,35 @@ export class CardDialogComponent implements  OnChanges {
         // Aquí manejamos el resultado
         console.log('Se recibe el Resultado: ', result);
         if (result === true) {
-          // que continue en esta pgina o lo deje abndonr
+          let valoresCalificaciones: listCriteriaRate[] = [...this.seleccionadoRadioTodos];
+          valoresCalificaciones[valoresCalificaciones.length-1].rate=this.seleccionadoRadio;
+
+          valoresCalificaciones[0].criteriaId=1;
+          valoresCalificaciones[1].criteriaId=2;
+          valoresCalificaciones[2].criteriaId=3;
+          
+          //enviar la calidifacion a la bd
+          const calificacionEnviada: calificacion = {
+            listCriteriaRate: valoresCalificaciones, // Puedes llenar este array con más instancias según sea necesario
+            contractMask: this.numContrato
+          };
+          console.log("CALIFICACIONES ENVIAR"+JSON.stringify(calificacionEnviada));
+          this.servicioCriterios.addCalificaciones(calificacionEnviada).subscribe(
+            {
+              next: (res)=>{
+                console.log(res)
+                if (res.status == 200) {
+                  console.log('Contrato agregado Correctamente', '');
+                }
+              } ,
+              error: (error)=>{
+                 console.error(error);
+                 console.log(`Error :  ${error.error.data.error}`);
+              }
+      
+            }
+          );
+          //redirige a proxima interfaz
           this.navegar(1);
         }
       }
