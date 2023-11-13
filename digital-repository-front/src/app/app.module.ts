@@ -1,10 +1,10 @@
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import {MatGridListModule} from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -12,19 +12,19 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TableModule } from '@coreui/angular';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { Asidem2Component } from './modulo2/views/calificacion-proveedor/asidem2/asidem2.component';
-import { CardDialogComponent } from './modulo2/containers/card-dialog/card-dialog.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
 import {
   CalendarDays,
   Check,
@@ -47,46 +47,50 @@ import {
   SlidersHorizontal,
   X,
 } from 'lucide-angular';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateContractComponent } from './components/create-contract/create-contract.component';
-import { HomeComponent } from './components/home/home.component';
-import { SearcContractsComponent } from './components/searc-contracts/searc-contracts.component';
-import { SettingSystemComponent } from './components/setting-system/setting-system.component';
-import { SideInformationComponent } from './components/side-information/side-information.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SharedModuleModule } from './shared-module/shared-module.module';
-//import { TableModule} from './modules/table/table.module';
-import { MatCardModule } from '@angular/material/card';
-import { TableModule } from '@coreui/angular';
-import { NgCircleProgressModule } from 'ng-circle-progress';
-import { NgScrollbarModule } from 'ngx-scrollbar';
 import { DialogEditComponent } from './components/dialog-edit/dialog-edit.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { DocumentsCreateContractComponent } from './components/documents-create-contract/documents-create-contract.component';
 import { EditContractComponent } from './components/edit-contract/edit-contract.component';
+import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { PdfViewerDialogComponent } from './components/pdf-viewer-dialog/pdf-viewer-dialog.component';
+import { SearcContractsComponent } from './components/searc-contracts/searc-contracts.component';
+import { SettingSystemComponent } from './components/setting-system/setting-system.component';
 import { SideInformationDocumentsComponent } from './components/side-information-documents/side-information-documents.component';
+import { SideInformationComponent } from './components/side-information/side-information.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProgresoCircularComponent } from './modulo2/componentBasic/progreso-circular/progreso-circular.component';
 import { TituloLineaComponent } from './modulo2/componentBasic/titulo-linea/titulo-linea.component';
+import { CardDialogComponent } from './modulo2/containers/card-dialog/card-dialog.component';
 import { NavBarComponent } from './modulo2/containers/nav-bar/nav-bar.component';
+import { Asidem2Component } from './modulo2/views/calificacion-proveedor/asidem2/asidem2.component';
 import { ResultadosComponent } from './modulo2/views/calificacion-proveedor/resultados/resultados.component';
 import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
 import { FilaService } from './services/fila.service';
+import { SharedModuleModule } from './shared-module/shared-module.module';
 
 import { FooterComponent } from './modulo2/containers/footer/footer.component';
 
 import { MatRadioModule } from '@angular/material/radio';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
-import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
+import { GraficoTortaAbanzadoComponent } from './modulo2/componentBasic/grafico-torta-abanzado/grafico-torta-abanzado.component';
 import { BuscarProveedorComponent } from './modulo2/views/calificacion-proveedor/buscar-proveedor/buscar-proveedor.component';
-import { DescargaCalificacionesComponent } from './modulo2/views/descarga-calificaciones/descarga-calificaciones.component';
-import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
+import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
 import { DashboardComponent } from './modulo2/views/dashboard/dashboard.component';
+import { DescargaCalificacionesComponent } from './modulo2/views/descarga-calificaciones/descarga-calificaciones.component';
 import { MostrarDescargarComponent } from './modulo2/views/descarga-calificaciones/mostrar-descargar/mostrar-descargar.component';
+import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
+
+import { MatChipsModule } from '@angular/material/chips';
+import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -118,9 +122,12 @@ import { MostrarDescargarComponent } from './modulo2/views/descarga-calificacion
     DashboardComponent,
     FooterComponent,
     MostrarDescargarComponent,
+    GraficoTortaAbanzadoComponent,
+    ChipsComponent,
 
   ],
   imports: [
+    
     MatRadioModule,
     NgCircleProgressModule.forRoot({
       //realizamos la importacion del modulo que maneja grafico de progreso en un diagrama circular
@@ -186,7 +193,9 @@ import { MostrarDescargarComponent } from './modulo2/views/descarga-calificacion
     MatDatepickerModule,
     MatNativeDateModule,
     NgScrollbarModule,MatCardModule,
-    MatSidenavModule,
+    MatSidenavModule,    
+    NgxChartsModule,
+    MatChipsModule,
   ],
   providers: [
     IconSetService,

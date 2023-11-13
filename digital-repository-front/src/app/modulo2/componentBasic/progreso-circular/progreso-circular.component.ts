@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { AppColors } from 'src/colors.config';
 
 @Component({
   selector: 'app-progreso-circular',
@@ -27,11 +28,11 @@ export class ProgresoCircularComponent  implements OnChanges{
 
     //this.porcentaje = (this.score / this.scoreMax) * 100; // Calcular el porcentaje
     if (this.color=="azul"){
-      this.colorPrincipal='#000066'
-      this.colorSecundario='#f5d9d9'
+      this.colorPrincipal=AppColors.institucionalAzul;
+      this.colorSecundario=AppColors.institucionalRojoAtenuado;
     }else{      
-      this.colorPrincipal='#9D0311'
-      this.colorSecundario='#d9d9e8'
+      this.colorPrincipal=AppColors.institucionalRojo;
+      this.colorSecundario=AppColors.institucionalAzulAtenuado;
     }
 
       
