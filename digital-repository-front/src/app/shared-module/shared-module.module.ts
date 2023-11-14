@@ -23,12 +23,14 @@ import {
   PaginationModule,
   TableModule,
   UtilitiesModule
-}from '@coreui/angular'
+}from '@coreui/angular';
+import { ConsultaContratosComponent } from './components/consulta-contratos/consulta-contratos.component'
 
 @NgModule({
   declarations: [
     ListContractComponent,
-    PaginadorComponent
+    PaginadorComponent,
+    ConsultaContratosComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +54,8 @@ import {
   ],
   exports :[
     ListContractComponent,
-    PaginadorComponent
+    PaginadorComponent,
+    ConsultaContratosComponent
   ]
 })
 export class SharedModuleModule { }

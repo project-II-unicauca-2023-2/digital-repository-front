@@ -94,6 +94,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
 import { DesplegableAniosComponent } from './modulo2/componentBasic/desplegable-anios/desplegable-anios.component';
 import { LineaCalificacionComponent } from './modulo2/componentBasic/linea-calificacion/linea-calificacion.component';
+import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -129,6 +130,7 @@ import { LineaCalificacionComponent } from './modulo2/componentBasic/linea-calif
     ChipsComponent,
     DesplegableAniosComponent,
     LineaCalificacionComponent,
+    BuscarContratosComponent,
 
   ],
   imports: [
