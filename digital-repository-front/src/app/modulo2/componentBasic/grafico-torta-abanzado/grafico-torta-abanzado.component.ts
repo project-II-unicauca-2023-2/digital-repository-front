@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
+import { Color, ScaleType } from '@swimlane/ngx-charts';
 import { AppColors } from 'src/colors.config';
 @Component({
   selector: 'app-grafico-torta-abanzado',
   templateUrl: './grafico-torta-abanzado.component.html',
   styleUrls: ['./grafico-torta-abanzado.component.css']
 })
+/**
+ * repositorio https://github.com/swimlane/ngx-charts/blob/master/projects/swimlane/ngx-charts/src/lib/common/base-chart.component.ts
+ *opciones: https://swimlane.github.io/ngx-charts/#/ngx-charts/advanced-pie-chart
+ * ejemplo: https://stackblitz.com/edit/swimlane-pie-chart-advanced?embed=1&file=app/app.component.ts
+ * */
 export class GraficoTortaAbanzadoComponent {
   single=[
     {
@@ -35,9 +41,10 @@ export class GraficoTortaAbanzadoComponent {
   showLegend: boolean = true;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
-  colorScheme = {
-    domain: [AppColors.color1, AppColors.color2, AppColors.color3, AppColors.color4,AppColors.color5]
-  };
+ 
+  colorScheme2: Color = { name: 'color1', selectable: true, group: ScaleType.Linear, // No es necesario el casting a ScaleType
+   domain: [AppColors.color1, AppColors.color2, AppColors.color3, AppColors.color4,AppColors.color5] };
+  ;
   constructor() {
     //Object.assign(this, { single });
   }
