@@ -1,17 +1,17 @@
 <div style=" display: flex;
-flex-direction: column; /* Esto establece la orientación en vertical */
+flex-direction: column; 
 justify-content: center;
 align-items: center;
-height: 50vh;">   
-    <div style="display: flex;
-    justify-content: center;
-    align-items: center; 
-    flex-direction: row;">
-        <app-desplegable-anios (emisorAnioSeleccionado)="recibidoAnio($event)"></app-desplegable-anios>                
-        <app-chips ></app-chips>
+">   
+        <div style="display: flex;
+        justify-content: center;
+        align-items: center; 
+        flex-direction: row;">
+            <app-desplegable-anios (emisorAnioSeleccionado)="recibidoAnio($event)"></app-desplegable-anios>                
+            <app-chips ></app-chips>
+            <app-linea-calificacion></app-linea-calificacion>
+        </div>
+    <div>
+        <app-grafico-torta-abanzado></app-grafico-torta-abanzado>
     </div>
-    <app-grafico-torta-abanzado style="display: flex;
-    justify-content: center;
-    align-items: center;"></app-grafico-torta-abanzado>
-    
 </div>

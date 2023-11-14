@@ -32,7 +32,11 @@ export class GraficoTortaAbanzadoComponent {
   {
   "name": "Supera Espectativas[4.5,5]",
   "value": 9200000
-}
+  },
+  {
+  "name": "SIN CALIFICAR",
+  "value": 6200000
+  }
   ];
   view: [number, number] = [1000, 300];
 
@@ -43,7 +47,7 @@ export class GraficoTortaAbanzadoComponent {
   isDoughnut: boolean = false;
  
   colorScheme2: Color = { name: 'color1', selectable: true, group: ScaleType.Linear, // No es necesario el casting a ScaleType
-   domain: [AppColors.color1, AppColors.color2, AppColors.color3, AppColors.color4,AppColors.color5] };
+   domain: [AppColors.color1, AppColors.color2, AppColors.color3, AppColors.color4,AppColors.color5, '#000000'] };
   ;
   constructor() {
     //Object.assign(this, { single });
