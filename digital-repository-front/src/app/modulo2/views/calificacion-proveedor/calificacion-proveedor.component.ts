@@ -3,6 +3,7 @@ import { ContractService } from 'src/app/services/contract.service';
 import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 import { datosAside } from '../../models/datosAside';
 import { descriptionCriteriaContract } from '../../models/descriptionCriteriaContract';
+import { idContrato } from '../../models/idContrato';
 import { listCriteriaRate } from '../../models/listCriteriaRate';
 export interface Tile {
   criterio : string;
@@ -28,7 +29,7 @@ export class CalificacionProveedorComponent implements OnInit {
    indexVistaActual: number = 0; // por defecto la primera vista se ve 0
    indexVistaMax: number = (this.tiles.length-1) +2; //total de calificaciones(-1 POR SER INDICE)+ 2 vistas mas (busqueda y resultados)
    dicPuntajes!: { [key: number]: string } ; //almacena que puntaje y valor tendran los radios de calificacion
-   numContrato:string="";
+   numContrato!:idContrato;
    datosContrato!:datosAside;
    criteriosDescripcion!:descriptionCriteriaContract;
   constructor(
@@ -66,7 +67,7 @@ export class CalificacionProveedorComponent implements OnInit {
       }
     );
   }
-  actualizarCriterios(contrato: string){
+  actualizarCriterios(contrato: idContrato){
     this.servicioContrato.getTipoContratoCriteriosCoorespondientes(contrato).subscribe(
       (data: descriptionCriteriaContract) => {
         this.criteriosDescripcion=data;
@@ -84,9 +85,9 @@ export class CalificacionProveedorComponent implements OnInit {
    * @param contrato es el identificador del contrato ya balidado por la primera interfaz
    */
 
-  recibidoIdContratoValido(contrato: string) {
+  recibidoIdContratoValido(contrato: idContrato) {
     this.actualizarCriterios(contrato);
-    console.log("Contrato recibido: ", contrato);
+    console.log("Contrato recibido: ", contrato.mascara);
     this.numContrato=contrato;
     this.indexVistaActual=this.indexVistaActual+1
   }

@@ -90,7 +90,9 @@ import { MostrarDescargarComponent } from './modulo2/views/descarga-calificacion
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
 
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
 import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
+import { DesplegableAniosComponent } from './modulo2/componentBasic/desplegable-anios/desplegable-anios.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,6 +126,7 @@ import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
     MostrarDescargarComponent,
     GraficoTortaAbanzadoComponent,
     ChipsComponent,
+    DesplegableAniosComponent,
 
   ],
   imports: [
@@ -196,6 +199,7 @@ import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
     MatSidenavModule,    
     NgxChartsModule,
     MatChipsModule,
+    MatSelectModule
   ],
   providers: [
     IconSetService,

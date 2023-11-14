@@ -27,7 +27,7 @@ const routes: Routes = [
       { path: 'subirInfo',component:SubirInfoComponent },
       { path: 'descargaFormato', component: DescargaCalificacionesComponent },
       { path: 'calificacion', component: CalificacionProveedorComponent },
-      { path: 'Evaluacion/:contrato', component: MostrarDescargarComponent}
+      { path: 'Evaluacion/:contrato/:anio', component: MostrarDescargarComponent}
     ] },
   { path: 'createCont', component: CreateContractComponent },
   {

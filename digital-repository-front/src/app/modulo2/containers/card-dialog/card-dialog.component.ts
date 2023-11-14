@@ -6,6 +6,7 @@ import { ScoreCriteriaService } from 'src/app/services/score-criteria.service';
 import { DialogSiNoComponent } from '../../componentBasic/dialog-si-no/dialog-si-no.component';
 import { calificacion } from '../../models/calificacion';
 import { descriptionCriteriaContract } from '../../models/descriptionCriteriaContract';
+import { idContrato } from '../../models/idContrato';
 import { listCriteriaRate } from '../../models/listCriteriaRate';
 
 @Component({
@@ -22,7 +23,7 @@ export class CardDialogComponent implements  OnChanges, OnInit {
   @Input() seleccionadoRadio!:number; //Este numero es el que si nos movemos atrass o adelante la oopcion puesta paresca almaceda y se cargue en los radis
   @Input() seleccionadoRadioTodos!:listCriteriaRate[]; // todas contiene las anteriores selecciones
   @Input() dicPuntajes!: { [key: number]: string } ; // tiene las calificaciones de cada radio booton con su value
-  @Input() numContrato!: string;
+  @Input() numContrato!: idContrato;
   @Input() criteriosDescripcion!: descriptionCriteriaContract; //contiene los id de criterios a calificar y el numero de contrato que se califico
   seleccionado=0;
   checked = false;
@@ -108,7 +109,7 @@ export class CardDialogComponent implements  OnChanges, OnInit {
           //enviar la calidifacion a la bd
           const calificacionEnviada: calificacion = {
             listCriteriaRate: valoresCalificaciones, // Puedes llenar este array con más instancias según sea necesario
-            contractMask: this.numContrato
+            contractMask: this.numContrato.mascara
           };
           console.log("CALIFICACIONES ENVIAR"+JSON.stringify(calificacionEnviada));
           this.servicioCriterios.addCalificaciones(calificacionEnviada).subscribe(
@@ -117,7 +118,7 @@ export class CardDialogComponent implements  OnChanges, OnInit {
                 console.log(res)
                 if (res.status == 200) {
                   console.log('Contrato agregado Correctamente', '');
-                  this.ruta.navigate(['/homePage/Evaluacion', this.numContrato ]);
+                  this.ruta.navigate(['/homePage/Evaluacion', this.numContrato.mascara,this.numContrato.anio ]);
                 }
               } ,
               error: (error)=>{

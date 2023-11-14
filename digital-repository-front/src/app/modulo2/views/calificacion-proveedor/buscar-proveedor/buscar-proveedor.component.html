@@ -13,10 +13,12 @@
       <div id="contBuscar">
         
           <mat-form-field class="example-full-width"  style="
-          width: 100%;">
+          width: 80%;">
             <mat-label>Ingrese máscara de contrato</mat-label>
-            <input matInput placeholder="Ej. 	5.5-31.1/1" [(ngModel)]="contratoValido" >
-          </mat-form-field>        
+            <input matInput placeholder="Ej. 	5.5-31.1/1" [(ngModel)]="contratoValido.mascara" required>
+          </mat-form-field>
+          <app-desplegable-anios (emisorAnioSeleccionado)="recibidoAnio($event)"></app-desplegable-anios>
+              
         <button mat-fab extended color="primary" (click)="validarContrato()" >
           <mat-icon>search
           </mat-icon>

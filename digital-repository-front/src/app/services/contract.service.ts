@@ -7,6 +7,7 @@ import { UpdateContract } from '../class/models/UpdateContract';
 import { responseDocument } from '../class/models/responseDocument';
 import { datosAside } from '../modulo2/models/datosAside';
 import { descriptionCriteriaContract } from '../modulo2/models/descriptionCriteriaContract';
+import { idContrato } from '../modulo2/models/idContrato';
 @Injectable({
   providedIn: 'root'
 })
@@ -166,8 +167,8 @@ export class ContractService {
   }
 
   //get existe evaluacion
-  getExisteEvaluacion(id:string): Observable<boolean>{
-    return  this.httpClient.get<any>(this.urlAPI + "/existingEvaluationContractByMask?referenceMask=" + id).pipe(
+  getExisteEvaluacion(id:idContrato): Observable<boolean>{
+    return  this.httpClient.get<any>(this.urlAPI + "/existingEvaluationContractByMask?referenceMask=" + id.mascara).pipe(
       map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
       catchError((e) => {
       console.log('error en el servicio contrato get Existencia de evaluacion','error');
@@ -176,8 +177,8 @@ export class ContractService {
     )
   }
 
-  getExisteContrato(id:string): Observable<boolean>{
-    return  this.httpClient.get<any>(this.urlAPI + "/existingContractByMask?referenceMask=" + id).pipe(
+  getExisteContrato(id:idContrato): Observable<boolean>{
+    return  this.httpClient.get<any>(this.urlAPI + "/existingContractByMask?referenceMask=" + id.mascara).pipe(
       map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
       catchError((e) => {
       console.log('error en el servicio contrato get Existencia','error');
@@ -186,8 +187,8 @@ export class ContractService {
     )
   }
 
-  getDatosAside(id:string): Observable<datosAside>{
-    return  this.httpClient.get<any>(this.urlAPI + "/dataContractVendorByMask?referenceMask=" + id).pipe(
+  getDatosAside(id:idContrato): Observable<datosAside>{
+    return  this.httpClient.get<any>(this.urlAPI + "/dataContractVendorByMask?referenceMask=" + id.mascara).pipe(
       map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
       catchError((e) => {
       console.log('error en el servicio contrato gaet dtos del aside','error');
@@ -195,8 +196,8 @@ export class ContractService {
     })
     )
   }
-  getTipoContratoCriteriosCoorespondientes(id:string): Observable<descriptionCriteriaContract>{
-    return  this.httpClient.get<any>(this.urlAPI + "/aboutVendor?referenceMask=" + id).pipe(
+  getTipoContratoCriteriosCoorespondientes(id:idContrato): Observable<descriptionCriteriaContract>{
+    return  this.httpClient.get<any>(this.urlAPI + "/aboutVendor?referenceMask=" + id.mascara).pipe(
       map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
       catchError((e) => {
       console.log('error buscandoCriterios','error');

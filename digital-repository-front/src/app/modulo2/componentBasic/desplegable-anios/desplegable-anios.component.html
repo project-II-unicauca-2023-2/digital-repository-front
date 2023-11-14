@@ -1,0 +1,6 @@
+<mat-form-field>
+    <mat-label>Seleccionar Año</mat-label>
+    <mat-select [(ngModel)]="anio"  (selectionChange)="emitirAnio()" required>
+      <mat-option *ngFor="let anio of AniosComboBox" [value]="anio">{{ anio }}</mat-option>
+    </mat-select>
+  </mat-form-field>   

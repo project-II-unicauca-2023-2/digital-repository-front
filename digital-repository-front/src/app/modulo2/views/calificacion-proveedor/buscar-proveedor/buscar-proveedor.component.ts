@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogSiNoComponent } from 'src/app/modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
+import { idContrato } from 'src/app/modulo2/models/idContrato';
 import { ContractService } from 'src/app/services/contract.service';
 
 @Component({
@@ -11,22 +12,32 @@ import { ContractService } from 'src/app/services/contract.service';
 })
 export class BuscarProveedorComponent implements OnInit {
 
-  contratoValido = "" //variable que almacena el contrato valido y es emitido
+  contratoValido: idContrato = new idContrato(); //variable que almacena el contrato valido y es emitido
   contratoEncontradoSinEvalucion = false; //bandera que permite continuar a la otra interfaz cuando el contrto no tiene un evaluacion pero existe
-
-  @Output() emisorIdContrato = new EventEmitter<string>();
+  AniosComboBox:string[]=[];
+  anioSeleccionado!:string;
+  @Output() emisorIdContrato = new EventEmitter<idContrato>();
   constructor(public dialog: MatDialog, 
     private servicioContrato: ContractService,
     private ruta :Router
     ) {
-
-  }
+    
+    
+    }
   ngOnInit(): void {
-
+    this.cargarAniosCombo();
+  }
+  cargarAniosCombo(){
+    let anioActual= new Date().getFullYear();
+    this.contratoValido.anio=anioActual+"";
+    for(let a=1995;a<=anioActual;a++){      
+      this.AniosComboBox.push(a+"");
+    } 
   }
 
-
-
+  recibidoAnio(anio: string){
+    this.contratoValido.anio=anio;
+  }
   /**
    * hacer la validacion con la base de datos que el contrato se encuentre ademas 
    * recuperar el identificador y ese sera el que se use para recuperar el contenido es decier
@@ -89,7 +100,7 @@ export class BuscarProveedorComponent implements OnInit {
         if (result) {
           // Aquí manejamos el resultado
           console.log('Se recibe el Resultado: ', result);
-          this.ruta.navigate(['/homePage/Evaluacion', this.contratoValido ]);
+          this.ruta.navigate(['/homePage/Evaluacion', this.contratoValido.mascara,this.contratoValido.anio  ]);
         }
       });
     }

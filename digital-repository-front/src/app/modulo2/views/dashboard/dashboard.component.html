@@ -3,9 +3,13 @@ flex-direction: column; /* Esto establece la orientación en vertical */
 justify-content: center;
 align-items: center;
 height: 50vh;">   
-    <app-chips style="display: flex;
+    <div style="display: flex;
     justify-content: center;
-    align-items: center;"></app-chips>
+    align-items: center; 
+    flex-direction: row;">
+        <app-desplegable-anios (emisorAnioSeleccionado)="recibidoAnio($event)"></app-desplegable-anios>                
+        <app-chips ></app-chips>
+    </div>
     <app-grafico-torta-abanzado style="display: flex;
     justify-content: center;
     align-items: center;"></app-grafico-torta-abanzado>

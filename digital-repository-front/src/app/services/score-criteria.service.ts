@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { responseDocument } from '../class/models/responseDocument';
 import { calificacion } from '../modulo2/models/calificacion';
+import { idContrato } from '../modulo2/models/idContrato';
 import { totalCriteriaScore } from '../modulo2/models/totalCriteriaScore';
 
 interface dicCriteria {
@@ -28,8 +29,8 @@ export class ScoreCriteriaService {
       }),
   
     };
-  getResultadosEvaluacion(id:string): Observable<totalCriteriaScore>{
-    return  this.httpClient.get<any>(this.urlAPI + "/scoreCriteriaDataByMask?referenceMask=" + id).pipe(
+  getResultadosEvaluacion(id:idContrato): Observable<totalCriteriaScore>{
+    return  this.httpClient.get<any>(this.urlAPI + "/scoreCriteriaDataByMask?referenceMask=" + id.mascara).pipe(
       map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
       catchError((e) => {
       console.log('error en el servicio scoreCriteria getResultadosEvaluacion','error');

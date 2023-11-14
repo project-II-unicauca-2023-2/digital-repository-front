@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, Sim
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSiNoComponent } from 'src/app/modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 import { datosAside } from 'src/app/modulo2/models/datosAside';
+import { idContrato } from 'src/app/modulo2/models/idContrato';
 import { scoreCriteria } from 'src/app/modulo2/models/scoreCriteria';
 import { totalCriteriaScore } from 'src/app/modulo2/models/totalCriteriaScore';
 import { ExcelService } from 'src/app/modulo2/services/excel/excel.service';
@@ -19,7 +20,7 @@ interface dicCriteria {
 
 export class ResultadosComponent implements OnInit  {
   
-  @Input() numContrato!: string;
+  @Input() numContrato!: idContrato;
   @Input() datosContrato!: datosAside;
   @ViewChildren('miTablaI') tablas!: QueryList<ElementRef>; 
   datosContratista!: datosAside;

@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { datosAside } from 'src/app/modulo2/models/datosAside';
+import { idContrato } from 'src/app/modulo2/models/idContrato';
 import { ContractService } from 'src/app/services/contract.service';
 
 
@@ -12,13 +13,12 @@ import { ContractService } from 'src/app/services/contract.service';
 })
 export class Asidem2Component implements OnInit {
 
-  @Input() numContrato: string;
+  @Input() numContrato!: idContrato;
   @Output() emisorDatosContrato = new EventEmitter<datosAside>();
   error:string="ERROR DATO NO DEFINIDO";
   datosAsideEncontrados!: datosAside;
   constructor( private servicioContrato:ContractService) {
 
-    this.numContrato = '';
    }
 
   ngOnInit() {
