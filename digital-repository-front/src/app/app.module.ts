@@ -93,6 +93,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
 import { DesplegableAniosComponent } from './modulo2/componentBasic/desplegable-anios/desplegable-anios.component';
+import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -127,6 +128,7 @@ import { DesplegableAniosComponent } from './modulo2/componentBasic/desplegable-
     GraficoTortaAbanzadoComponent,
     ChipsComponent,
     DesplegableAniosComponent,
+    BuscarContratosComponent,
 
   ],
   imports: [

@@ -1,0 +1,236 @@
+.custom-searchbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid #FFFFFF;
+  border-radius: 10px;
+}
+
+.circle {
+  background-color: #0e4185;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  color: white;
+}
+
+
+.common-button-style {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.info-box {
+  color: white;
+}
+
+.search-input {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid #FFFFFF;
+  /* height: 35px; */
+  border-radius: 10px;
+  color: white;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.search-input::placeholder {
+  color: white;
+}
+
+input[type=search] {
+  font-family: 'Quicksand', sans-serif, 'FontAwesome';
+  padding: 10px;
+}
+
+.main {
+  width: inherit;
+  top: 15px;
+}
+
+/* Revisar este estilo */
+table {
+  border-radius: 10px;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+th,
+td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.white-border-cont {
+  padding-right: 10px;
+  padding-left: 10px;
+  min-width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+
+/* Revisar este estilo */
+thead {
+  border-radius: 10px;
+  color: #0E4185;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+thead th {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+mat-checkbox {
+  margin: 0;
+}
+
+.align-bottom {
+  display: flex;
+  align-items: flex-end;
+}
+
+.align-bottom-content {
+  background-color: lightblue;
+  padding: 10px;
+}
+
+.btn {
+  width: fit-content;
+  height: auto;
+  padding: 10px;
+  border-radius: 10px;
+  order: 0;
+  flex-grow: 0;
+}
+
+.btn.white {
+  background-color: #bed2da;
+  border: 1px solid #ffffff;
+  color: #0e4185;
+}
+
+.btn.blue {
+  background-color: #6586b0;
+  border: 1px solid #ffffff;
+  color: #fbfbfb;
+}
+
+.grid {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+}
+
+.box {
+  width: fit-content;
+  height: auto;
+  padding: 10px;
+  border-radius: 10px;
+  order: 0;
+  flex-grow: 0;
+}
+
+.box.fecha {
+  color: white;
+}
+
+.box input {
+  /*background-color: #3569ae;*/
+  background-color: #6586b0;
+  color: white;
+  font-weight: lighter;
+}
+
+.box a {
+  font-weight: bold;
+}
+
+.table-elevation {
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.boton {
+  background-color: blue;
+  /* Puedes cambiar el color según tus preferencias */
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background-color: darkblue;
+  /* Puedes cambiar el color según tus preferencias */
+}
+
+.content-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.content-select {
+  max-width: 250px;
+}
+
+
+/* Eliminamos la fecha que por defecto aparece en el desplegable */
+.content-select select::-ms-expand {
+  display: none;
+}
+
+.content-select select {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 7px 10px;
+  height: 42px;
+  outline: 0;
+  border: 0;
+  border-radius: 0;
+  background: #f0f0f0;
+  color: #7b7b7b;
+  font-size: 1em;
+  color: #999;
+  font-family: 'Quicksand', sans-serif;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.content-select select:hover {
+  background: #cfe6f4;
+}
+
+/*
+Creamos la fecha que aparece a la izquierda del select.
+Realmente este elemento es un cuadrado que sólo tienen
+dos bordes con color y que giramos con transform: rotate(-45deg);
+*/
+.content-select i {
+  right: 20px;
+  top: calc(50% - 13px);
+  width: 16px;
+  height: 16px;
+  display: block;
+  border-left: 4px solid #cfe6f4;
+  border-bottom: 4px solid #cfe6f4;
+  transform: rotate(-45deg);
+  /* Giramos el cuadrado */
+  transition: all 0.25s ease;
+}
+
+.content-select:hover i {
+  margin-top: 3px;
+}
