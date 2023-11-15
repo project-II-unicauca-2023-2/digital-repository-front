@@ -1,15 +1,12 @@
-<div style=" display: flex;
-flex-direction: column; 
-justify-content: center;
-align-items: center;
-">   
-        <div style="display: flex;
-        justify-content: center;
-        align-items: center; 
-        flex-direction: row;">
-            <app-desplegable-anios (emisorAnioSeleccionado)="recibidoAnio($event)"></app-desplegable-anios>                
-            <app-chips ></app-chips>
-            <app-linea-calificacion></app-linea-calificacion>
+<div class=" centrarContenidoColumna">   
+        <div class="centrarContenidoFila">
+            <div class="separadoHorizontal" >                
+                <app-desplegable-anios (emisorAnioSeleccionado)="recibidoAnio($event)"></app-desplegable-anios>                
+                <app-chips ></app-chips>
+            </div>
+            <div class="separadoHorizontal">
+                <app-linea-calificacion ></app-linea-calificacion>
+            </div>
         </div>
     <div>
         <app-grafico-torta-abanzado></app-grafico-torta-abanzado>

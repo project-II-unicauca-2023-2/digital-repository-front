@@ -47,7 +47,7 @@ export class GraficoTortaAbanzadoComponent {
   isDoughnut: boolean = false;
  
   colorScheme2: Color = { name: 'color1', selectable: true, group: ScaleType.Linear, // No es necesario el casting a ScaleType
-   domain: [AppColors.color1, AppColors.color2, AppColors.color3, AppColors.color4,AppColors.color5, '#000000'] };
+   domain: [AppColors.color1, AppColors.color2, AppColors.color3, AppColors.color4,AppColors.color5, '#555555'] };
   ;
   constructor() {
     //Object.assign(this, { single });
