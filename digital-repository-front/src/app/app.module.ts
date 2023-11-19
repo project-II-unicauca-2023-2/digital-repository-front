@@ -95,6 +95,11 @@ import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
 import { DesplegableAniosComponent } from './modulo2/componentBasic/desplegable-anios/desplegable-anios.component';
 import { LineaCalificacionComponent } from './modulo2/componentBasic/linea-calificacion/linea-calificacion.component';
 import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
+import { PieGridChartComponent } from './modulo2/componentBasic/pie-grid-chart/pie-grid-chart.component';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { VerticalBarChartComponent } from './modulo2/componentBasic/vertical-bar-chart/vertical-bar-chart.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -131,6 +136,9 @@ import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/busca
     DesplegableAniosComponent,
     LineaCalificacionComponent,
     BuscarContratosComponent,
+    PieGridChartComponent,
+    DashboardComponent,
+    VerticalBarChartComponent,
 
   ],
   imports: [
@@ -203,7 +211,8 @@ import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/busca
     MatSidenavModule,    
     NgxChartsModule,
     MatChipsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule
   ],
   providers: [
     IconSetService,

@@ -1,17 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 import { AppColors } from 'src/colors.config';
+
 @Component({
-  selector: 'app-grafico-torta-abanzado',
-  templateUrl: './grafico-torta-abanzado.component.html',
-  styleUrls: ['./grafico-torta-abanzado.component.css']
+  selector: 'app-pie-grid-chart',
+  templateUrl: './pie-grid-chart.component.html',
+  styleUrls: ['./pie-grid-chart.component.css']
 })
-/**
- * repositorio https://github.com/swimlane/ngx-charts/blob/master/projects/swimlane/ngx-charts/src/lib/common/base-chart.component.ts
- *opciones:   
- * ejemplo: https://stackblitz.com/edit/swimlane-pie-chart-advanced?embed=1&file=app/app.component.ts
- * */
-export class GraficoTortaAbanzadoComponent {
+export class PieGridChartComponent {
   single=[
     {
       "name": "No Cumple[1,1.5]",

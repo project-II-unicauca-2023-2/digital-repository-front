@@ -33,7 +33,8 @@
               "core-js/modules/web.dom-collections.iterator.js",
               "raf",
               "rgbcolor",
-              "pdfjs-dist/build/pdf"
+              "pdfjs-dist/build/pdf",
+              "rfdc"
             ],
             "outputPath": "dist/digital-repository-front",
             "index": "src/index.html",

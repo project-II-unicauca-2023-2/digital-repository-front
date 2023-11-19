@@ -1,14 +1,42 @@
-<div class=" centrarContenidoColumna">   
-        <div class="centrarContenidoFila">
-            <div class="separadoHorizontal" >                
-                <app-desplegable-anios (emisorAnioSeleccionado)="recibidoAnio($event)"></app-desplegable-anios>                
-                <app-chips ></app-chips>
-            </div>
-            <div class="separadoHorizontal">
-                <app-linea-calificacion ></app-linea-calificacion>
-            </div>
+<!-- Contenedor Principal del Dashboard -->
+<div class="dashboard-container">  
+
+    <mat-toolbar>
+        <app-desplegable-anios (emisorAnioSeleccionado)="recibidoAnio($event)"></app-desplegable-anios>
+        <app-chips></app-chips>
+
+        <span class="example-spacer"></span>
+
+        <div class="dashboard-controls">
+            <select [(ngModel)]="graficoSeleccionado" (change)="cambiarGrafico($event)">
+                <option *ngFor="let grafico of graficos" [value]="grafico.id">
+                    {{ grafico.nombre }}
+                </option>
+            </select>
         </div>
-    <div>
-        <app-grafico-torta-abanzado></app-grafico-torta-abanzado>
+
+        <button (click)="mostrarTodasLasGraficas()" class="mostrar-todas-btn">
+            <span class="material-icons">view_module</span>
+        </button>
+
+    </mat-toolbar>
+    
+    <div class="separadoHorizontal">
+        <app-linea-calificacion ></app-linea-calificacion>
+    </div>
+
+    <!-- Área de Visualización de Gráficos -->
+    <div class="dashboard-graphics">
+        <div *ngIf="mostrarTodas || graficoSeleccionado === 'pie-grid'">
+            <app-pie-grid-chart></app-pie-grid-chart>
+        </div>
+    
+        <div *ngIf="mostrarTodas || graficoSeleccionado === 'torta'">
+            <app-grafico-torta-abanzado></app-grafico-torta-abanzado>
+        </div>
+    
+        <div *ngIf="mostrarTodas || graficoSeleccionado === 'barras'">
+            <app-vertical-bar-chart></app-vertical-bar-chart>
+        </div>
     </div>
 </div>
