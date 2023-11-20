@@ -70,10 +70,10 @@
         <tr>
           <th>
             <ng-container>
-              <mat-checkbox (change)="$event ? toggleAllRows() : null"
+             <!--  <mat-checkbox (change)="$event ? toggleAllRows() : null"
                 [checked]="selection.hasValue() && isAllSelected()"
                 [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
-              </mat-checkbox>
+              </mat-checkbox>-->
             </ng-container>
           </th>
           <th *ngFor="let column of displayedColumns">{{column}}</th>
@@ -84,11 +84,11 @@
         <tr *ngFor="let item of contracts">
           <td>
             <ng-container>
-              <mat-checkbox (click)="$event.stopPropagation();setIdContract(item.id)"
+              <!-- <mat-checkbox (click)="$event.stopPropagation();setIdContract(item.id)"
                 (change)="$event ? selection.toggle(item) : null" [checked]="selection.isSelected(item)"
                 [aria-label]="checkboxLabel(item)">
 
-              </mat-checkbox>
+              </mat-checkbox> -->
             </ng-container>
           </td>
           <td>{{ item.id }}</td>
@@ -99,12 +99,12 @@
           <td>{{ item.signingYear }}</td>
           <td>
             <a>
-              <div class="circle flex items-center justify-center"><i-lucide name="FolderDown"></i-lucide></div>
+             <!-- <div class="circle flex items-center justify-center"><i-lucide name="FolderDown"></i-lucide></div> -->
             </a>
           </td>
           <td>
-            <a [routerLink]="['/editCont']" (click)="setIdContract(item.id)">
-              <div class="circle flex items-center justify-center"><i-lucide name="Pencil"></i-lucide></div>
+            <a [routerLink]="['/homePage/descargaFormato']" (click)="setIdContract(item.id)">
+              <div class="circle flex items-center justify-center"><i-lucide name="FolderDown"></i-lucide></div>
             </a>
           </td>
           <!-- <ng-container *ngIf="item.contractType.toLowerCase().includes(searchValue)">
