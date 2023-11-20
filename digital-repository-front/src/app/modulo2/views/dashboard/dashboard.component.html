@@ -4,7 +4,7 @@
     <mat-toolbar>
         <app-desplegable-anios (emisorAnioSeleccionado)="recibidoAnio($event)"></app-desplegable-anios>
         <app-chips></app-chips>
-
+    
         <span class="example-spacer"></span>
 
         <div class="dashboard-controls">
@@ -24,6 +24,7 @@
     <div class="separadoHorizontal">
         <app-linea-calificacion ></app-linea-calificacion>
     </div>
+    
 
     <!-- Área de Visualización de Gráficos -->
     <div class="dashboard-graphics">
@@ -31,8 +32,8 @@
             <app-pie-grid-chart></app-pie-grid-chart>
         </div>
     
-        <div *ngIf="mostrarTodas || graficoSeleccionado === 'torta'">
-            <app-grafico-torta-abanzado></app-grafico-torta-abanzado>
+        <div *ngIf="mostrarTodas || graficoSeleccionado === 'avanzado'">
+            <app-advanced-pie-chart></app-advanced-pie-chart>
         </div>
     
         <div *ngIf="mostrarTodas || graficoSeleccionado === 'barras'">

@@ -1,0 +1,20 @@
+
+mat-chip-listbox {
+    display: flex;
+    justify-content: center; /* Centra los chips horizontalmente */
+    flex-wrap: wrap; /* Permite que los chips se ajusten en múltiples líneas si es necesario */
+    gap: 10px; /* Espaciado entre chips */
+    padding: 10px; /* Espaciado alrededor de los chips */
+    margin: 10px 0; /* Margen vertical */
+}
+
+/* Estilos para los mat-chip-option */
+mat-chip-option {
+    color: #fff; /* Color del texto */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 8px 15px; /* Espaciado interno para los chips */
+    font-size: 0.9em; /* Tamaño de la fuente */
+    cursor: pointer; /* Cursor tipo puntero */
+}
+
+

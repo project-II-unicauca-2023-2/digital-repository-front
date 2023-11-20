@@ -46,11 +46,12 @@ export class VerticalBarChartComponent {
   yAxisLabel = 'Valor';
 
   colorScheme2: Color = {
-    name: 'color1',
+    name: 'esquemaPersonalizado',
     selectable: true,
     group: ScaleType.Linear,
-    domain: [AppColors.color1, AppColors.color2, AppColors.color3, AppColors.color4, AppColors.color5, '#555555']
+    domain: ['#000066', '#9D0311', '#1D72D3', '#1D72D3', '#1D72D3', '#555555']
   };
+  
 
   constructor() { }
 

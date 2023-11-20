@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { GraficoTortaAbanzadoComponent } from '../../componentBasic/grafico-torta-abanzado/grafico-torta-abanzado.component';
 import { PieGridChartComponent } from '../../componentBasic/pie-grid-chart/pie-grid-chart.component';
 import { VerticalBarChartComponent } from '../../componentBasic/vertical-bar-chart/vertical-bar-chart.component';
+import { AdvancedPieChartComponent } from '../../componentBasic/advanced-pie-chart/advanced-pie-chart.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,12 +24,12 @@ export class DashboardComponent {
   }
 
   graficos=[
-    { id: 'torta', nombre: 'Gráfico de Torta', componente: GraficoTortaAbanzadoComponent },
+    { id: 'avanzado', nombre: 'Gráfico Avanzado', componente: AdvancedPieChartComponent },
     {id: 'pie-grid', nombre: 'Gráfico de Pie', componente: PieGridChartComponent},
     {id: 'barras', nombre: 'Gráfico de Barras', componente: VerticalBarChartComponent}
   ];
 
-  graficoSeleccionado : string='torta' ;
+  graficoSeleccionado : string='avanzado' ;
 
   cambiarGrafico(event: Event) {
     const selectElement = event.target as HTMLSelectElement;

@@ -1,0 +1,15 @@
+/* Estilos para mat-form-field */
+mat-form-field {
+    width: 100%; /* Ajustar el ancho según sea necesario */
+}
+
+/* Estilos para mat-select dentro de mat-form-field */
+mat-form-field mat-select {
+    padding: 4px 8px; /* Espaciado interno reducido */
+}
+
+/* Estilos para las opciones del select (mat-option) */
+mat-option {
+    padding: 4px 8px; /* Espaciado interno reducido */
+    color: #000; /* Color del texto simplificado */
+}

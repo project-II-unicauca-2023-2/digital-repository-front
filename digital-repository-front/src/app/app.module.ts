@@ -81,7 +81,7 @@ import { FooterComponent } from './modulo2/containers/footer/footer.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
-import { GraficoTortaAbanzadoComponent } from './modulo2/componentBasic/grafico-torta-abanzado/grafico-torta-abanzado.component';
+import { AdvancedPieChartComponent } from './modulo2/componentBasic/advanced-pie-chart/advanced-pie-chart.component';
 import { BuscarProveedorComponent } from './modulo2/views/calificacion-proveedor/buscar-proveedor/buscar-proveedor.component';
 import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
 import { DashboardComponent } from './modulo2/views/dashboard/dashboard.component';
@@ -131,7 +131,6 @@ import { VerticalBarChartComponent } from './modulo2/componentBasic/vertical-bar
     DashboardComponent,
     FooterComponent,
     MostrarDescargarComponent,
-    GraficoTortaAbanzadoComponent,
     ChipsComponent,
     DesplegableAniosComponent,
     LineaCalificacionComponent,
@@ -139,6 +138,7 @@ import { VerticalBarChartComponent } from './modulo2/componentBasic/vertical-bar
     PieGridChartComponent,
     DashboardComponent,
     VerticalBarChartComponent,
+    AdvancedPieChartComponent,
 
   ],
   imports: [
