@@ -41,13 +41,16 @@ footer {
     padding: 6%; 
 }
 .barraColor {
-	width: 300px;
+	flex:1 0 20%;
+	max-width: 20%;
+
 }
 .contFooter{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	width:100%;
+	flex-wrap: wrap;
 
 }
 .imagenesFooter {
