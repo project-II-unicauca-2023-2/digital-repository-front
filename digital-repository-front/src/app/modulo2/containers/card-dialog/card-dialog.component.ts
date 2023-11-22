@@ -109,7 +109,7 @@ export class CardDialogComponent implements  OnChanges, OnInit {
           //enviar la calidifacion a la bd
           const calificacionEnviada: calificacion = {
             listCriteriaRate: valoresCalificaciones, // Puedes llenar este array con más instancias según sea necesario
-            contractMask: this.numContrato.mascara
+            prmContractParams:this.numContrato
           };
           console.log("CALIFICACIONES ENVIAR"+JSON.stringify(calificacionEnviada));
           this.servicioCriterios.addCalificaciones(calificacionEnviada).subscribe(

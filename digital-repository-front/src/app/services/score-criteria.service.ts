@@ -30,13 +30,13 @@ export class ScoreCriteriaService {
   
     };
   getResultadosEvaluacion(id:idContrato): Observable<totalCriteriaScore>{
-    return  this.httpClient.get<any>(this.urlAPI + "/scoreCriteriaDataByMask?referenceMask=" + id.mascara).pipe(
-      map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
-      catchError((e) => {
-      console.log('error en el servicio scoreCriteria getResultadosEvaluacion','error');
-      return throwError(e);
-    })
-      
+    const body = JSON.stringify(id);
+    return this.httpClient.post(this.urlAPI + "/scoreCriteriaDataByMask",body,this.httpHeader).pipe(
+      map((response:any)=> response.data),
+      catchError(e=>{
+        console.log('error en el servicio scoreCriteria getResultadosEvaluacion','error');
+        return throwError(e);
+      })
     )
   }
   getDominioCalificacion(): Observable<dicCriteria> {

@@ -168,32 +168,35 @@ export class ContractService {
 
   //get existe evaluacion
   getExisteEvaluacion(id:idContrato): Observable<boolean>{
-    return  this.httpClient.get<any>(this.urlAPI + "/existingEvaluationContractByMask?referenceMask=" + id.mascara).pipe(
-      map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
-      catchError((e) => {
-      console.log('error en el servicio contrato get Existencia de evaluacion','error');
-      return throwError(e);
-    })
+    const body = JSON.stringify(id);
+    return this.httpClient.post(this.urlAPI + "/existingEvaluationContractByMask",body,this.httpHeader).pipe(
+      map((response:any)=> response.data),
+      catchError(e=>{
+        console.log('error en el servicio contrato get Existencia de evaluacion','error');
+        return throwError(e);
+      })
     )
   }
 
   getExisteContrato(id:idContrato): Observable<boolean>{
-    return  this.httpClient.get<any>(this.urlAPI + "/existingContractByMask?referenceMask=" + id.mascara).pipe(
-      map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
-      catchError((e) => {
-      console.log('error en el servicio contrato get Existencia','error');
-      return throwError(e);
-    })
+    const body = JSON.stringify(id);
+    return this.httpClient.post(this.urlAPI + "/existingContractByMask",body,this.httpHeader).pipe(
+      map((response:any)=> response.data),
+      catchError(e=>{
+        console.log('error en el servicio contrato get Existencia','error');
+        return throwError(e);
+      })
     )
   }
 
   getDatosAside(id:idContrato): Observable<datosAside>{
-    return  this.httpClient.get<any>(this.urlAPI + "/dataContractVendorByMask?referenceMask=" + id.mascara).pipe(
-      map((response: any) => response.data), // Proporcionar un tipo explícito para 'response'
-      catchError((e) => {
-      console.log('error en el servicio contrato gaet dtos del aside','error');
-      return throwError(e);
-    })
+    const body = JSON.stringify(id);
+    return this.httpClient.post(this.urlAPI + "/dataContractVendorByMask",body,this.httpHeader).pipe(
+      map((response:any)=> response.data),
+      catchError(e=>{
+        console.log('error en el servicio contrato gaet dtos del aside','error');
+        return throwError(e);
+      })
     )
   }
   getTipoContratoCriteriosCoorespondientes(id:idContrato): Observable<descriptionCriteriaContract>{
