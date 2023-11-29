@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-linea-calificacion',
@@ -7,7 +7,11 @@ import { Component } from '@angular/core';
 })
 export class LineaCalificacionComponent {
   //single: any[];
-  view: [number, number] = [250, 250];
+  view: [number, number] = [window.innerWidth * 0.2, window.innerHeight * 0.3];
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.view = [event.target.innerWidth * 0.2, event.target.innerHeight * 0.3];
+  }
   value: number = 3.9;
   min: number = 1;
   max: number = 5;

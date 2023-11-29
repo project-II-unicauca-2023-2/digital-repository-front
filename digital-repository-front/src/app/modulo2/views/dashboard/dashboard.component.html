@@ -24,20 +24,25 @@
         </mat-toolbar>
         
         <div id="contenido">
-            <div id="aside">
+            <div id="aside" *ngIf="categoriaBusqueda !== 'todas'">
                 <app-aside-filtro 
                 [subcategorisContrato]="subcategorisContrato"
                 [nombreCategoria]="categoriaBusqueda"
+                (emisorSubCategorias)="recibidoSubCategorias($event)"
                 ></app-aside-filtro>
             </div>
             <div id="resultadoBusquedas">
                 <div class="separadoHorizontal">
                     <app-linea-calificacion ></app-linea-calificacion>
-                    <mat-slider min="1" max="5" discrete step ="1"  showTickMarks >
-                        <input  matSliderStartThumb [(ngModel)]="val1"/>
-                        <input  matSliderEndThumb [(ngModel)]="val2"/>
-                      </mat-slider>
-                      {{val1}}-{{val2}}
+                    <div id="rangoElemento">
+                        <label for="mySlider">Rango de Calificacion [{{val1}},{{val2}}]</label>
+                        <mat-slider id="mySlider" min="1" max="5" discrete step ="1"  showTickMarks >
+                            <input  matSliderStartThumb [(ngModel)]="val1"/>
+                            <input  matSliderEndThumb [(ngModel)]="val2"/>
+                        </mat-slider>
+                      
+                    </div>
+                       
                 </div>
                 <!-- Área de Visualización de Gráficos -->
                 <div class="dashboard-graphics">

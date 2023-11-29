@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, HostListener, Input, SimpleChanges } from '@angular/core';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 /**
  * repositorio https://github.com/swimlane/ngx-charts/blob/master/projects/swimlane/ngx-charts/src/lib/common/base-chart.component.ts
@@ -16,7 +16,11 @@ import { Color, ScaleType } from '@swimlane/ngx-charts';
 })
 export class VerticalBarChartComponent {
   @Input() datosGraficos!: datosGrafico[];
-  view: [number, number] = [1000, 300];
+  view: [number, number] = [window.innerWidth * 0.6, window.innerHeight * 0.3];
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.view = [event.target.innerWidth * 0.6, event.target.innerHeight * 0.3];
+  }
 
   // Opciones
   gradient: boolean = true;

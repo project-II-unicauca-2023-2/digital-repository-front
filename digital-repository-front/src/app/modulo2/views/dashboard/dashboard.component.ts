@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdvancedPieChartComponent } from '../../componentBasic/advanced-pie-chart/advanced-pie-chart.component';
 import { PieGridChartComponent } from '../../componentBasic/pie-grid-chart/pie-grid-chart.component';
 import { VerticalBarChartComponent } from '../../componentBasic/vertical-bar-chart/vertical-bar-chart.component';
@@ -8,29 +8,29 @@ import { VerticalBarChartComponent } from '../../componentBasic/vertical-bar-cha
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   subcategorisContrato=["cat1","cat2","cat3","cat4","cat5","cat6","cat7","cat8","cat9","cat10"];
   val1:number=1;
   val2:number=5;
   datosGraficos=[
     {
-      "name": "No Cumple[1,1.5]",
+      "name": "No Cumple[1,1.9]",
       "value": 1000
     },
     {
-      "name": "Minimamente[1.5,2.5)",
+      "name": "Minimamente[2,2.9]",
       "value": 4000000
     },
     {
-      "name": "Parcialmente[2.5,3.5)",
+      "name": "Parcialmente[3,3.9]",
       "value": 7200000
     },
     {
-    "name": "Plenamente[3.5,4.5)",
+    "name": "Plenamente[4,4.9]",
     "value": 3200000
   },
   {
-  "name": "Supera Espectativas[4.5,5]",
+  "name": "Supera Espectativas[5]",
   "value": 9200000
   },
   {
@@ -41,6 +41,9 @@ export class DashboardComponent {
   mostrarTodas: boolean = false;
   constructor(){
     this.categoriaBusqueda="todas"
+  }
+  ngOnInit(): void {
+ 
   }
   mostrarTodasLasGraficas() {
     this.mostrarTodas = !this.mostrarTodas;
@@ -81,7 +84,12 @@ export class DashboardComponent {
   }
   categoriaBusqueda:string="";
   recibidoCategoria(categoriaBusqueda: string){
-    alert("se selecciona categoria:"+categoriaBusqueda);
+    //alert("se selecciona categoria:"+categoriaBusqueda);
     this.categoriaBusqueda=categoriaBusqueda;
+  }
+  recibidoSubCategoria:string[]=this.subcategorisContrato;
+  recibidoSubCategorias(subC:string[]){
+    this.recibidoSubCategoria=subC;
+    console.log(this.recibidoSubCategoria);
   }
 }

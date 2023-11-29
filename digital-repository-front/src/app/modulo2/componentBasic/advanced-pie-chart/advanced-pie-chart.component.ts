@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, HostListener, Input, SimpleChanges } from '@angular/core';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 
 /**
@@ -22,8 +22,11 @@ interface dicCriteria {
 export class AdvancedPieChartComponent {
   @Input() datosGraficos!: datosGrafico[];
  
-  view: [number, number] = [1000, 300];
-
+  view: [number, number] = [window.innerWidth * 0.6, window.innerHeight * 0.3];
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.view = [event.target.innerWidth * 0.6, event.target.innerHeight * 0.3];
+  }
   // options
   gradient: boolean = true;
   showLegend: boolean = true;
