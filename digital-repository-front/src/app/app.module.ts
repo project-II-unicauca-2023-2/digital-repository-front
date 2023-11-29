@@ -80,8 +80,8 @@ import { FooterComponent } from './modulo2/containers/footer/footer.component';
 
 import { MatRadioModule } from '@angular/material/radio';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 import { AdvancedPieChartComponent } from './modulo2/componentBasic/advanced-pie-chart/advanced-pie-chart.component';
+import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 import { BuscarProveedorComponent } from './modulo2/views/calificacion-proveedor/buscar-proveedor/buscar-proveedor.component';
 import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
 import { DashboardComponent } from './modulo2/views/dashboard/dashboard.component';
@@ -94,11 +94,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
 import { DesplegableAniosComponent } from './modulo2/componentBasic/desplegable-anios/desplegable-anios.component';
 import { LineaCalificacionComponent } from './modulo2/componentBasic/linea-calificacion/linea-calificacion.component';
-import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
 import { PieGridChartComponent } from './modulo2/componentBasic/pie-grid-chart/pie-grid-chart.component';
+import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
 
+import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { VerticalBarChartComponent } from './modulo2/componentBasic/vertical-bar-chart/vertical-bar-chart.component';
+import { AsideFiltroComponent } from './modulo2/views/dashboard/aside-filtro/aside-filtro.component';
 
 @NgModule({
   declarations: [
@@ -139,7 +141,8 @@ import { VerticalBarChartComponent } from './modulo2/componentBasic/vertical-bar
     DashboardComponent,
     VerticalBarChartComponent,
     AdvancedPieChartComponent,
-
+    AsideFiltroComponent,
+    
   ],
   imports: [
     
@@ -212,7 +215,8 @@ import { VerticalBarChartComponent } from './modulo2/componentBasic/vertical-bar
     NgxChartsModule,
     MatChipsModule,
     MatSelectModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSliderModule
   ],
   providers: [
     IconSetService,

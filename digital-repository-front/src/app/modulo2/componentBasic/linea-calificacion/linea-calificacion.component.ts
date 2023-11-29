@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class LineaCalificacionComponent {
   //single: any[];
-  view: [number, number] = [300, 300];
+  view: [number, number] = [250, 250];
   value: number = 3.9;
   min: number = 1;
   max: number = 5;

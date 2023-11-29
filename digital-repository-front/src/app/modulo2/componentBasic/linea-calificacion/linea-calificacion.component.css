@@ -10,7 +10,7 @@ ngx-charts-linear-gauge {
 .chart-container {
     display: flex;
     justify-content: center; /* Centra el gráfico horizontalmente */
-    align-items: center; /* Centra el gráfico verticalmente */
+    align-items: flex-end; /* Centra el gráfico verticalmente */
     height: 300px; /* Altura del contenedor */
     padding: 20px; /* Espaciado alrededor del gráfico */
     background-color: #f5f5f5; /* Color de fondo suave */

@@ -1,0 +1,28 @@
+
+<mat-sidenav-container style="background-color:rgba(238.00000101327896, 243.00000071525574, 250.00000029802322, 1);">
+    <mat-card id="contPrincipalAside">
+        <section class="example-section">
+            <span class="example-list-section">
+                <mat-checkbox class="example-margin"
+                              [checked]="allComplete"
+                              [indeterminate]="someComplete()"
+                              (change)="setAll($event.checked)">
+                              <mat-label class="text-2">  Categoria {{tipo.toUpperCase()}}:</mat-label>
+                
+                </mat-checkbox>
+              </span>
+            <span class="example-list-section">
+              <ul>                
+                <li *ngFor="let opciones of tasks; track subtask">
+                    <mat-checkbox [(ngModel)]="opciones.completed"
+                    (ngModelChange)="updateAllComplete()">
+                    {{opciones.name}}
+                    </mat-checkbox>
+                  </li>
+                
+              </ul>
+            </span>
+          </section>
+        
+    </mat-card>
+</mat-sidenav-container>

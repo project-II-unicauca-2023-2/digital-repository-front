@@ -1,5 +1,5 @@
-<mat-chip-listbox aria-label="Fish selection">
-    <mat-chip-option>Servicios</mat-chip-option>
-    <mat-chip-option>Obras</mat-chip-option>
-    <mat-chip-option>Bienes</mat-chip-option>
+<mat-chip-listbox aria-label="Fish selection"  [(ngModel)]="categoria" >
+    <mat-chip-option (click)="emitircategoria()">Servicios</mat-chip-option>
+    <mat-chip-option (click)="emitircategoria()">Obras</mat-chip-option>
+    <mat-chip-option (click)="emitircategoria()">Bienes</mat-chip-option>
   </mat-chip-listbox>

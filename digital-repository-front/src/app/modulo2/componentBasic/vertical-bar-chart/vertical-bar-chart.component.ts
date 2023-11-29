@@ -1,39 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { AppColors } from 'src/colors.config';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
-
+/**
+ * repositorio https://github.com/swimlane/ngx-charts/blob/master/projects/swimlane/ngx-charts/src/lib/common/base-chart.component.ts
+ *opciones:   
+ * ejemplo: https://stackblitz.com/edit/swimlane-pie-chart-advanced?embed=1&file=app/app.component.ts
+ * */
+ export interface datosGrafico {
+  name : string;
+  value : number;
+}
 @Component({
   selector: 'app-vertical-bar-chart',
   templateUrl: './vertical-bar-chart.component.html',
   styleUrls: ['./vertical-bar-chart.component.css']
 })
 export class VerticalBarChartComponent {
-  single = [
-    {
-      "name": "No Cumple[1,1.5]",
-      "value": 1000000
-    },
-    {
-      "name": "Minimamente[1.5,2.5)",
-      "value": 4000000
-    },
-    {
-      "name": "Parcialmente[2.5,3.5)",
-      "value": 7200000
-    },
-    {
-    "name": "Plenamente[3.5,4.5)",
-    "value": 3200000
-  },
-  {
-  "name": "Supera Espectativas[4.5,5]",
-  "value": 9200000
-  },
-  {
-  "name": "SIN CALIFICAR",
-  "value": 6200000
-  }
-  ];
+  @Input() datosGraficos!: datosGrafico[];
   view: [number, number] = [1000, 300];
 
   // Opciones
@@ -55,7 +37,15 @@ export class VerticalBarChartComponent {
 
   constructor() { }
 
-  
+   /**
+   * el metodo se queda escuchndo por si hay cambios poder actulizaar el grafico
+   * @param changes captura cambios
+   */
+   ngOnChanges(changes: SimpleChanges) {
+    if (changes['datosGraficos'] && changes['datosGraficos'].currentValue) {
+      console.log('RECIBIENDO DATOS', this.datosGraficos);
+    }
+  }
 
   onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
