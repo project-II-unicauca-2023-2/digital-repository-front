@@ -16,6 +16,7 @@ import { Color, ScaleType } from '@swimlane/ngx-charts';
 })
 export class PieGridChartComponent {
   @Input() datosGraficos!: datosGrafico[];
+  @Input() coloresGraficos!: string[];
   view: [number, number] = [window.innerWidth * 0.6, window.innerHeight * 0.4];
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -32,7 +33,7 @@ export class PieGridChartComponent {
     name: 'esquemaPersonalizado',
     selectable: true,
     group: ScaleType.Linear,
-    domain: ['#000066', '#9D0311', '#1D72D3', '#1D72D3', '#1D72D3', '#555555']
+    domain: this.coloresGraficos
   };
   
   constructor() {
@@ -45,6 +46,15 @@ export class PieGridChartComponent {
  ngOnChanges(changes: SimpleChanges) {
   if (changes['datosGraficos'] && changes['datosGraficos'].currentValue) {
     console.log('RECIBIENDO DATOS', this.datosGraficos);
+  }
+  if (changes['coloresGraficos'] && changes['coloresGraficos'].currentValue) {
+    console.log('RECIBIENDO DATOS', this.coloresGraficos);
+    this.colorScheme2 = {
+      name: 'esquemaPersonalizado',
+      selectable: true,
+      group: ScaleType.Linear,
+      domain: this.coloresGraficos
+    };
   }
 }
   onSelect(data:any): void {

@@ -7,14 +7,15 @@ import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { SearcContractsComponent } from './components/searc-contracts/searc-contracts.component';
 import { SettingSystemComponent } from './components/setting-system/setting-system.component';
+import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
 import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
 import { DashboardComponent } from './modulo2/views/dashboard/dashboard.component';
+import { TablaContratosRangoComponent } from './modulo2/views/dashboard/tabla-contratos-rango/tabla-contratos-rango.component';
 import { DescargaCalificacionesComponent } from './modulo2/views/descarga-calificaciones/descarga-calificaciones.component';
 import { MostrarDescargarComponent } from './modulo2/views/descarga-calificaciones/mostrar-descargar/mostrar-descargar.component';
 import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
 import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
-import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,9 @@ const routes: Routes = [
     component: Modulo2ComponentComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
+      { path: 'listadoContratistas', 
+        component: TablaContratosRangoComponent 
+        },
       { path: 'subirInfo',component:SubirInfoComponent },
       { path: 'descargaFormato', component: DescargaCalificacionesComponent },
       { path: 'calificacion', component: CalificacionProveedorComponent },

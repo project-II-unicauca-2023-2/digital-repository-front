@@ -80,6 +80,7 @@ import { FooterComponent } from './modulo2/containers/footer/footer.component';
 
 import { MatRadioModule } from '@angular/material/radio';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AdvancedPieChartComponent } from './modulo2/componentBasic/advanced-pie-chart/advanced-pie-chart.component';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
 import { BuscarProveedorComponent } from './modulo2/views/calificacion-proveedor/buscar-proveedor/buscar-proveedor.component';
@@ -101,6 +102,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { VerticalBarChartComponent } from './modulo2/componentBasic/vertical-bar-chart/vertical-bar-chart.component';
 import { AsideFiltroComponent } from './modulo2/views/dashboard/aside-filtro/aside-filtro.component';
+import { TablaContratosRangoComponent } from './modulo2/views/dashboard/tabla-contratos-rango/tabla-contratos-rango.component';
 
 @NgModule({
   declarations: [
@@ -142,6 +144,7 @@ import { AsideFiltroComponent } from './modulo2/views/dashboard/aside-filtro/asi
     VerticalBarChartComponent,
     AdvancedPieChartComponent,
     AsideFiltroComponent,
+    TablaContratosRangoComponent,
     
   ],
   imports: [
@@ -216,7 +219,17 @@ import { AsideFiltroComponent } from './modulo2/views/dashboard/aside-filtro/asi
     MatChipsModule,
     MatSelectModule,
     MatToolbarModule,
-    MatSliderModule
+    MatSliderModule,
+    CommonModule,
+    BrowserModule,
+    AppRoutingModule,
+    NgxDatatableModule.forRoot({
+      messages: {
+        emptyMessage: 'No data to display', // Message to show when array is presented, but contains no values
+        totalMessage: 'total', // Footer total message
+        selectedMessage: 'selected' // Footer selected message
+      }
+    })
   ],
   providers: [
     IconSetService,

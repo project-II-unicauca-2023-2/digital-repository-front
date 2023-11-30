@@ -16,6 +16,7 @@ import { Color, ScaleType } from '@swimlane/ngx-charts';
 })
 export class VerticalBarChartComponent {
   @Input() datosGraficos!: datosGrafico[];
+  @Input() coloresGraficos!: string[];
   view: [number, number] = [window.innerWidth * 0.6, window.innerHeight * 0.3];
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -31,11 +32,12 @@ export class VerticalBarChartComponent {
   showYAxisLabel = true;
   yAxisLabel = 'Valor';
 
+ 
   colorScheme2: Color = {
     name: 'esquemaPersonalizado',
     selectable: true,
     group: ScaleType.Linear,
-    domain: ['#000066', '#9D0311', '#1D72D3', '#1D72D3', '#1D72D3', '#555555']
+    domain: this.coloresGraficos
   };
   
 
@@ -48,6 +50,14 @@ export class VerticalBarChartComponent {
    ngOnChanges(changes: SimpleChanges) {
     if (changes['datosGraficos'] && changes['datosGraficos'].currentValue) {
       console.log('RECIBIENDO DATOS', this.datosGraficos);
+    } if (changes['coloresGraficos'] && changes['coloresGraficos'].currentValue) {
+      console.log('RECIBIENDO DATOS', this.coloresGraficos);
+      this.colorScheme2 = {
+        name: 'esquemaPersonalizado',
+        selectable: true,
+        group: ScaleType.Linear,
+        domain: this.coloresGraficos
+      };
     }
   }
 

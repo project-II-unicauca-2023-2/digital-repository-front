@@ -1,0 +1,56 @@
+<div id="contTable">
+    <content>        
+        <div>
+          
+          <ngx-datatable
+            #mydatatable
+            class="material"
+            [headerHeight]="50"
+            [limit]="5"
+            [columnMode]="ColumnMode.force"
+            [footerHeight]="50"
+            rowHeight="auto"
+            [rows]="rows"
+          >
+          <ngx-datatable-column name="id">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+              <span
+                title="Click to edit"
+              >
+                {{ value }}
+              </span>
+            </ng-template>
+          </ngx-datatable-column>
+            <ngx-datatable-column name="nombre">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                <span
+                  title="Click to edit"
+                >
+                  {{ value }}
+                </span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="contratosAnio">
+                <ng-template ngx-datatable-cell-template let-value="value">
+                  {{ value }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="contratosPromedioAnio">
+                <ng-template ngx-datatable-cell-template let-value="value">
+                  {{ value }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="contratosTotales">
+                <ng-template ngx-datatable-cell-template let-value="value">
+                  {{ value }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="contratosPromedioTotal">
+                <ng-template ngx-datatable-cell-template let-value="value">
+                  {{ value }}
+                </ng-template>
+              </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </content>
+</div>

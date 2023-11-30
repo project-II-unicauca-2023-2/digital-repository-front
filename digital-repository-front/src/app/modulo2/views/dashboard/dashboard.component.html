@@ -47,18 +47,29 @@
                 <!-- Área de Visualización de Gráficos -->
                 <div class="dashboard-graphics">
                     <div *ngIf="mostrarTodas || graficoSeleccionado === 'pie-grid'">
-                        <app-pie-grid-chart [datosGraficos]="datosGraficos"></app-pie-grid-chart>
+                        <app-pie-grid-chart [datosGraficos]="datosGraficos"
+                        [coloresGraficos]="coloresGraficos"></app-pie-grid-chart>
                     </div>
                 
                     <div *ngIf="mostrarTodas || graficoSeleccionado === 'avanzado'">
-                        <app-advanced-pie-chart [datosGraficos]="datosGraficos"></app-advanced-pie-chart>
+                        <app-advanced-pie-chart 
+                        [datosGraficos]="datosGraficos"
+                        [coloresGraficos]="coloresGraficos"
+                        
+                        ></app-advanced-pie-chart>
                     </div>
                 
                     <div *ngIf="mostrarTodas || graficoSeleccionado === 'barras'">
-                        <app-vertical-bar-chart [datosGraficos]="datosGraficos"></app-vertical-bar-chart>
+                        <app-vertical-bar-chart [datosGraficos]="datosGraficos"
+                        [coloresGraficos]="coloresGraficos"></app-vertical-bar-chart>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+...
+
+
+  

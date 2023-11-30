@@ -1,4 +1,5 @@
 import { Component, HostListener, Input, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 
 /**
@@ -21,6 +22,7 @@ interface dicCriteria {
 })
 export class AdvancedPieChartComponent {
   @Input() datosGraficos!: datosGrafico[];
+  @Input() coloresGraficos!: string[];
  
   view: [number, number] = [window.innerWidth * 0.6, window.innerHeight * 0.3];
   @HostListener('window:resize', ['$event'])
@@ -37,10 +39,10 @@ export class AdvancedPieChartComponent {
     name: 'esquemaPersonalizado',
     selectable: true,
     group: ScaleType.Linear,
-    domain: ['#000066', '#9D0311', '#1D72D3', '#1D72D3', '#1D72D3', '#555555']
+    domain: this.coloresGraficos
   };
   
-  constructor() {
+  constructor(private ruta: Router) {
     //Object.assign(this, { single });
   }
   /**
@@ -51,9 +53,19 @@ export class AdvancedPieChartComponent {
     if (changes['datosGraficos'] && changes['datosGraficos'].currentValue) {
       console.log('RECIBIENDO DATOS', this.datosGraficos);
     }
+    if (changes['coloresGraficos'] && changes['coloresGraficos'].currentValue) {
+      console.log('RECIBIENDO DATOS', this.coloresGraficos);
+      this.colorScheme2 = {
+        name: 'esquemaPersonalizado',
+        selectable: true,
+        group: ScaleType.Linear,
+        domain: this.coloresGraficos
+      };
+    }
   }
   onSelect(data:any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+    this.ruta.navigate(['/homePage/listadoContratistas']);
   }
 
   onActivate(data:any): void {
