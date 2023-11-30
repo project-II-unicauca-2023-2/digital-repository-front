@@ -13,7 +13,7 @@
               </span>
             <span class="example-list-section">
               <ul>                
-                <li *ngFor="let opciones of tasks; track subtask">
+                <li *ngFor="let opciones of tasks">
                     <mat-checkbox [(ngModel)]="opciones.completed"
                     (ngModelChange)="updateAllComplete(); emitirCat()">
                     {{opciones.name}}

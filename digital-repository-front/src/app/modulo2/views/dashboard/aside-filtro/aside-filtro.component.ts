@@ -30,7 +30,8 @@ export class AsideFiltroComponent implements OnInit {
       
     }
     if (changes['subcategorisContrato'] && changes['subcategorisContrato'].currentValue) {
-      this.seleccionarTodo();      
+      this.seleccionarTodo();
+      //alert("ppp");      
       this.tasks= this.convertToTasks(this.subcategorisContrato);
       
     }
@@ -42,7 +43,7 @@ export class AsideFiltroComponent implements OnInit {
    convertToTasks(subcategories: string[]): Task[] {
     return subcategories.map(subcategory => ({
       name: subcategory,
-      completed: false
+      completed: true
     }));
   }
   updateAllComplete() {

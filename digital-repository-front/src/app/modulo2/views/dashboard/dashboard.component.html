@@ -33,7 +33,10 @@
             </div>
             <div id="resultadoBusquedas">
                 <div class="separadoHorizontal">
-                    <app-linea-calificacion ></app-linea-calificacion>
+                    <app-linea-calificacion 
+                    [nombreCategoria]="categoriaBusqueda"
+                    [promedioCategoriaContrato]="promedioCategoriaContrato"
+                    ></app-linea-calificacion>
                     <div id="rangoElemento">
                         <label for="mySlider">Rango de Calificacion [{{val1}},{{val2}}]</label>
                         <mat-slider id="mySlider" min="1" max="5" discrete step ="1"  showTickMarks >
