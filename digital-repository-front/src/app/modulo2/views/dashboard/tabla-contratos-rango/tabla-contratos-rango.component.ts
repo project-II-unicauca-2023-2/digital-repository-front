@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CriptoService } from 'src/app/modulo2/services/cripto/cripto.service';
 export enum ColumnMode {
   standard = 'standard',
   flex = 'flex',
@@ -18,7 +20,7 @@ interface UserData {
   templateUrl: './tabla-contratos-rango.component.html',
   styleUrls: ['./tabla-contratos-rango.component.css']
 })
-export class TablaContratosRangoComponent {
+export class TablaContratosRangoComponent implements OnInit {
   /***********************************************MOVER */
   DATOS:UserData[]=[
     {
@@ -295,7 +297,18 @@ export class TablaContratosRangoComponent {
     rows: UserData[] = [];
   
     ColumnMode = ColumnMode;
-    constructor(){
+    constructor(private route: ActivatedRoute , private encripta:CriptoService){
       this.rows = [...this.DATOS];
+    }
+    ngOnInit() {
+      this.route.queryParams.subscribe(params => {
+        const parametrosCodificados = params['iD'];
+      
+        if (parametrosCodificados) {
+          const valoresDecodificados = this.encripta.decryptArray(parametrosCodificados,"unicauca#1927");
+      
+          console.log(valoresDecodificados); // Obtendrás los valores originales
+        }
+      });
     }
 }

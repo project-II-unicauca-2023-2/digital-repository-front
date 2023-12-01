@@ -1,6 +1,7 @@
 import { Component, HostListener, Input, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
+import { CriptoService } from '../../services/cripto/cripto.service';
 
 /**
  * repositorio https://github.com/swimlane/ngx-charts/blob/master/projects/swimlane/ngx-charts/src/lib/common/base-chart.component.ts
@@ -23,6 +24,7 @@ interface dicCriteria {
 export class AdvancedPieChartComponent {
   @Input() datosGraficos!: datosGrafico[];
   @Input() coloresGraficos!: string[];
+  identidades=["1","2","3"];
  
   view: [number, number] = [window.innerWidth * 0.6, window.innerHeight * 0.3];
   @HostListener('window:resize', ['$event'])
@@ -42,7 +44,7 @@ export class AdvancedPieChartComponent {
     domain: this.coloresGraficos
   };
   
-  constructor(private ruta: Router) {
+  constructor(private ruta: Router, private encriptacion:CriptoService) {
     //Object.assign(this, { single });
   }
   /**
@@ -65,7 +67,11 @@ export class AdvancedPieChartComponent {
   }
   onSelect(data:any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-    this.ruta.navigate(['/homePage/listadoContratistas']);
+    // Codificar los valores antes de navegar
+    //const valoresCodificados = this.identidades.map(valor => btoa(valor));
+    const valoresCodificados = this.encriptacion.encryptArray(this.identidades,"unicauca#1927");
+    this.ruta.navigate(['/homePage/listadoContratistas'], { queryParams: { iD: valoresCodificados } });
+    //this.ruta.navigate(['/homePage/listadoContratistas']);
   }
 
   onActivate(data:any): void {

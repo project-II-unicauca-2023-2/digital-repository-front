@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   val1:number=0;/**valor filtro rango inferior */
   val2:number=5;/** valor filtro rango superior*/
   coloresGraficos=['#9D0311','#45006D',  '#000066', '#1D72D3', '#6AB3E9', '#555555'];
+  coloresEnviar:string[];
   datosGraficar!:datosGrafico[];
   datosGraficos=[
     {
@@ -52,6 +53,7 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService: DasboardService){
 
     this.categoriaBusqueda="todas"
+    this.coloresEnviar=this.coloresGraficos;
   }
   ngOnInit(): void {
     this.promedioCategoriaContrato=this.dashboardService.getPromediosTotales();
@@ -128,10 +130,14 @@ export class DashboardComponent implements OnInit {
     }
 
   }
+  hola="te sakudi";
   /**
    * al cambiar los datosGraficar se refresca la grafica por que obtiene nuevos datos
    */
   refrescoGrafica(){
+    let indicePrimerColor=this.coloresGraficos.length-this.val2;//cuando necesitamos el color para el valor mas alto esta en la posicion cero 
+    let indiceUltimoColor=this.coloresGraficos.length-this.val1;//cuando necesitamos el color para el valor mas vajo es contado desde la ultima posicion
+    this.coloresEnviar=this.coloresGraficos.slice(indicePrimerColor-1, indiceUltimoColor+ 1);
     switch (this.categoriaBusqueda) {
       case 'obras':
         this.datosGraficar=this.transformarDatos(this.dashboardService.getDatosObras());

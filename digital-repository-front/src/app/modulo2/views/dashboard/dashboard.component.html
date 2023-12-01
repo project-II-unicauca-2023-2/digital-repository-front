@@ -1,3 +1,4 @@
+
 <div id="cuerpo">
    
     <!-- Contenedor Principal del Dashboard -->
@@ -38,7 +39,7 @@
                     [promedioCategoriaContrato]="promedioCategoriaContrato"
                     ></app-linea-calificacion>
                     <div id="rangoElemento">
-                        <label for="mySlider">Rango de Calificacion [{{val1}},{{val2}}]</label>
+                        <label for="mySlider" >Rango de Calificacion [{{val1}},{{val2}}]</label>
                         <mat-slider id="mySlider" min="0" max="5" discrete step ="1"  showTickMarks >
                             <input  matSliderStartThumb [(ngModel)]="val1"(input)="refrescoGrafica()"/>
                             <input  matSliderEndThumb [(ngModel)]="val2" (input)="refrescoGrafica()"/>
@@ -51,20 +52,20 @@
                 <div class="dashboard-graphics">
                     <div *ngIf="mostrarTodas || graficoSeleccionado === 'pie-grid'">
                         <app-pie-grid-chart [datosGraficos]="datosGraficar"
-                        [coloresGraficos]="coloresGraficos"></app-pie-grid-chart>
+                        [coloresGraficos]="coloresEnviar"></app-pie-grid-chart>
                     </div>
                 
                     <div *ngIf="mostrarTodas || graficoSeleccionado === 'avanzado'">
                         <app-advanced-pie-chart 
                         [datosGraficos]="datosGraficar"
-                        [coloresGraficos]="coloresGraficos"
+                        [coloresGraficos]="coloresEnviar"
                         
                         ></app-advanced-pie-chart>
                     </div>
                 
                     <div *ngIf="mostrarTodas || graficoSeleccionado === 'barras'">
                         <app-vertical-bar-chart [datosGraficos]="datosGraficar"
-                        [coloresGraficos]="coloresGraficos"></app-vertical-bar-chart>
+                        [coloresGraficos]="coloresEnviar"></app-vertical-bar-chart>
                     </div>
                 </div>
             </div>

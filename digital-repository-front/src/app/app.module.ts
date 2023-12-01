@@ -78,31 +78,30 @@ import { SharedModuleModule } from './shared-module/shared-module.module';
 
 import { FooterComponent } from './modulo2/containers/footer/footer.component';
 
+import { MatChipsModule } from '@angular/material/chips';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AdvancedPieChartComponent } from './modulo2/componentBasic/advanced-pie-chart/advanced-pie-chart.component';
+import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
+import { DesplegableAniosComponent } from './modulo2/componentBasic/desplegable-anios/desplegable-anios.component';
 import { DialogSiNoComponent } from './modulo2/componentBasic/dialog-si-no/dialog-si-no.component';
+import { LineaCalificacionComponent } from './modulo2/componentBasic/linea-calificacion/linea-calificacion.component';
+import { PieGridChartComponent } from './modulo2/componentBasic/pie-grid-chart/pie-grid-chart.component';
+import { VerticalBarChartComponent } from './modulo2/componentBasic/vertical-bar-chart/vertical-bar-chart.component';
+import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
 import { BuscarProveedorComponent } from './modulo2/views/calificacion-proveedor/buscar-proveedor/buscar-proveedor.component';
 import { CalificacionProveedorComponent } from './modulo2/views/calificacion-proveedor/calificacion-proveedor.component';
+import { AsideFiltroComponent } from './modulo2/views/dashboard/aside-filtro/aside-filtro.component';
 import { DashboardComponent } from './modulo2/views/dashboard/dashboard.component';
+import { TablaContratosRangoComponent } from './modulo2/views/dashboard/tabla-contratos-rango/tabla-contratos-rango.component';
 import { DescargaCalificacionesComponent } from './modulo2/views/descarga-calificaciones/descarga-calificaciones.component';
 import { MostrarDescargarComponent } from './modulo2/views/descarga-calificaciones/mostrar-descargar/mostrar-descargar.component';
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
-
-import { MatChipsModule } from '@angular/material/chips';
-import { MatSelectModule } from '@angular/material/select';
-import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
-import { DesplegableAniosComponent } from './modulo2/componentBasic/desplegable-anios/desplegable-anios.component';
-import { LineaCalificacionComponent } from './modulo2/componentBasic/linea-calificacion/linea-calificacion.component';
-import { PieGridChartComponent } from './modulo2/componentBasic/pie-grid-chart/pie-grid-chart.component';
-import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
-
-import { MatSliderModule } from '@angular/material/slider';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { VerticalBarChartComponent } from './modulo2/componentBasic/vertical-bar-chart/vertical-bar-chart.component';
-import { AsideFiltroComponent } from './modulo2/views/dashboard/aside-filtro/aside-filtro.component';
-import { TablaContratosRangoComponent } from './modulo2/views/dashboard/tabla-contratos-rango/tabla-contratos-rango.component';
 
 @NgModule({
   declarations: [
@@ -229,7 +228,8 @@ import { TablaContratosRangoComponent } from './modulo2/views/dashboard/tabla-co
         totalMessage: 'total', // Footer total message
         selectedMessage: 'selected' // Footer selected message
       }
-    })
+    }),
+    MatTooltipModule,
   ],
   providers: [
     IconSetService,
