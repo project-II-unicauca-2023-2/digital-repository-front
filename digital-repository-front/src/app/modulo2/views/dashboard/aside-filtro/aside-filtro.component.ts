@@ -18,6 +18,7 @@ export class AsideFiltroComponent implements OnInit {
   tipo=this.nombreCategoria;
   ngOnInit() {
     this.seleccionarTodo();
+    this.emisorSubCategorias.emit(this.tareasActivas());
   }
   seleccionarTodo(){
     this.tasks.forEach(opcion => opcion.completed = true);
@@ -35,6 +36,7 @@ export class AsideFiltroComponent implements OnInit {
       this.tasks= this.convertToTasks(this.subcategorisContrato);
       
     }
+    this.emisorSubCategorias.emit(this.tareasActivas());
   }
   
   tasks: Task[] = [];

@@ -39,9 +39,9 @@
                     ></app-linea-calificacion>
                     <div id="rangoElemento">
                         <label for="mySlider">Rango de Calificacion [{{val1}},{{val2}}]</label>
-                        <mat-slider id="mySlider" min="1" max="5" discrete step ="1"  showTickMarks >
-                            <input  matSliderStartThumb [(ngModel)]="val1"/>
-                            <input  matSliderEndThumb [(ngModel)]="val2"/>
+                        <mat-slider id="mySlider" min="0" max="5" discrete step ="1"  showTickMarks >
+                            <input  matSliderStartThumb [(ngModel)]="val1"(input)="refrescoGrafica()"/>
+                            <input  matSliderEndThumb [(ngModel)]="val2" (input)="refrescoGrafica()"/>
                         </mat-slider>
                       
                     </div>
@@ -50,20 +50,20 @@
                 <!-- Área de Visualización de Gráficos -->
                 <div class="dashboard-graphics">
                     <div *ngIf="mostrarTodas || graficoSeleccionado === 'pie-grid'">
-                        <app-pie-grid-chart [datosGraficos]="datosGraficos"
+                        <app-pie-grid-chart [datosGraficos]="datosGraficar"
                         [coloresGraficos]="coloresGraficos"></app-pie-grid-chart>
                     </div>
                 
                     <div *ngIf="mostrarTodas || graficoSeleccionado === 'avanzado'">
                         <app-advanced-pie-chart 
-                        [datosGraficos]="datosGraficos"
+                        [datosGraficos]="datosGraficar"
                         [coloresGraficos]="coloresGraficos"
                         
                         ></app-advanced-pie-chart>
                     </div>
                 
                     <div *ngIf="mostrarTodas || graficoSeleccionado === 'barras'">
-                        <app-vertical-bar-chart [datosGraficos]="datosGraficos"
+                        <app-vertical-bar-chart [datosGraficos]="datosGraficar"
                         [coloresGraficos]="coloresGraficos"></app-vertical-bar-chart>
                     </div>
                 </div>
