@@ -1,0 +1,8 @@
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ajusta la altura según sea necesario */
+  width: 400px;
+  padding: 20px;
+}

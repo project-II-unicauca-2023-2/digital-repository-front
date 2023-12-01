@@ -9,6 +9,7 @@ import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angul
 import { Modality } from 'src/app/class/models/Modality';
 import { ContractType } from 'src/app/class/models/ContractType';
 import { ThisReceiver } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-consulta-contratos',
@@ -58,6 +59,7 @@ export class ConsultaContratosComponent {
 
   constructor(
     private contractService: ContractService,
+    private ruta: Router
 
   ) {
 
@@ -238,10 +240,8 @@ export class ConsultaContratosComponent {
     }
   }
 
-  setIdContract(id: number) {
-    this.contractService.setSelectedContractId(id);
-    localStorage.setItem('id', id.toString())
-    this.checkedContract.emit(id)
+  setIdContract(id: string, anio : Date) {
+    this.ruta.navigate(["homePage/Evaluacion",id,anio]);
   }
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
