@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SelectionType } from '@swimlane/ngx-datatable';
 import { CriptoService } from 'src/app/modulo2/services/cripto/cripto.service';
 export enum ColumnMode {
   standard = 'standard',
@@ -297,6 +298,9 @@ export class TablaContratosRangoComponent implements OnInit {
     rows: UserData[] = [];
     anioTitulo!:string;
     ColumnMode = ColumnMode;
+    selected = [];
+    SelectionType = SelectionType;
+
     constructor(private route: ActivatedRoute , private encripta:CriptoService){
       this.rows = [...this.DATOS];
     }
@@ -312,4 +316,14 @@ export class TablaContratosRangoComponent implements OnInit {
         }
       });
     }
+    
+ 
+    
+  onSelect( selected :any) {
+    alert("redireccion con valores:"+JSON.stringify(selected.selected[0]));
+  }
+
+  onActivate(event:any) {
+    console.log('Activate Event', event.row);
+  }
 }

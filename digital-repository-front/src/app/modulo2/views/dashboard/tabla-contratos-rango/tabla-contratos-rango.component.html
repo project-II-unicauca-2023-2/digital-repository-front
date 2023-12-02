@@ -6,12 +6,16 @@
           <ngx-datatable
             #mydatatable
             class="material"
-            [headerHeight]="50"
+            [headerHeight]="50" 
             [limit]="5"
             [columnMode]="ColumnMode.force"
             [footerHeight]="50"
             rowHeight="auto"
             [rows]="rows"
+            [selected]="selected"
+            [selectionType]="SelectionType.single"
+            (activate)="onActivate($event)"
+            (select)="onSelect($event)"
           >
           <!--<ngx-datatable-column name="id">
             <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
