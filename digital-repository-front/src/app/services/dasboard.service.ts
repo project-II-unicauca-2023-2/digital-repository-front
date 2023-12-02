@@ -35,48 +35,48 @@ export class DasboardService {
         rangoScore:"SuperaEspectativas[5]",
         score:5,
         cantidad:22,
-        idContratos:["1","2"]
+        idContratos:["a1","a2"]
       },
       {
         nombreSubCatContrato:"Prestación de servicios",
         rangoScore: "Plenante[4,4.9]",
         score:4,
         cantidad:34,
-        idContratos:["1","2"]
+        idContratos:["s1","s2"]
       }, 
       {
         nombreSubCatContrato:"Prestación de servicios",
         rangoScore:"Parcialmente[3,3.9]",
         score:3,
         cantidad:12,
-        idContratos:["1","2"]
+        idContratos:["d1","d2"]
       },{
         nombreSubCatContrato:"Prestación de servicios",
         rangoScore: "Minimamente[2,2.9]",
         score:2,
         cantidad:22,
-        idContratos:["1","2"]
+        idContratos:["f1","f2"]
       },
       {
         nombreSubCatContrato:"Prestación de servicios",
         rangoScore:"No Cumple[1,1.9]",
         score:1,
         cantidad:34,
-        idContratos:["1","2"]
+        idContratos:["g1","g2"]
       }, 
       {
         nombreSubCatContrato:"Prestación de servicios",
         rangoScore:"NoCalificado",
         score:0,
         cantidad:66,
-        idContratos:["1","2"]
+        idContratos:["h1","h2"]
       },
       {
         nombreSubCatContrato: "Aprendizaje",
         rangoScore:"SuperaEspectativas[5]",
         score:5,
         cantidad: 34,
-        idContratos: ["1", "2"]
+        idContratos: ["j1", "j2"]
       },
       {
         nombreSubCatContrato: "Aprendizaje",

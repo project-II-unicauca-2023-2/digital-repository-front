@@ -295,7 +295,7 @@ export class TablaContratosRangoComponent implements OnInit {
   ]
     editing = {};
     rows: UserData[] = [];
-  
+    anioTitulo!:string;
     ColumnMode = ColumnMode;
     constructor(private route: ActivatedRoute , private encripta:CriptoService){
       this.rows = [...this.DATOS];
@@ -303,11 +303,12 @@ export class TablaContratosRangoComponent implements OnInit {
     ngOnInit() {
       this.route.queryParams.subscribe(params => {
         const parametrosCodificados = params['iD'];
-      
+        this.anioTitulo = params['anio'];
+        //alert("anio es"+this.anioTitulo)
         if (parametrosCodificados) {
           const valoresDecodificados = this.encripta.decryptArray(parametrosCodificados,"unicauca#1927");
       
-          console.log(valoresDecodificados); // Obtendrás los valores originales
+          console.log("Valores pasados url"+valoresDecodificados); // Obtendrás los valores originales
         }
       });
     }

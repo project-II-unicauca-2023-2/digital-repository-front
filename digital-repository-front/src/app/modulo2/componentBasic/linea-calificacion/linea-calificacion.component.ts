@@ -22,7 +22,7 @@ export class LineaCalificacionComponent {
   previousValue: number = 5;
 
   onSelect(event:any) {
-    console.log(event);
+    //console.log(event);
   }
   ngOnChanges(changes: SimpleChanges) {
     if (changes['nombreCategoria'] && changes['nombreCategoria'].currentValue) {

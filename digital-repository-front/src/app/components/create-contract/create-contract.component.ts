@@ -1,21 +1,13 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import {
-  MatDialog,
-  MatDialogRef,
-  MatDialogModule,
-} from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
+import { Contract } from 'src/app/class/contract';
 import { ContractType } from 'src/app/class/models/ContractType';
 import { Modality } from 'src/app/class/models/Modality';
-import { ContractService } from 'src/app/services/contract.service';
-import { Contract } from 'src/app/class/contract';
-import { DatePipe } from '@angular/common';
 import { modalityContractType } from 'src/app/class/models/ModalityContractType';
-import { MatStepper } from '@angular/material/stepper';
-import { Fila } from 'src/app/class/models/Fila';
-import { CheckList } from 'src/app/class/CheckList';
+import { ContractService } from 'src/app/services/contract.service';
 
 import { ToastrService } from 'ngx-toastr';
 import { responseDocument } from 'src/app/class/models/responseDocument';
@@ -104,21 +96,21 @@ export class CreateContractComponent implements OnInit {
         this.newContract.modalityId
       )
       .subscribe((response) => {
-        console.log('Del servicio ', response);
+        //console.log('Del servicio ', response);
         this.modalityContractType = response.data.data as modalityContractType[];
       });
   }
   //method return 1 Modality
   public loadModalityType() {
     this.contractService.getModalityType().subscribe((response) => {
-      console.log('Del servicio tipos modalidad ', response);
+      //console.log('Del servicio tipos modalidad ', response);
       this.modalityTypes = response.data.data as Modality[];
     });
   }
   //method return 1 ContractType
   public loadContractType() {
     this.contractService.getContractType().subscribe((response) => {
-      console.log('Del servicio tipos contracto', response);
+      //console.log('Del servicio tipos contracto', response);
       this.contractsType = response.data.data as ContractType[];
     });
   }
@@ -186,10 +178,10 @@ export class CreateContractComponent implements OnInit {
     this.newContract.status = 'ACTIVO';
     this.newContract.subject = this.myForm.value.ncSubject;
     this.newContract.vendor = this.myForm.value.ncVendor;
-    console.log('Nuevo Contrato ModalityType' + this.newContract.modalityId);
-    console.log(
-      'Nuevo Contrato contractType' + this.newContract.contractTypeId
-    );
+    //console.log('Nuevo Contrato ModalityType' + this.newContract.modalityId);
+    //console.log(
+    //  'Nuevo Contrato contractType' + this.newContract.contractTypeId
+    //);
     this.newContract.modalityId = this.myForm.value.ncModalityType;
     this.newContract.contractTypeId = this.myForm.value.ncContractType;
   }
@@ -215,7 +207,7 @@ export class CreateContractComponent implements OnInit {
             const id = res.data.id
             this.newContract.id= id
             this.contractService.setSelectedContractId(id);
-            console.log(this.newContract)
+            //console.log(this.newContract)
             this.toastrSvc.success('Contrato agregado Correctamente', '');
             this.moveToNextStep();
           }

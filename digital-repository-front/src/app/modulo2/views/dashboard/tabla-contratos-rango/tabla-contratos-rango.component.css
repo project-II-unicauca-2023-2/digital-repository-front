@@ -4,3 +4,10 @@
     padding-top: 10vh;
     /**background-color: red;**/
 }
+#centrar{
+    width: 100%;
+    display: flex;
+    align-items: center;     /* Alinea los elementos verticalmente en el centro */
+    justify-content: center; /*Alinea en el centro de la pantalla*/
+    padding-bottom: 3%;
+}

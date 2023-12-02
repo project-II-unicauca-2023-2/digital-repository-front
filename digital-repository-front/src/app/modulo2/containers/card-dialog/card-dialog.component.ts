@@ -98,7 +98,7 @@ export class CardDialogComponent implements  OnChanges, OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // Aquí manejamos el resultado
-        console.log('Se recibe el Resultado: ', result);
+        //console.log('Se recibe el Resultado: ', result);
         if (result === true) {
           let valoresCalificaciones: listCriteriaRate[] = [...this.seleccionadoRadioTodos];
           valoresCalificaciones[valoresCalificaciones.length-1].rate=this.seleccionadoRadio;
@@ -111,7 +111,7 @@ export class CardDialogComponent implements  OnChanges, OnInit {
             listCriteriaRate: valoresCalificaciones, // Puedes llenar este array con más instancias según sea necesario
             prmContractParams:this.numContrato
           };
-          console.log("CALIFICACIONES ENVIAR"+JSON.stringify(calificacionEnviada));
+          //console.log("CALIFICACIONES ENVIAR"+JSON.stringify(calificacionEnviada));
           this.servicioCriterios.addCalificaciones(calificacionEnviada).subscribe(
             {
               next: (res)=>{

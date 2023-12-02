@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PeriodicElement } from 'src/app/class/models/PeriodicElement';
 import { ContractService } from 'src/app/services/contract.service';
 
@@ -32,6 +32,6 @@ export class BuscarContratosComponent {
   }
 
   onCheckedContract(idContract : number){
-    console.log(idContract)
+    //console.log(idContract)
   }
 }

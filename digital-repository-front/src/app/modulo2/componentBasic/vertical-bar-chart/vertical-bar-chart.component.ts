@@ -1,5 +1,5 @@
 import { Component, HostListener, Input, SimpleChanges } from '@angular/core';
-import { Color, ScaleType } from '@swimlane/ngx-charts';
+import { Color, DataItem, ScaleType } from '@swimlane/ngx-charts';
 /**
  * repositorio https://github.com/swimlane/ngx-charts/blob/master/projects/swimlane/ngx-charts/src/lib/common/base-chart.component.ts
  *opciones:   
@@ -15,7 +15,7 @@ import { Color, ScaleType } from '@swimlane/ngx-charts';
   styleUrls: ['./vertical-bar-chart.component.css']
 })
 export class VerticalBarChartComponent {
-  @Input() datosGraficos!: datosGrafico[];
+  @Input() datosGraficos!: DataItem[];
   @Input() coloresGraficos!: string[];
   view: [number, number] = [window.innerWidth * 0.6, window.innerHeight * 0.3];
   @HostListener('window:resize', ['$event'])
@@ -49,9 +49,9 @@ export class VerticalBarChartComponent {
    */
    ngOnChanges(changes: SimpleChanges) {
     if (changes['datosGraficos'] && changes['datosGraficos'].currentValue) {
-      console.log('RECIBIENDO DATOS', this.datosGraficos);
+      //console.log('RECIBIENDO DATOS', this.datosGraficos);
     } if (changes['coloresGraficos'] && changes['coloresGraficos'].currentValue) {
-      console.log('RECIBIENDO DATOS', this.coloresGraficos);
+      //console.log('RECIBIENDO DATOS', this.coloresGraficos);
       this.colorScheme2 = {
         name: 'esquemaPersonalizado',
         selectable: true,

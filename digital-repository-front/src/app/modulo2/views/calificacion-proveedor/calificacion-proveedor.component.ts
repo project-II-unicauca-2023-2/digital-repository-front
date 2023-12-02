@@ -87,7 +87,7 @@ export class CalificacionProveedorComponent implements OnInit {
 
   recibidoIdContratoValido(contrato: idContrato) {
     this.actualizarCriterios(contrato);
-    console.log("Contrato recibido: ", contrato.mascara);
+    //console.log("Contrato recibido: ", contrato.mascara);
     this.numContrato=contrato;
     this.indexVistaActual=this.indexVistaActual+1
   }
@@ -110,7 +110,7 @@ export class CalificacionProveedorComponent implements OnInit {
   ingresarCalificacionCriterio(calificado:number, indice:number){
     //console.log("calificacionResivida en servicio"+calificado+" para criterio '"+this.tiles[indice].criterio+"'");
     this.calificacionesHechas[indice].rate=calificado;
-    console.log(JSON.stringify(this.calificacionesHechas, null, 2));
+    //console.log(JSON.stringify(this.calificacionesHechas, null, 2));
     //this.calificacionesArray[indice]=calificado
     //alert(this.calificacionesArray);
   }
