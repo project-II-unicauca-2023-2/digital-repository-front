@@ -1,0 +1,61 @@
+.Fondo { 
+	background-color:rgba(238.00000101327896, 243.00000071525574, 250.00000029802322, 1);
+	width:100%;
+	height:720px;
+	position:relative;
+}
+
+.Dropzone { 
+	background-color:#BDC3C7;
+	border: 3px solid gray;
+	opacity:0.15000000596046448;
+	width:520px;
+	height:420px;
+	position:relative;
+	left:800px;
+	top:150px;
+	border-radius:9px;
+}
+
+.Titulo { 
+	color:rgba(0, 0, 102.00000151991844, 1);
+	width:423px;
+	height:67px;
+	position:relative;
+	left:210px;
+	top:50px;
+	font-family:sans-serif;
+	text-align:center;
+	font-size:44px;
+	letter-spacing:0;
+}
+
+.redLine {
+	height:5px;
+	width:20%;
+	background-color: red;
+	left:210px;
+	top:55px;
+	position: relative;
+  }
+.Informacion { 
+	color:rgba(0, 0, 0, 1);
+	width:800px;
+	height:48px;
+	position:relative;
+	left:210px;
+	top:80px;
+	font-family:sans-serif;
+	text-align:left;
+	font-size:18px;
+	letter-spacing:0;
+}
+
+.grayLine {
+	height:2px;
+	width:75%;
+	background-color: gray;
+	left:210px;
+	top:100px;
+	position: relative;
+  }

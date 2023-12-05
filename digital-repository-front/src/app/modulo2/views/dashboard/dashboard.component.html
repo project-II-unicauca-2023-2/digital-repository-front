@@ -1,43 +1,81 @@
-<!-- Contenedor Principal del Dashboard -->
-<div class="dashboard-container">  
 
-    <mat-toolbar>
-        <app-desplegable-anios (emisorAnioSeleccionado)="recibidoAnio($event)"></app-desplegable-anios>
-        <app-chips></app-chips>
-    
-        <span class="example-spacer"></span>
+<div id="cuerpo">
+   
+    <!-- Contenedor Principal del Dashboard -->
+    <div class="dashboard-container">  
 
-        <div class="dashboard-controls">
-            <select [(ngModel)]="graficoSeleccionado" (change)="cambiarGrafico($event)">
-                <option *ngFor="let grafico of graficos" [value]="grafico.id">
-                    {{ grafico.nombre }}
-                </option>
-            </select>
-        </div>
+        <mat-toolbar>
+            <app-desplegable-anios (emisorAnioSeleccionado)="recibidoAnio($event)"></app-desplegable-anios>
+            <app-chips (emisorCategoriaSeleccionado)="recibidoCategoria($event)"></app-chips>
+        
+            <span class="example-spacer"></span>
 
-        <button (click)="mostrarTodasLasGraficas()" class="mostrar-todas-btn">
-            <span class="material-icons">view_module</span>
-        </button>
+            <div class="dashboard-controls">
+                <select [(ngModel)]="graficoSeleccionado" (change)="cambiarGrafico($event)">
+                    <option *ngFor="let grafico of graficos" [value]="grafico.id">
+                        {{ grafico.nombre }}
+                    </option>
+                </select>
+            </div>
 
-    </mat-toolbar>
-    
-    <div class="separadoHorizontal">
-        <app-linea-calificacion ></app-linea-calificacion>
-    </div>
-    
+            <button (click)="mostrarTodasLasGraficas()" class="mostrar-todas-btn">
+                <span class="material-icons">view_module</span>
+            </button>
 
-    <!-- Área de Visualización de Gráficos -->
-    <div class="dashboard-graphics">
-        <div *ngIf="mostrarTodas || graficoSeleccionado === 'pie-grid'">
-            <app-pie-grid-chart></app-pie-grid-chart>
-        </div>
-    
-        <div *ngIf="mostrarTodas || graficoSeleccionado === 'avanzado'">
-            <app-advanced-pie-chart></app-advanced-pie-chart>
-        </div>
-    
-        <div *ngIf="mostrarTodas || graficoSeleccionado === 'barras'">
-            <app-vertical-bar-chart></app-vertical-bar-chart>
+        </mat-toolbar>
+        
+        <div id="contenido">
+            <div id="aside" *ngIf="categoriaBusqueda !== 'todas'">
+                <app-aside-filtro 
+                [subcategorisContrato]="subcategorisContrato"
+                [nombreCategoria]="categoriaBusqueda"
+                (emisorSubCategorias)="recibidoSubCategorias($event)"
+                ></app-aside-filtro>
+            </div>
+            <div id="resultadoBusquedas">
+                <div class="separadoHorizontal">
+                    <app-linea-calificacion 
+                    [nombreCategoria]="categoriaBusqueda"
+                    [promedioCategoriaContrato]="promedioCategoriaContrato"
+                    ></app-linea-calificacion>
+                    <div id="rangoElemento">
+                        <label for="mySlider" matTooltip="Abrir Rango [{{val1}},{{val2}}]" [matTooltipPosition]="'above'"
+                        (click)="redirigirListado()"style="cursor: pointer;">
+                            Rango de Calificacion [{{val1}},{{val2}}]</label>
+                        <mat-slider id="mySlider" min="0" max="5" discrete step ="1"  showTickMarks >
+                            <input  matSliderStartThumb [(ngModel)]="val1"(input)="refrescoGrafica()"/>
+                            <input  matSliderEndThumb [(ngModel)]="val2" (input)="refrescoGrafica()"/>
+                        </mat-slider>
+                      
+                    </div>
+                       
+                </div>
+                <!-- Área de Visualización de Gráficos -->
+                <div class="dashboard-graphics">
+                    <div *ngIf="mostrarTodas || graficoSeleccionado === 'pie-grid'">
+                        <app-pie-grid-chart [datosGraficos]="datosGraficar"
+                        [coloresGraficos]="coloresEnviar"></app-pie-grid-chart>
+                    </div>
+                
+                    <div *ngIf="mostrarTodas || graficoSeleccionado === 'avanzado'">
+                        <app-advanced-pie-chart 
+                        [datosGraficos]="datosGraficar"
+                        [coloresGraficos]="coloresEnviar"
+                        
+                        ></app-advanced-pie-chart>
+                    </div>
+                
+                    <div *ngIf="mostrarTodas || graficoSeleccionado === 'barras'">
+                        <app-vertical-bar-chart [datosGraficos]="datosGraficar"
+                        [coloresGraficos]="coloresEnviar"></app-vertical-bar-chart>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+...
+
+
+  

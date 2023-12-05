@@ -55,7 +55,7 @@ export class DialogSiNoComponent implements OnInit {
   
   onConfirmClick(): void {
     // Aquí muestro la respuesta que me interesa devolver
-    console.log('El usuario ha seleccionado "Sí"');
+    //console.log('El usuario ha seleccionado "Sí"');
     this.dialogRef.close(true); // Cierra el diálogo y pasa 'true' como resultado
   }
 }

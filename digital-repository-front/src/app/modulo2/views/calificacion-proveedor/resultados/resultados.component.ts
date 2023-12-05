@@ -46,9 +46,9 @@ export class ResultadosComponent implements OnInit  {
     ngOnInit() {
       this.servicioScore.getResultadosEvaluacion(this.numContrato).subscribe((datos: totalCriteriaScore) => {
         this.datosResultado = datos; // Asignar los datos recibidos a la variable datosResultado
-        console.log("onInit Tiene la respuesta completa de  ;"+JSON.stringify(this.datosResultado));
+        //console.log("onInit Tiene la respuesta completa de  ;"+JSON.stringify(this.datosResultado));
         this.misCriterios=this.datosResultado.listaScoreCriteria;
-        console.log("onInitTiene los criterios sacados son ;"+ this.misCriterios);
+        //console.log("onInitTiene los criterios sacados son ;"+ this.misCriterios);
         this.cdr.detectChanges();
         this.servicioScore.getDominioCalificacion().subscribe(
           (data: dicCriteria) => {
@@ -74,7 +74,7 @@ export class ResultadosComponent implements OnInit  {
       if(changes['datosResultado'] ) {
         // Realiza las acciones necesarias cuando datosResultado cambia
         this.getcriterios();
-        console.log('Datos resultado cambiado:', this.datosResultado);
+        //console.log('Datos resultado cambiado:', this.datosResultado);
       }
     }
   obtenerClaves() {
@@ -123,10 +123,9 @@ export class ResultadosComponent implements OnInit  {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // Aquí manejamos el resultado
-        console.log('Se recibe el Resultado: ', result);
+        //console.log('Se recibe el Resultado: ', result);
         if (result === true) {
-          console.log(this.datosContrato
-            );
+         // console.log(this.datosContrato            );
           this.excelService.createNewExcel(this.datosContrato,this.datosResultado);
           
         }

@@ -1,28 +1,24 @@
-import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CheckList } from 'src/app/class/CheckList';
 
-import { DocumentService } from 'src/app/services/document.service';
-import { ContractService } from 'src/app/services/contract.service';
 import { ToastrService } from 'ngx-toastr';
-import { responseDocument } from 'src/app/class/models/responseDocument';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DialogComponent } from '../dialog/dialog.component';
+import { ContractService } from 'src/app/services/contract.service';
+import { DocumentService } from 'src/app/services/document.service';
 import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
+import { DialogComponent } from '../dialog/dialog.component';
 import { PdfViewerDialogComponent } from '../pdf-viewer-dialog/pdf-viewer-dialog.component';
 
+import { MatButtonModule } from '@angular/material/button';
 import {
   MatDialog,
-  MatDialogRef,
   MatDialogModule,
+  MatDialogRef,
 } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { Fila } from 'src/app/class/models/Fila';
-import { Contract } from 'src/app/class/contract';
-import { modalityContractType } from 'src/app/class/models/ModalityContractType';
-import { CollectionService } from 'src/app/services/collection.service';
-import { switchMap } from 'rxjs';
-import { Collection } from 'src/app/class/collection';
 import { Router } from '@angular/router';
+import { Collection } from 'src/app/class/collection';
+import { Contract } from 'src/app/class/contract';
+import { Fila } from 'src/app/class/models/Fila';
+import { CollectionService } from 'src/app/services/collection.service';
 
 
 
@@ -65,10 +61,10 @@ export class DocumentsCreateContractComponent {
   ngOnInit() {
 
   
-    console.log("contract Id ", this.contractId)
+    //console.log("contract Id ", this.contractId)
     this.contratoService.getContractById(this.contractId).subscribe((response) => {
       this.contract = response.data
-      console.log(this.contract)
+      //console.log(this.contract)
     })
     this.loadCheckList();
   }
@@ -112,7 +108,7 @@ export class DocumentsCreateContractComponent {
       }
     }
 
-    console.log(this.subdirectory1)
+    //console.log(this.subdirectory1)
   }
 
   abrirVentanaEmergente(s: String, subdirectory: number, indice: number) {
@@ -126,7 +122,7 @@ export class DocumentsCreateContractComponent {
       this.doc = result;
       if (this.doc && Object.keys(this.doc).length > 0) {
         if (subdirectory === 0) {
-          console.log("Añadiendo doc a ", this.subdirectory1[indice].contractualDocumentType.name)
+          //console.log("Añadiendo doc a ", this.subdirectory1[indice].contractualDocumentType.name)
           this.doc.contractualDocumentId=this.subdirectory1[indice].id
           this.doc.contractId=this.contractId
           this.subdirectory1[indice].filas.push(this.doc);

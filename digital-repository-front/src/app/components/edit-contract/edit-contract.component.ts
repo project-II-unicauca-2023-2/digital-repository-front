@@ -1,13 +1,13 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { Contract } from 'src/app/class/contract';
-import { ContractService } from 'src/app/services/contract.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { responseDocument } from 'src/app/class/models/responseDocument';
-import { UpdateContract } from 'src/app/class/models/UpdateContract';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Contract } from 'src/app/class/contract';
+import { UpdateContract } from 'src/app/class/models/UpdateContract';
+import { responseDocument } from 'src/app/class/models/responseDocument';
+import { ContractService } from 'src/app/services/contract.service';
 
 @Component({
   selector: 'app-edit-contract',
@@ -29,7 +29,8 @@ export class EditContractComponent {
   status!: string;
   minDate!: Date;
   constructor(
-    private toastrSvc:ToastrService, private contractService: ContractService, private fb: FormBuilder,private router: Router
+    private toastrSvc:ToastrService, private contractService: ContractService, private fb: FormBuilder,
+    private router: Router
   ) { 
 
  

@@ -1,16 +1,16 @@
-import { Component, EventEmitter, Inject, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import {
-  MatDialog,
-  MatDialogRef,
-  MatDialogModule,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { Component, EventEmitter, Inject, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { FilaService } from 'src/app/services/fila.service';
-import { Fila } from 'src/app/class/models/Fila';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { Fila } from 'src/app/class/models/Fila';
+import { FilaService } from 'src/app/services/fila.service';
 
 @Component({
   selector: 'app-dialog',
@@ -39,7 +39,7 @@ export class DialogComponent {
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string ) {
       this.s=data;
-      console.log(this.s)
+      //console.log(this.s)
       this.dialogRef.disableClose = true;
   }
 
@@ -137,7 +137,7 @@ export class DialogComponent {
     this.nuevaFila.isException=false;
     this.nuevaFila.createUser="dacoes"
     this.nuevaFila.description="documents";
-    console.log(this.nuevaFila)
+    //console.log(this.nuevaFila)
   }
 
   onFileSelected(event: any) {

@@ -9,8 +9,12 @@ export class DesplegableAniosComponent implements OnInit {
   AniosComboBox:string[]=[];
   anio :string="";
   @Output() emisorAnioSeleccionado = new EventEmitter<string>();
+  constructor(){
+
+  }
   ngOnInit(): void {
     this.cargarAniosCombo();
+
   }
 
   cargarAniosCombo(){
@@ -19,9 +23,10 @@ export class DesplegableAniosComponent implements OnInit {
     for(let a=1995;a<=anioActual;a++){      
       this.AniosComboBox.push(a+"");
     } 
+    this.emitirAnio();
   }
   emitirAnio(){
-    console.log("emiorooo");
+    console.log("emisor Año");
     this.emisorAnioSeleccionado.emit(this.anio);
   }
 }
