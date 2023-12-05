@@ -103,7 +103,6 @@ import { DescargaCalificacionesComponent } from './modulo2/views/descarga-califi
 import { MostrarDescargarComponent } from './modulo2/views/descarga-calificaciones/mostrar-descargar/mostrar-descargar.component';
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
 
-<<<<<<< HEAD
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
@@ -114,15 +113,7 @@ import { PieGridChartComponent } from './modulo2/componentBasic/pie-grid-chart/p
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { VerticalBarChartComponent } from './modulo2/componentBasic/vertical-bar-chart/vertical-bar-chart.component';
-import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/subir-archivo.component';
-import { SubirArchivosComponent } from './modulo2/views/subir-info/subir-archivos/subir-archivos.component';
-import { CargaArchivoComponent } from './modulo2/views/subir-info/carga-archivo/carga-archivo.component';
-import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archivos/cargar-archivos.component';
 
-
-
-=======
->>>>>>> 00a04a117c28dd8d2bb83a7b8d27927cba3beaaf
 @NgModule({
   declarations: [
     AppComponent,
@@ -162,18 +153,7 @@ import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archi
     DashboardComponent,
     VerticalBarChartComponent,
     AdvancedPieChartComponent,
-<<<<<<< HEAD
-    SubirArchivoComponent,
-    SubirArchivosComponent,
-    CargaArchivoComponent,
-    CargarArchivosComponent,
-    
 
-=======
-    AsideFiltroComponent,
-    TablaContratosRangoComponent,
-    
->>>>>>> 00a04a117c28dd8d2bb83a7b8d27927cba3beaaf
   ],
   imports: [
     

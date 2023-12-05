@@ -16,14 +16,7 @@ import { MostrarDescargarComponent } from './modulo2/views/descarga-calificacion
 import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
 import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
-<<<<<<< HEAD
 import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
-import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/subir-archivo.component';
-import { SubirArchivosComponent } from './modulo2/views/subir-info/subir-archivos/subir-archivos.component';
-import { CargaArchivoComponent} from './modulo2/views/subir-info/carga-archivo/carga-archivo.component';
-import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archivos/cargar-archivos.component';
-=======
->>>>>>> 00a04a117c28dd8d2bb83a7b8d27927cba3beaaf
 
 
 const routes: Routes = [
