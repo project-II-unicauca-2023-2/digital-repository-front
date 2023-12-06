@@ -21,6 +21,7 @@
             </span>
              <span  class="navLabel">Descarga de Calificaciones</span>
           </a>
+<<<<<<< Updated upstream
 
           <a class=dropdown-botton>   
              <div mdbDropdown class="dropdown"> 
@@ -42,6 +43,27 @@
              </div>
           </a>
           
+=======
+          <a class=dropdown-botton>
+            <div mdbDropdown class="dropdown">
+              <a
+                role="button"
+                id="dropdownMenuLink"
+                mdbDropdownToggle
+                aria-expanded="false"
+              >
+              <span class="material-symbols-outlined">
+                 publish
+              </span>
+               <span  class="navLabel">Subir Informacion</span>
+              </a>
+              <ul mdbDropdownMenu class="dropdown-menu">
+                <li><a class="dropdown-item" [routerLink]="['/homePage/subir-archivo']">carga masiva contratos</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/homePage/subir-archivos']">cargar contratos</a></li>
+              </ul>
+            </div>
+         </a>
+>>>>>>> Stashed changes
           <a class=items [routerLink]="['/homePage/dashboard']">
             <span class="material-symbols-outlined">
                monitoring

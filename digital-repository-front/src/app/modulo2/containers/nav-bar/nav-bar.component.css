@@ -5,7 +5,7 @@
 	display: none;
 	cursor: pointer;
   }
-  
+
   .hamburguesa span {
 	background-color: white;
 	height: 2px;
@@ -13,16 +13,16 @@
 	margin: 5px 0;
 	display: block;
   }
-  
+
   @media only screen and (max-width: 768px) {
 	.contRutas {
 	  display: none;
 	}
-  
+
 	.hamburguesa {
 	  display: block;
 	}
-  
+
 	.items {
 	  display: block;
 	}
@@ -30,14 +30,14 @@
 .material-symbols-outlined {
 	color: white; /* Aquí se establece el color blanco */
   }
-body { 
+body {
 	margin: 0;
 	padding: 0;
 	background-color:rgba(238.00000101327896, 243.00000071525574, 250.00000029802322, 1);
-	position: relative;	
+	position: relative;
 	font-family:Open Sans;
 }
-nav { 
+nav {
 	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
 	background-color:rgba(0, 0, 102.00000151991844, 1);
 	width:100%;
@@ -47,7 +47,7 @@ nav {
 	align-items: center; /* Alinea los elementos verticalmente en el centro */
 	margin: 0; /* Elimina los márgenes */
 }
-.contUsuario { 
+.contUsuario {
 	display: flex;
 	width:156px;
 	height:60px;
@@ -55,35 +55,35 @@ nav {
 	font-size:16px;
 	letter-spacing:0;
 }
-.nombreUsuario { 
+.nombreUsuario {
 	color:rgba(230.00000149011612, 230.00000149011612, 240.00000089406967, 1);
 	width:67px;
 	height:22px;
 }
-.rolUsuario { 
+.rolUsuario {
 	color:rgba(230.00000149011612, 230.00000149011612, 240.00000089406967, 1);
 	width:84px;
 	height:22px;
 }
-.imgUsuario { 
+.imgUsuario {
 	width:60px;
 	height:60px;
 	border:30px;
 	background-repeat:no-repeat;
 	background-size:cover;
 }
-.contRutas { 	
+.contRutas {
 	display: flex;
 	flex-wrap: wrap; /* reajuste para tamaño de pantalla en zoom */
 	width:690px;
 	height:100%;
 	overflow: hidden;
 }
-.ei67_1309_1_153 { 
+.ei67_1309_1_153 {
 	width:142px;
 	height:38px;
 }
-.ruta1 { 
+.ruta1 {
 	width:142px;
 	height:38px;
 }
@@ -91,7 +91,7 @@ nav {
 	width:16px;
 	height:16;
 }
-.navLabel { 
+.navLabel {
 	color:rgba(230.00000149011612, 230.00000149011612, 240.00000089406967, 1);
 	height:30px;
 	text-align:left;
@@ -113,19 +113,19 @@ nav {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 	background-color: rgba(0, 0, 131, 0.514);
 }
-.contLogoU { 
+.contLogoU {
 	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
 	width:306px;
 	height:122px;
 }
-.imgLogoU { 
+.imgLogoU {
 	width: 306px;
 	min-width: 245px;
 	height: 122px;
 	position: relative;
 	top: 0px;
 	left: 0px;
-	
+
 	background-repeat: no-repeat;
 	background-size: auto 100%;
 }
@@ -133,16 +133,26 @@ nav {
 .dropdown {
 	position: absolute;
   }
+<<<<<<< Updated upstream
   
+=======
+
+>>>>>>> Stashed changes
   .dropdown-botton {
 	background-color:rgba(0, 0, 102.00000151991844, 1);
 	color: white;
 	padding: 16px;
 	font-size: 16px;
 	border: none;
+<<<<<<< Updated upstream
 	display: absolute; 
 	justify-content: center; 
 	align-items: center; 
+=======
+	display: absolute;
+	justify-content: center;
+	align-items: center;
+>>>>>>> Stashed changes
 	width: 100%;
 	height: 100%;
 	max-width: 150px;
@@ -154,7 +164,11 @@ nav {
 	background-color: rgba(0, 0, 131, 0.514);
   }
   */
+<<<<<<< Updated upstream
   
+=======
+
+>>>>>>> Stashed changes
   .dropdown-menu {
 	display: none;
 	position: absolute;
@@ -163,13 +177,18 @@ nav {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
   }
+<<<<<<< Updated upstream
   
+=======
+
+>>>>>>> Stashed changes
   .dropdown-menu a {
 	color: black;
 	padding: 12px 16px;
 	text-decoration: none;
 	display: block;
   }
+<<<<<<< Updated upstream
   
   .dropdown-menu a:hover {
 	background-color: #ddd;
@@ -179,3 +198,13 @@ nav {
 	display: block;
   }
   
+=======
+
+  .dropdown-menu a:hover {
+	background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-menu {
+	display: block;
+  }
+>>>>>>> Stashed changes

@@ -16,6 +16,7 @@ import { MostrarDescargarComponent } from './modulo2/views/descarga-calificacion
 import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
 import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
 import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/subir-archivo.component';
@@ -24,6 +25,12 @@ import { CargaArchivoComponent} from './modulo2/views/subir-info/carga-archivo/c
 import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archivos/cargar-archivos.component';
 =======
 >>>>>>> 00a04a117c28dd8d2bb83a7b8d27927cba3beaaf
+=======
+import { CargaArchivoComponent } from './modulo2/views/subir-info/carga-archivo/carga-archivo.component';
+import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archivos/cargar-archivos.component';
+import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/subir-archivo.component';
+import { SubirArchivosComponent } from './modulo2/views/subir-info/subir-archivos/subir-archivos.component';
+>>>>>>> Stashed changes
 
 
 const routes: Routes = [
@@ -33,18 +40,26 @@ const routes: Routes = [
     component: Modulo2ComponentComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'listadoContratistas', 
-        component: TablaContratosRangoComponent 
+      { path: 'listadoContratistas',
+        component: TablaContratosRangoComponent
         },
       { path: 'subirInfo',component:SubirInfoComponent },
       { path: 'descargaFormato', component: DescargaCalificacionesComponent },
       { path: 'calificacion', component: CalificacionProveedorComponent },
       { path: 'Evaluacion/:contrato/:anio', component: MostrarDescargarComponent},
+<<<<<<< Updated upstream
       { path: 'buscarcontrato',component: BuscarContratosComponent},
       { path: 'subirArchivo', component:  SubirArchivoComponent},
       { path: 'subirArchivos', component: SubirArchivosComponent},
       { path: 'cargaArchivo', component: CargaArchivoComponent},
       { path: 'cargarArchivos', component: CargarArchivosComponent},
+=======
+      {path: 'buscarcontrato',component: BuscarContratosComponent},
+      {path: 'carga-archivo', component: CargaArchivoComponent},
+      {path: 'cargar-archivos', component: CargarArchivosComponent},
+      {path: 'subir-archivo', component: SubirArchivoComponent},
+      {path: 'subir-archivos', component: SubirArchivosComponent}
+>>>>>>> Stashed changes
     ] },
   { path: 'createCont', component: CreateContractComponent },
   {

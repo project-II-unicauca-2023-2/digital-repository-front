@@ -37,4 +37,8 @@ export class CargaArchivoComponent {
       }
     }
   }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
