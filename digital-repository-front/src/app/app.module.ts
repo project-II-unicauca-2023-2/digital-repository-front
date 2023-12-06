@@ -107,26 +107,8 @@ import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archi
 import { SubirArchivosComponent } from './modulo2/views/subir-info/subir-archivos/subir-archivos.component';
 import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/subir-archivo.component';
 
-<<<<<<< HEAD
-import { MatChipsModule } from '@angular/material/chips';
-import { MatSelectModule } from '@angular/material/select';
-import { ChipsComponent } from './modulo2/componentBasic/chips/chips.component';
-import { DesplegableAniosComponent } from './modulo2/componentBasic/desplegable-anios/desplegable-anios.component';
-import { LineaCalificacionComponent } from './modulo2/componentBasic/linea-calificacion/linea-calificacion.component';
-import { BuscarContratosComponent } from './modulo2/views/buscar-contratos/buscar-contratos.component';
-import { PieGridChartComponent } from './modulo2/componentBasic/pie-grid-chart/pie-grid-chart.component';
-
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { VerticalBarChartComponent } from './modulo2/componentBasic/vertical-bar-chart/vertical-bar-chart.component';
-import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/subir-archivo.component';
-import { SubirArchivosComponent } from './modulo2/views/subir-info/subir-archivos/subir-archivos.component';
-import { CargaArchivoComponent } from './modulo2/views/subir-info/carga-archivo/carga-archivo.component';
-import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archivos/cargar-archivos.component';
 
 
-
-=======
->>>>>>> 00a04a117c28dd8d2bb83a7b8d27927cba3beaaf
 @NgModule({
   declarations: [
     AppComponent,
@@ -166,26 +148,12 @@ import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archi
     DashboardComponent,
     VerticalBarChartComponent,
     AdvancedPieChartComponent,
-<<<<<<< HEAD
     SubirArchivoComponent,
     SubirArchivosComponent,
     CargaArchivoComponent,
     CargarArchivosComponent,
-    
-
-=======
     AsideFiltroComponent,
     TablaContratosRangoComponent,
-<<<<<<< Updated upstream
-    
->>>>>>> 00a04a117c28dd8d2bb83a7b8d27927cba3beaaf
-=======
-    CargaArchivoComponent,
-    CargarArchivosComponent,
-    SubirArchivosComponent,
-    SubirArchivoComponent,
-
->>>>>>> Stashed changes
   ],
   imports: [
 

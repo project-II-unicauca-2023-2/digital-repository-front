@@ -19,11 +19,7 @@ export class CargarArchivosComponent {
     console.log(files)
     var formData = new FormData();
     Array.from(files).forEach(f => formData.append('file',f))
-<<<<<<< Updated upstream
-    
-=======
 
->>>>>>> Stashed changes
     this.http.post('https://localhost:8081/api/scanFile/uploadExcels', formData, {reportProgress: true, observe: 'events'})
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
@@ -43,8 +39,4 @@ export class CargarArchivosComponent {
       }
     }
   }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
