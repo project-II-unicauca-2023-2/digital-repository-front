@@ -353,7 +353,7 @@ export class TablaContratosRangoComponent implements OnInit {
                       });
                       console.log("almacenado "+variableMostrar);
                       variableMostrarTodos.push(variableMostrar);
-                      //this.datosRecuperados[index].idsContract=variableMostrar;
+                      this.datosRecuperados[index].idsContract=variableMostrar;
                       console.log("almacenado todo "+JSON.stringify(variableMostrarTodos));
                   },
                   (error) => {
