@@ -24,7 +24,7 @@ export class ResultadosComponent implements OnInit  {
   @Input() datosContrato!: datosAside;
   @ViewChildren('miTablaI') tablas!: QueryList<ElementRef>; 
   datosContratista!: datosAside;
-  title = "Resultado de calificacion al Proveedor";
+  title = "Resultado de calificación al Proveedor";
   valor = 4;
   maximo = 5;
   miDiccionario: { [key: string]: number } = {
@@ -112,8 +112,8 @@ export class ResultadosComponent implements OnInit  {
   const dialogRef = this.dialog.open(DialogSiNoComponent, {
       width: '450px',
       data: {
-        titulo: 'Calificacion de Proveedor',
-        pregunta: 'Desea Imprimir la calificacion en el formato "PA-GA-5-FOR-39 v2.0"',
+        titulo: 'Calificación de Proveedor',
+        pregunta: 'Desea Imprimir la calificación en el formato "PA-GA-5-FOR-39 v2.0"',
         tipo: "pregunta"
       },
       enterAnimationDuration,

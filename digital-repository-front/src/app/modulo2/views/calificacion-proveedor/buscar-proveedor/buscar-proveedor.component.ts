@@ -58,8 +58,8 @@ export class BuscarProveedorComponent implements OnInit {
           if (this.contratoEncontradoSinEvalucion) {
             this.emisorIdContrato.emit(this.contratoValido);// hace la emicion de la varible
           } else {
-            mensajeError=" El contrto tiene ya una evaluacion registrada";
-            this.openDialog('500ms', '500ms', mensajeError,"preguntaPersonalizable","Abrir Evaluacion")// en caso contrario muestr error sin salir de la vista
+            mensajeError=" El contrato ya tiene una evaluación registrada.";
+            this.openDialog('500ms', '500ms', mensajeError,"preguntaPersonalizable","Abrir Evaluación")// en caso contrario muestr error sin salir de la vista
           }
         });
       }
@@ -87,7 +87,7 @@ export class BuscarProveedorComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogSiNoComponent, {
       width: '400px',
       data: {
-        titulo: 'Calificacion de Proveedor',
+        titulo: 'Calificación de Proveedor',
         pregunta: mensajeError,
         tipo:tipo ,
         respuestaPositiva:respuestaPositiva

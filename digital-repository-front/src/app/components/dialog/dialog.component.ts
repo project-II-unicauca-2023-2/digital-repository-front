@@ -82,7 +82,7 @@ export class DialogComponent {
     //   }
     // });
     if (this.myForm.invalid) {
-      this.toastrSvc.warning('Complete la informacion.', '');
+      this.toastrSvc.warning('Complete la información.', '');
       return Object.values(this.myForm.controls).forEach((control) => {
         control.markAllAsTouched();
 

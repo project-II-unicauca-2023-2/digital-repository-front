@@ -44,7 +44,7 @@
                     <div id="rangoElemento">
                         <label for="mySlider" matTooltip="Abrir Rango [{{val1}},{{val2}}]" [matTooltipPosition]="'above'"
                         (click)="redirigirListado()"style="cursor: pointer;">
-                            Rango de Calificacion [{{val1}},{{val2}}]</label>
+                            Rango de Calificación [{{val1}},{{val2}}]</label>
                         <mat-slider id="mySlider" min="0" max="5" discrete step ="1"  showTickMarks >
                             <input  matSliderStartThumb [(ngModel)]="val1"(input)="refrescoGrafica()"/>
                             <input  matSliderEndThumb [(ngModel)]="val2" (input)="refrescoGrafica()"/>
