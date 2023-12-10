@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SelectionType } from '@swimlane/ngx-datatable';
+import { userData } from 'src/app/modulo2/models/userData';
 import { CriptoService } from 'src/app/modulo2/services/cripto/cripto.service';
+import { DasboardService } from 'src/app/services/dasboard.service';
+import { VendorService } from 'src/app/services/vendor.service';
+interface interfaceContrato { /**se pone como interfaz para poder recibir se planea eliminar cuando el back lo retorne con el nombre de vatiables ya establecidas  */
+  idContrato: number;
+  mask: string;
+  year: number;
+}
 export enum ColumnMode {
   standard = 'standard',
   flex = 'flex',
@@ -22,7 +30,11 @@ interface UserData {
   styleUrls: ['./tabla-contratos-rango.component.css']
 })
 export class TablaContratosRangoComponent implements OnInit {
-  /***********************************************MOVER */
+  datosRecuperados:userData[]=[];
+  nombreContrato:string[][]=[];
+  
+   soloIds!:string[][];
+  /***********************************************
   DATOS:UserData[]=[
     {
       "nombre": "Ethel Price",
@@ -293,7 +305,7 @@ export class TablaContratosRangoComponent implements OnInit {
       "contratosTotales": 92,
       "contratosPromedioTotal": 3.3
     }
-  ]
+  ]*/
     editing = {};
     rows: UserData[] = [];
     anioTitulo!:string;
@@ -301,8 +313,12 @@ export class TablaContratosRangoComponent implements OnInit {
     selected = [];
     SelectionType = SelectionType;
 
-    constructor(private route: ActivatedRoute , private encripta:CriptoService){
-      this.rows = [...this.DATOS];
+    constructor(private route: ActivatedRoute ,
+       private encripta:CriptoService,
+       private servicioVendor:VendorService,
+       private dashboardService:DasboardService){
+      //this.rows = [...this.DATOS];
+      
     }
     ngOnInit() {
       this.route.queryParams.subscribe(params => {
@@ -311,11 +327,50 @@ export class TablaContratosRangoComponent implements OnInit {
         //alert("anio es"+this.anioTitulo)
         if (parametrosCodificados) {
           const valoresDecodificados = this.encripta.decryptArray(parametrosCodificados,"unicauca#1927");
-      
-          console.log("Valores pasados url"+valoresDecodificados); // Obtendrás los valores originales
+          const arregloDeNumeros: number[] = valoresDecodificados.map(str => parseInt(str, 10));
+
+          console.log("Valores pasados url: "+arregloDeNumeros); // Obtendrás los valores originales
+          this.servicioVendor.getScoreVendors(arregloDeNumeros,this.anioTitulo).subscribe((datos: userData[]) => {
+            console.log("mis D"+JSON.stringify(datos[0]));
+            this.datosRecuperados=datos;
+            this.soloIds= this.datosRecuperados.map((vendor) => vendor.idsContract);
+            console.log(this.soloIds);
+            let variableMostrarTodos:string[][]=[]; 
+            this.soloIds.forEach((element, index) => {//recorre la lista de ids 
+              // Tu lógica aquí
+          
+              this.dashboardService.getContratosPorIds(element).subscribe(///recupero los nombres de mascaras por cada lista
+                  (data: interfaceContrato[]) => {
+                     // console.log("Iteración #" + index + ": Habeis recuperado" + JSON.stringify(data));
+                      // Resto de tu lógica
+                      let variableMostrar:string[]=[];
+                      data.forEach(dato => {
+                        if(dato){
+                          let cadena=dato.mask+" del "+dato.year+"\n";
+                          console.log("Iteración #" + index+" "+cadena);
+                          variableMostrar.push(cadena);
+                        }
+                      });
+                      console.log("almacenado "+variableMostrar);
+                      variableMostrarTodos.push(variableMostrar);
+                      //this.datosRecuperados[index].idsContract=variableMostrar;
+                      console.log("almacenado todo "+JSON.stringify(variableMostrarTodos));
+                  },
+                  (error) => {
+                      console.error('Iteración #' + index + ': Ocurrió un error al obtener promedio de servicios:', error);
+                  }
+              );
+          });
+            
+            /*this.datosRecuperados.forEach((item, index) => {
+              if (this.nombreContrato[index] && this.nombreContrato[index].length === item.idsContract.length) {
+                item.idsContract = this.nombreContrato[index];
+              }
+            });*/
+          });
         }
-      });
-    }
+      });;
+    } 
     
  
     
@@ -326,4 +381,17 @@ export class TablaContratosRangoComponent implements OnInit {
   onActivate(event:any) {
     console.log('Activate Event', event.row);
   }
+   sacarNombres(areglo:string[]):string[]{
+    //alert("e"+areglo);
+    let nombres:string[]=[];
+    areglo.forEach(element => {
+      nombres.push("a");
+    });
+    //alert("s"+nombres);
+    return nombres;
+   }
+   
+   funcion(value:string[]):string{
+    return"Hola";
+   }
 }

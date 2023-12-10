@@ -33,8 +33,9 @@ export class LineaCalificacionComponent {
         }
       
     }
-    if (changes['promedioCategoriaContrato'] && changes['promedioCategoriaContrato'].currentValue) {
-      this.value =this.promedioCategoriaContrato;    
+    if ('promedioCategoriaContrato' in changes) {
+      //alert("Cambio en línea detectado " + this.promedioCategoriaContrato);
+      this.value = this.promedioCategoriaContrato;
     }
   }
 }

@@ -22,6 +22,7 @@ interface dicCriteria {
 export class AdvancedPieChartComponent {
   @Input() datosGraficos!: DataItem[];//es un array con name (etiqueta del grafico) value(la cantidad graficada)
   @Input() coloresGraficos!: string[];// arreglo con cadenas  de colores hexadecimales
+  @Input() anioBusqueda!: string;
 
  
   view: [number, number] = [window.innerWidth * 0.6, window.innerHeight * 0.3];
@@ -72,7 +73,7 @@ export class AdvancedPieChartComponent {
     // Codificar los valores antes de navegar
     //const valoresCodificados = this.identidades.map(valor => btoa(valor));
     const valoresCodificados = this.encriptacion.encryptArray(data.extra,"unicauca#1927");
-    this.ruta.navigate(['/homePage/listadoContratistas'], { queryParams: { iD: valoresCodificados } });
+    this.ruta.navigate(['/homePage/listadoContratistas'], { queryParams: { iD: valoresCodificados, anio:this.anioBusqueda } });
     //this.ruta.navigate(['/homePage/listadoContratistas']);
   }
 

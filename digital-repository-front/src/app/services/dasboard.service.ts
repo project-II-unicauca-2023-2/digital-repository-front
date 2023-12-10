@@ -1,34 +1,121 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { datosDashBoardPrincipal } from '../modulo2/models/datosDashBoardPrincipal';
-
+import { ContractService } from './contract.service';
+interface interfaceContrato { /**se pone como interfaz para poder recibir se planea eliminar cuando el back lo retorne con el nombre de vatiables ya establecidas  */
+  idContrato: number;
+  mask: string;
+  year: number;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class DasboardService {
+  private urlAPI = 'http://localhost:8081/api/dashBoard';
 
-  constructor() { }
-  getSubCategoriasBienes():string[]{
-    return ["Compraventa","Suministro","Órdenes de Compra"];
+  constructor(
+    private httpClient: HttpClient,
+    private servicioContrato:ContractService
+    ) { }
+
+  httpHeader = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+
+  };
+ 
+getSubCategoriasBienes(): Observable<string[]> {
+  return this.servicioContrato.getSubCategoriasBienes();
+    //return ["Compraventa","Suministro","Órdenes de Compra"];
   }
-  getSubCategoriasServicios():string[]{
-    return ["Prestación de servicios","Consultoría","Suministro","Arrendamiento","Pasantía","Judicatura","Aprendizaje"];
+  getSubCategoriasServicios(): Observable<string[]>{
+    return this.servicioContrato.getSubCategoriasServicios();
+    //return ["Prestación de servicios3333","Consultoría","Suministro","Arrendamiento","Pasantía","Judicatura","Aprendizaje"];
   }
-  getSubCategoriasObras():string[]{
-    return ["Obra"];
+  getSubCategoriasObras(): Observable<string[]>{
+    return this.servicioContrato.getSubCategoriasObras();
+    //return ["Obra"];
   }
-  getPromedioBienes():number{
-    return this.formatoCortoDecimal(3.53423412343414) ;
+  getPromedioBienes(anio:string): Observable<number>{
+    return this.servicioContrato.getPromedioBienes(anio);
+    //return this.formatoCortoDecimal(3.53423412343414) ;
   }
-  gePromedioServicios():number{
-    return this.formatoCortoDecimal(4.54234134123412341234);
+  gePromedioServicios(anio:string): Observable<number>{
+    return this.servicioContrato.gePromedioServicios(anio);
+    //return this.formatoCortoDecimal(4.54234134123412341234);
   }
-  getPromediosObras():number{
-    return this.formatoCortoDecimal(4.054634563563563);
+  getPromediosObras(anio:string): Observable<number>{
+    return this.servicioContrato.getPromediosObras(anio);
+    //return this.servicioContrato.getSubCategoriasObras();
   }
-  getPromediosTotales():number{
-    return this.formatoCortoDecimal((this.gePromedioServicios()+this.getPromedioBienes()+this.getPromediosObras())/3);
+  /**
+   * se desiste del metodo _getPromediosTotalespor problemas de asincronia si se pone aca
+   * @returns 
+   */
+  _getPromediosTotales():number{
+    return 0;
+    //return this.formatoCortoDecimal((this.gePromedioServicios()+this.getPromedioBienes()+this.getPromediosObras())/3);
   }
-  getDatosServicios():datosDashBoardPrincipal[]{
+  getDatosServicios2(anio:string): Observable<datosDashBoardPrincipal[]>{
+   
+    return  this.httpClient.get<any>(this.urlAPI + "/Servicios/" +anio).pipe(
+      map((response: any)=> {
+       
+        if (response && response.data && response.data.datosDashBoardPrincipal) {
+          // Acceder a 'averageContract' dentro del primer elemento del arreglo 'data'
+          return  response.data.datosDashBoardPrincipal as datosDashBoardPrincipal[];
+        } else {
+          // Manejar el caso en el que la estructura de la respuesta no sea la esperada
+          throw new Error('-La estructura de la respuesta no es la esperadaaa datos servicios');
+        }
+      }),
+      catchError((error) => {
+        console.error('Error buscando datos servicios', error);
+        return throwError(error);
+      })
+    );
+  }
+  getDatosObras2(anio:string): Observable<datosDashBoardPrincipal[]>{
+   
+    return  this.httpClient.get<any>(this.urlAPI + "/Obras/" +anio).pipe(
+      map((response: any)=> {
+       
+        if (response && response.data && response.data.datosDashBoardPrincipal) {
+          // Acceder a 'averageContract' dentro del primer elemento del arreglo 'data'
+          return  response.data.datosDashBoardPrincipal as datosDashBoardPrincipal[];
+        } else {
+          // Manejar el caso en el que la estructura de la respuesta no sea la esperada
+          throw new Error('-La estructura de la respuesta no es la esperada en grt datos Obras');
+        }
+      }),
+      catchError((error) => {
+        console.error('Error en gry datos obras', error);
+        return throwError(error);
+      })
+    );
+  }
+  getDatosBienes2(anio:string): Observable<datosDashBoardPrincipal[]>{
+   
+    return  this.httpClient.get<any>(this.urlAPI + "/Bienes/" +anio).pipe(
+      map((response: any)=> {
+       
+        if (response && response.data && response.data.datosDashBoardPrincipal) {
+          // Acceder a 'averageContract' dentro del primer elemento del arreglo 'data'
+          return  response.data.datosDashBoardPrincipal as datosDashBoardPrincipal[];
+        } else {
+          // Manejar el caso en el que la estructura de la respuesta no sea la esperada
+          throw new Error('-La estructura de la respuesta no es la esperada en grt datos bienes');
+        }
+      }),
+      catchError((error) => {
+        console.error('Error en get datos bienes', error);
+        return throwError(error);
+      })
+    );
+  }
+ /* getDatosServicios():datosDashBoardPrincipal[]{
     const datos:datosDashBoardPrincipal[]=[
       {
         nombreSubCatContrato:"Prestación de servicios",
@@ -508,8 +595,24 @@ export class DasboardService {
     const listaUnida=[...this.getDatosBienes(),...this.getDatosObras(),...this.getDatosServicios()];
     return listaUnida;
 
-  }
+  }*/
   formatoCortoDecimal(numero:number):number{
     return parseFloat(numero.toPrecision(2));
+  }
+
+  /**
+   * 
+   * @param idContratos lista ids de contratos
+   * @returns  la mascara y el año del contrato
+   */
+  getContratosPorIds(idContratos:string[]): Observable<interfaceContrato[]>{
+    const body = JSON.stringify(idContratos);
+    return this.httpClient.post(this.urlAPI + "/aboutContracts",body,this.httpHeader).pipe(
+      map((response:any)=> response.data),
+      catchError(e=>{
+        console.log('error en el servicio contrato get getContratosPorIds','error');
+        return throwError(e);
+      })
+    )
   }
 }

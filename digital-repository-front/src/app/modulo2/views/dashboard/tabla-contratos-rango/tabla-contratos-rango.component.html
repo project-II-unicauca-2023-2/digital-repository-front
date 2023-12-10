@@ -1,6 +1,7 @@
 <div id="contTable">
   <app-titulo-linea title="Lista Filtrada Proveedores {{anioTitulo}}" id="centrar" ></app-titulo-linea>
     <content>        
+       
         <div>
           
           <ngx-datatable
@@ -11,7 +12,7 @@
             [columnMode]="ColumnMode.force"
             [footerHeight]="50"
             rowHeight="auto"
-            [rows]="rows"
+            [rows]="datosRecuperados"
             [selected]="selected"
             [selectionType]="SelectionType.single"
             (activate)="onActivate($event)"
@@ -26,7 +27,7 @@
               </span>
             </ng-template>
           </ngx-datatable-column>-->
-            <ngx-datatable-column name="nombre">
+            <ngx-datatable-column prop="nameVendor" name="Nombre Contratista">
               <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
                 <span
                   title="Nombre Contratista"
@@ -35,24 +36,49 @@
                 </span>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="contratosAnio">
+            <ngx-datatable-column prop="numContractYear" name="Cantidad Contratos {{anioTitulo}}">
                 <ng-template ngx-datatable-cell-template let-value="value">
+                  <span
+                  title="Cantidad de contratos en el año buscado"
+                  >
                   {{ value }}
+                </span>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="contratosPromedioAnio">
+              <ngx-datatable-column prop="scoreYear" name="Prom. calificaciones {{anioTitulo}}">
                 <ng-template ngx-datatable-cell-template let-value="value">
+                  <span
+                  title="Calificacion de 1 a 5"
+                  >
                   {{ value }}
+                </span>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="contratosTotales">
+              <ngx-datatable-column prop="numContract" name="Cantidad Contratos Totales">
                 <ng-template ngx-datatable-cell-template let-value="value">
+                  <span
+                  title="Cantidad de contratos Con la Universidad"
+                  >
                   {{ value }}
+                </span>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="contratosPromedioTotal">
+              <ngx-datatable-column prop="scoreGeneral"name="Promedio Total">
                 <ng-template ngx-datatable-cell-template let-value="value">
+                  <span
+                  title="Calificacion de 1 a 5"
+                >
                   {{ value }}
+                </span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="idsContract"name="Contratos Agrupados">
+                <ng-template ngx-datatable-cell-template let-value="value">
+                  <span
+                  title=""
+                >
+                  {{(value)  }}
+                </span>
                 </ng-template>
               </ngx-datatable-column>
           </ngx-datatable>
