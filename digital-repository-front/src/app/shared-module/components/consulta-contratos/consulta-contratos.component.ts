@@ -1,15 +1,12 @@
-import { Component, Input, OnInit, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { LocationStrategy } from '@angular/common';
+import { Component, EventEmitter, Output, SimpleChanges } from '@angular/core';
 
-import { PeriodicElement } from 'src/app/class/models/PeriodicElement';
 import { SelectionModel } from '@angular/cdk/collections';
-import { ContractService } from 'src/app/services/contract.service';
-import { FormControl } from '@angular/forms';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { Modality } from 'src/app/class/models/Modality';
-import { ContractType } from 'src/app/class/models/ContractType';
-import { ThisReceiver } from '@angular/compiler';
+import { FormControl, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ContractType } from 'src/app/class/models/ContractType';
+import { Modality } from 'src/app/class/models/Modality';
+import { PeriodicElement } from 'src/app/class/models/PeriodicElement';
+import { ContractService } from 'src/app/services/contract.service';
 
 @Component({
   selector: 'app-consulta-contratos',
@@ -19,7 +16,7 @@ import { Router } from '@angular/router';
 export class ConsultaContratosComponent {
 
   contracts: PeriodicElement[] = [];
-  displayedColumns: string[] = ['Id', 'Código',  'Id. Contratista','Tipo de Contrato','Modalidad',  'Año de Suscripcion'];
+  displayedColumns: string[] = ['Id', 'Código',  'Id. Contratista','Tipo de Contrato','Modalidad',  'Año de Suscripción'];
   totalElements: number = 0;
   totalPages: number = 1;
   pageSize: number = 5;
