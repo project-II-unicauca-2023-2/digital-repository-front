@@ -106,6 +106,8 @@ import { CargaArchivoComponent } from './modulo2/views/subir-info/carga-archivo/
 import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archivos/cargar-archivos.component';
 import { SubirArchivosComponent } from './modulo2/views/subir-info/subir-archivos/subir-archivos.component';
 import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/subir-archivo.component';
+import { NotifierModule } from 'angular-notifier';
+
 
 
 
@@ -154,6 +156,7 @@ import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/
     CargarArchivosComponent,
     AsideFiltroComponent,
     TablaContratosRangoComponent,
+  
   ],
   imports: [
 
@@ -169,6 +172,7 @@ import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/
       units: "PUNTOS",
 
     }),
+    NotifierModule,
     MatStepperModule,
     ReactiveFormsModule,
     MatFormFieldModule,

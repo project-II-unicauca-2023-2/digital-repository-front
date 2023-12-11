@@ -18,6 +18,13 @@
              <span  class="navLabel">Descarga de Calificaciones</span>
           </a>
 
+          <a class=items [routerLink]="['/homePage/dashboard']">
+            <span class="material-symbols-outlined">
+               monitoring
+               </span>
+             <span  class="navLabel">Estadísticas</span>
+          </a>
+
           <a class=dropdown-botton>
              <div mdbDropdown class="dropdown">
                <a
@@ -32,17 +39,10 @@
                 <span  class="navLabel">Subir Informacion</span>
                </a>
                <ul mdbDropdownMenu class="dropdown-menu">
-                 <li><a class="dropdown-item" [routerLink]="['/homePage/subirArchivo']">carga masiva contratos</a></li>
-                 <li><a class="dropdown-item" [routerLink]="['/homePage/subirArchivos']">cargar contratos</a></li>
+                 <li><a class="dropdown-item" [routerLink]="['/homePage/subir-archivo']">carga masiva contratos</a></li>
+                 <li><a class="dropdown-item" [routerLink]="['/homePage/subir-archivos']">cargar contratos</a></li>
                </ul>
              </div>
-          </a>
-
-          <a class=items [routerLink]="['/homePage/dashboard']">
-            <span class="material-symbols-outlined">
-               monitoring
-               </span>
-             <span  class="navLabel">Estadísticas</span>
           </a>
        </div>
 
