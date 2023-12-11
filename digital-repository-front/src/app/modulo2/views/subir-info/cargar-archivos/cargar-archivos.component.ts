@@ -26,20 +26,21 @@ export class CargarArchivosComponent {
     files.forEach(f => {
       // Verifica si el archivo tiene la extensión correcta (xlsx)
       if (f.name.endsWith('.xlsx')) {
-        formData.append('file', f);
+        formData.append('files', f);
       } else {
         this.notifier.notify('success','Por favor, selecciona archivos Excel válidos.');
         this.emergency_alert();
       }
     });
 
-    if (formData.has('file')) {
-      this.http.post('https://localhost:8081/api/scanFile/uploadExcels', formData, { reportProgress: true, observe: 'events' })
+    if (formData.has('files')) {
+      this.http.post('http://localhost:8081/api/scanFile/uploadExcels', formData, { reportProgress: true, observe: 'events' })
         .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress) {
             this.percentDone = event.total ? Math.round(100 * event.loaded / event.total) : 0;
           } else if (event instanceof HttpResponse) {
             this.uploadSuccess = true;
+            console.log(event.body);
           }
         });
     }
