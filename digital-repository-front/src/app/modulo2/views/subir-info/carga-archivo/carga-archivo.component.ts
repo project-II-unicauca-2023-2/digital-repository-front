@@ -27,10 +27,10 @@ export class CargaArchivoComponent {
   uploadAndProgressSingle(files: File[]) {
     const formData = new FormData();
     files.forEach(file => {
-      formData.append('files', file);
+      formData.append('file', file);
     });
   
-    this.http.post('https://localhost:8081/api/scanFile/uploadMassiveExcel', formData, {
+    this.http.post('http://localhost:8081/api/scanFile/uploadMassiveExcel', formData, {
       reportProgress: true,
       observe: 'events'
     }).subscribe(event => {
@@ -38,6 +38,7 @@ export class CargaArchivoComponent {
         this.percentDone = event.total ? Math.round(100 * event.loaded / event.total) : 0;
       } else if (event instanceof HttpResponse) {
         this.uploadSuccess = true;
+        console.log(event.body);
       }
     });
   }
