@@ -12,3 +12,15 @@
     width: 70%; 
     padding: auto;
 }
+@media (max-width: 800px) {              /* se activará cuando el ancho de la pantalla sea igual o menor que 768 píxeles,*/
+    app-asidem2{
+        display: none;
+    }
+    #aside{
+        flex-direction: column;
+      }
+      #contenido{
+        width: 100%; 
+        padding: auto;
+    }
+  }

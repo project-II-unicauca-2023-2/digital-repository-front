@@ -1,3 +1,14 @@
 #contenido-calificacion{
     background-color:rgba(238.00000101327896, 243.00000071525574, 250.00000029802322, 1);
 }
+#contenidoConAside{
+    display: flex;
+}
+@media (max-width: 800px) {              /* se activará cuando el ancho de la pantalla sea igual o menor que 768 píxeles,*/
+    app-asidem2{
+        display: none;
+    }
+    #contenidoConAside{
+        flex-direction: column;
+      }
+  }

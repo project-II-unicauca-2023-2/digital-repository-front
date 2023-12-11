@@ -2,7 +2,7 @@
 <app-buscar-proveedor *ngIf="indexVistaActual===0"
   (emisorIdContrato)="recibidoIdContratoValido($event)">
 </app-buscar-proveedor><!--VISTA DE BUSQUEDA:Vicible al iniciar-->
-  <div style="display: flex;">
+  <div id="contenidoConAside" >
     <div style="width: 30%; display: flex; justify-content: center; margin: AUTO;   ">
       <app-asidem2 *ngIf="indexVistaActual!==0" [numContrato]="numContrato"
       
