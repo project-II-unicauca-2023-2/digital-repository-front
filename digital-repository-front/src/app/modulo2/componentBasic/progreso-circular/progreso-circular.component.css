@@ -3,4 +3,12 @@ p{
     display: flex;
     align-items: center;     /* Alinea los elementos verticalmente en el centro */
     justify-content: center; /*Alinea en el centro de la pantalla*/
+    /*color: #9D0311;*/
+    color: #000066;
+    font-weight: bold;
+    margin: 0px;
+}
+circle-progress{
+    margin: 0px;
+    padding: 0px;
 }

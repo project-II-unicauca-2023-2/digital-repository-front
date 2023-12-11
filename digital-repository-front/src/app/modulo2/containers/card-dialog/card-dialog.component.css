@@ -116,7 +116,7 @@ mat-divider {
 }
 
 .icono-azul {
-  color: rgb(1, 95, 126); 
+  color: rgb(136, 186, 202); 
 }
 
 @media (max-width: 1000px) {              /* se activará cuando el ancho de la pantalla sea igual o menor que 768 píxeles,*/

@@ -40,14 +40,16 @@
   <!--MOSTRAR BOTONES TIPO:{{contBotones}}-->
   <button mat-fab extended class="boton letras-boton"  *ngIf="contBotones === 3 ||contBotones === 2"
     (click)="navegar(-1)">
-    Atrás
     <mat-icon class="material-icons-filled icono-azul">keyboard_double_arrow_left</mat-icon>
+    Atrás
   </button>
-  <button mat-fab extended class="boton letras-boton" *ngIf="contBotones === 1 ||contBotones === 2"
-    (click)="navegar(1)">
+  <button mat-fab extended class="boton letras-boton" *ngIf="contBotones === 1 || contBotones === 2"
+  (click)="navegar(1)">
+  <span style="display: flex; flex-direction: row; align-items: center;"><!--estos estolos sirven para poner el icono a la izquierda y contrarestar los predefinidos de angular-->
+    <span style="margin-right: 5px;">Siguiente</span>
     <mat-icon class="material-icons-filled icono-azul">keyboard_double_arrow_right</mat-icon>
-    Siguiente
-  </button>  
+  </span>
+  </button>
   <button mat-fab extended class="boton letras-boton"  *ngIf="contBotones === 3"
   (click)="openDialog('250ms', '100ms')">
     <mat-icon  class="material-icons-filled icono-azul">assignment</mat-icon>

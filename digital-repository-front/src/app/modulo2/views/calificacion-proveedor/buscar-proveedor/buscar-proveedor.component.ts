@@ -67,7 +67,7 @@ export class BuscarProveedorComponent implements OnInit {
         //mensajeError=" El contrto tiene ya una evaluacion registrada";
         //this.openDialog('500ms', '500ms', mensajeError,"preguntaPersonalizable","Abrir Evaluacion")// en caso contrario muestr error sin salir de la vista
    
-        mensajeError=" El contrto No existe en la base de datos asegurese de tener bien escrita la mascara";
+        mensajeError=" El contrato No existe en la base de datos asegurese de tener bien escrita la mascara y que cooresponda al año.";
         this.openDialog('500ms', '500ms',mensajeError,"soloOpcionAceptar","")// en caso contrario muestr error sin salir de la vista
       }
     });

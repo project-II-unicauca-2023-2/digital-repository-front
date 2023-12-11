@@ -125,8 +125,9 @@ export class ResultadosComponent implements OnInit  {
         // Aquí manejamos el resultado
         //console.log('Se recibe el Resultado: ', result);
         if (result === true) {
+          console.log("numero "+JSON.stringify(this.numContrato));
          // console.log(this.datosContrato            );
-          this.excelService.createNewExcel(this.datosContrato,this.datosResultado);
+          this.excelService.createNewExcel(this.numContrato,this.datosContrato,this.datosResultado);
           
         }
       }
@@ -135,6 +136,22 @@ export class ResultadosComponent implements OnInit  {
 
 
   }
-  
+  getTooltipText(rate: number): string {
+    rate = Math.floor(rate); // O usa Math.round(rate) si prefieres redondear al entero más cercano
+    switch (rate) {
+      case 1:
+        return 'No cumple';
+      case 2:
+        return 'Cumple mínimamente';
+      case 3:
+        return 'Cumple parcialmente';
+      case 4:
+        return 'Cumple plenamente';
+      case 5:
+        return 'Supera las expectativas';
+      default:
+        return 'ERROR'; // Manejar otros valores si es necesario
+    }
+  }
 }
 
