@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType } from '@angular/common/http';
 import { NotifierService } from 'angular-notifier';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CargaArchivoComponent {
 
 
   constructor(
-    private http: HttpClient, notifierService: NotifierService) { 
+    private http: HttpClient, notifierService: NotifierService) {
       this.notifier = notifierService;
     }
 
@@ -29,7 +30,7 @@ export class CargaArchivoComponent {
     files.forEach(file => {
       formData.append('files', file);
     });
-  
+
     this.http.post('https://localhost:8081/api/scanFile/uploadMassiveExcel', formData, {
       reportProgress: true,
       observe: 'events'
@@ -42,6 +43,16 @@ export class CargaArchivoComponent {
     });
   }
 
+  emergency_alert(){
+
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Something went wrong!"
+    });
+
+  }
+
   upload(event: any) {
     if (event.target instanceof HTMLInputElement) {
       const files: FileList | null = event.target.files;
@@ -49,12 +60,13 @@ export class CargaArchivoComponent {
         const fileList: File[] = Array.from(files);
         // Filtrar solo archivos Excel
         const excelFiles: File[] = fileList.filter(this.isExcelFile);
-        
+
         if (excelFiles.length > 0) {
           this.uploadAndProgressSingle(excelFiles);
         } else {
-        
+
           this.notifier.notify('success','Por favor, selecciona archivos Excel válidos.');
+          this.emergency_alert();
         }
       }
     }

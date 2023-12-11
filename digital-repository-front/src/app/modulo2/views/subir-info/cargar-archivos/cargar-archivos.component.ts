@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType } from '@angular/common/http';
 import { NotifierService } from 'angular-notifier';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-carga-archivos',
   templateUrl: './cargar-archivos.component.html',
@@ -14,7 +15,7 @@ export class CargarArchivosComponent {
 
 
   constructor(
-    private http: HttpClient, notifierService: NotifierService) { 
+    private http: HttpClient, notifierService: NotifierService) {
       this.notifier = notifierService;
     }
 
@@ -28,6 +29,7 @@ export class CargarArchivosComponent {
         formData.append('file', f);
       } else {
         this.notifier.notify('success','Por favor, selecciona archivos Excel válidos.');
+        this.emergency_alert();
       }
     });
 
@@ -40,7 +42,17 @@ export class CargarArchivosComponent {
             this.uploadSuccess = true;
           }
         });
-    } 
+    }
+  }
+
+  emergency_alert(){
+
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Something went wrong!"
+    });
+
   }
 
   upload(event: any) {
