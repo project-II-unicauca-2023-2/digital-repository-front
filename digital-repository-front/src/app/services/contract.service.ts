@@ -264,7 +264,7 @@ export class ContractService {
     );
   }
   getPromedioBienes(anio:string): Observable<number> {
-    
+
     return this.httpClient.get<any>(this.urlAPI + "/averageContractType/Bienes/"+anio).pipe(
       map((response: any) => {
         // Verificar que la propiedad 'data' existe en la respuesta antes de acceder a ella
@@ -324,6 +324,20 @@ export class ContractService {
       })
     );
   }
+
+  getAllContratosCalificados(page:number, pageSize:number): Observable<Response>{
+
+    return this.httpClient.get<Response>(`${this.urlAPI}/dataExpiredQualifiedContract?pageNo=${page}&pageSize=${pageSize}` ).pipe(
+      catchError((e) => {
+
+
+        console.log('Error obteniendo todos los contratos', e.error.mensaje, 'error');
+        return throwError(e);
+
+      })
+    )
+  }
+
 }
 
 
