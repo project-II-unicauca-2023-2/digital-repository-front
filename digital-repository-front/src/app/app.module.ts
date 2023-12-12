@@ -102,6 +102,8 @@ import { TablaContratosRangoComponent } from './modulo2/views/dashboard/tabla-co
 import { DescargaCalificacionesComponent } from './modulo2/views/descarga-calificaciones/descarga-calificaciones.component';
 import { MostrarDescargarComponent } from './modulo2/views/descarga-calificaciones/mostrar-descargar/mostrar-descargar.component';
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
+import { ConsultaContratos2Component } from './shared-module/components/consulta-contratos2/consulta-contratos2.component';
+
 
 @NgModule({
   declarations: [
@@ -144,6 +146,7 @@ import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.compon
     AdvancedPieChartComponent,
     AsideFiltroComponent,
     TablaContratosRangoComponent,
+    ConsultaContratos2Component
     
   ],
   imports: [

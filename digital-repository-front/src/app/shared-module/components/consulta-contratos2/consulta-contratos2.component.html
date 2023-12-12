@@ -1,0 +1,24 @@
+<!-- app.component.html -->
+
+<h2>Tabla de Contratos Calificados</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Código</th>
+      <th>Tipo de Contrato</th>
+      <th>Modalidad</th>
+      <th>Año de Suscripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of contratosCalificados.data | keyvalue">
+      <td>{{ item.value.id }}</td>
+      <td>{{ item.value.reference }}</td>
+      <td>{{ item.value.contractType }}</td>
+      <td>{{ item.value.modality }}</td>
+      <td>{{ item.value.initialDate | date:'dd/MM/yyyy' }}</td>
+    </tr>
+  </tbody>
+</table>

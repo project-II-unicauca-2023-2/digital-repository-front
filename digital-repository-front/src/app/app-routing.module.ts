@@ -16,6 +16,7 @@ import { MostrarDescargarComponent } from './modulo2/views/descarga-calificacion
 import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
 import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
+import { ConsultaContratos2Component } from './shared-module/components/consulta-contratos2/consulta-contratos2.component';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
       { path: 'descargaFormato', component: DescargaCalificacionesComponent },
       { path: 'calificacion', component: CalificacionProveedorComponent },
       { path: 'Evaluacion/:contrato/:anio', component: MostrarDescargarComponent},
-      {path: 'buscarcontrato',component: BuscarContratosComponent}
+      {path: 'buscarcontrato',component: BuscarContratosComponent},
+      { path: 'contratos2', component: ConsultaContratos2Component}
     ] },
   { path: 'createCont', component: CreateContractComponent },
   {
