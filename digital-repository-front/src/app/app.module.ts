@@ -156,7 +156,7 @@ import { NotifierModule } from 'angular-notifier';
     CargarArchivosComponent,
     AsideFiltroComponent,
     TablaContratosRangoComponent,
-  
+
   ],
   imports: [
 
