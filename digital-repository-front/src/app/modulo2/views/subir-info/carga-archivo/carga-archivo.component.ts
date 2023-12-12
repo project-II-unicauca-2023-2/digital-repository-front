@@ -45,52 +45,34 @@ export class CargaArchivoComponent {
   private readonly notifier: NotifierService;
   responses!: UploadExcelFileResponse[] | any;
 
+
   constructor(
     private http: HttpClient, notifierService: NotifierService) {
       this.notifier = notifierService;
     }
 
-    printMessage() {
-      if (this.responses) {
-          const allMessages: string[] = this.responses
-          .map((response: UploadExcelFileResponse) => response.messages)
-          .flatMap((messages: string[]) => messages);
-          console.log('All Messages:', allMessages);
+  isExcelFile(file: File): boolean {
+    return file.name.endsWith('.xls') || file.name.endsWith('.xlsx');
+  }
 
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: `Multiples errores`
-          });
-      }
-    }
-
-  uploadAndProgress(files: File[]) {
-    console.log(files);
-    var formData = new FormData();
-
-    files.forEach(f => {
-      // Verifica si el archivo tiene la extensión correcta (xlsx)
-      if (f.name.endsWith('.xlsx')) {
-        formData.append('files', f);
-      } else {
-        this.notifier.notify('success','Por favor, selecciona archivos Excel válidos.');
-        this.emergency_alert()
-      }
+  uploadAndProgressSingle(files: File[]) {
+    const formData = new FormData();
+    files.forEach(file => {
+      formData.append('file', file);
     });
 
-    if (formData.has('files')) {
-      this.http.post('http://localhost:8081/api/scanFile/uploadExcels', formData, { reportProgress: true, observe: 'events' })
-        .subscribe(event => {
-          if (event.type === HttpEventType.UploadProgress) {
-            this.percentDone = event.total ? Math.round(100 * event.loaded / event.total) : 0;
-          } else if (event instanceof HttpResponse) {
-            this.uploadSuccess = true;
-            this.responses = event.body;
-            this.printMessage();
-          }
-        });
-    }
+    this.http.post('http://localhost:8081/api/scanFile/uploadMassiveExcel', formData, {
+      reportProgress: true,
+      observe: 'events'
+    }).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.percentDone = event.total ? Math.round(100 * event.loaded / event.total) : 0;
+      } else if (event instanceof HttpResponse) {
+        this.uploadSuccess = true;
+        this.responses = event.body;
+        this.printMessages();
+      }
+    });
   }
 
   upload(event: any) {
@@ -98,7 +80,16 @@ export class CargaArchivoComponent {
       const files: FileList | null = event.target.files;
       if (files) {
         const fileList: File[] = Array.from(files);
-        this.uploadAndProgress(fileList);
+        // Filtrar solo archivos Excel
+        const excelFiles: File[] = fileList.filter(this.isExcelFile);
+
+        if (excelFiles.length > 0) {
+          this.uploadAndProgressSingle(excelFiles);
+        } else {
+
+          this.notifier.notify('success','Por favor, selecciona archivos Excel válidos.');
+          this.emergency_alert()
+        }
       }
     }
   }
@@ -112,4 +103,28 @@ export class CargaArchivoComponent {
     });
 
   }
+
+  printMessages() {
+    if (this.responses) {
+      // Utiliza map para extraer el array de mensajes de cada respuesta
+      const allMessages: string[] = this.responses
+        .map((response: UploadExcelFileResponse) => response.messages)
+        // Utiliza flatMap para combinar todos los arrays de mensajes en uno solo
+        .flatMap((messages: string[]) => messages)
+        // Utiliza un Set para eliminar elementos duplicados
+        .filter((message: any, index: any, self: string | any[]) => self.indexOf(message) === index);
+
+      console.log('All Messages:', allMessages);
+
+      if (allMessages.length > 0) {
+        Swal.fire({
+          icon: "error",
+          title: "Se encontraron estos errores al cargar el archivo: \n",
+          text: `${allMessages}`
+        });
+      }
+    }
+  }
+
+
 }
