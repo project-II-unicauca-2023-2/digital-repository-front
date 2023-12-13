@@ -42,6 +42,7 @@ export class CargarArchivosComponent {
   percentDone: number = 0;
   uploadSuccess: boolean = false;
   responses!: UploadExcelFileResponse[] | any;
+  cont: number = 0;
 
   constructor(
     private http: HttpClient) {}
@@ -53,11 +54,27 @@ export class CargarArchivosComponent {
           .flatMap((messages: string[]) => messages);
           console.log('All Messages:', allMessages);
 
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: `${allMessages}`
-          });
+          this.responses.forEach((response: UploadExcelFileResponse) => {
+            if(MessageType.CONTRACT_NOT_FOUND === 0 || MessageType.EVALUATION_ALREADY_EXISTS === 2 || MessageType.VALIDATION === 3){
+              this.cont ++;
+            }
+            console.log(`MessageType: ${MessageType[response.messageType]}`);
+            });
+
+          if(this.cont == 0){
+            Swal.fire({
+              icon: 'success',
+              title: "yei !!",
+              text: `${allMessages}`
+            });
+          }else{
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: `${allMessages}`
+            });
+            this.cont = 0;
+          }
       }
     }
 
