@@ -102,6 +102,12 @@ import { TablaContratosRangoComponent } from './modulo2/views/dashboard/tabla-co
 import { DescargaCalificacionesComponent } from './modulo2/views/descarga-calificaciones/descarga-calificaciones.component';
 import { MostrarDescargarComponent } from './modulo2/views/descarga-calificaciones/mostrar-descargar/mostrar-descargar.component';
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
+import { ConsultaContratos2Component } from './shared-module/components/consulta-contratos2/consulta-contratos2.component';
+
+
+
+import { MatRippleModule } from '@angular/material/core';
+
 
 import { CargaArchivoComponent } from './modulo2/views/subir-info/carga-archivo/carga-archivo.component';
 import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archivos/cargar-archivos.component';
@@ -149,16 +155,17 @@ import { NotifierModule } from 'angular-notifier';
     DashboardComponent,
     VerticalBarChartComponent,
     AdvancedPieChartComponent,
+    AsideFiltroComponent,
+    TablaContratosRangoComponent,
+    ConsultaContratos2Component,
     SubirArchivoComponent,
     SubirArchivosComponent,
     CargaArchivoComponent,
     CargarArchivosComponent,
-    AsideFiltroComponent,
-    TablaContratosRangoComponent,
-    ConsultaContratos2Component
+    
   ],
   imports: [
-
+    
     MatRadioModule,
     NgCircleProgressModule.forRoot({
       //realizamos la importacion del modulo que maneja grafico de progreso en un diagrama circular
@@ -171,8 +178,8 @@ import { NotifierModule } from 'angular-notifier';
       units: "PUNTOS",
 
     }),
-    NotifierModule,
     MatStepperModule,
+    NotifierModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -226,6 +233,7 @@ import { NotifierModule } from 'angular-notifier';
     MatNativeDateModule,
     NgScrollbarModule,MatCardModule,
     MatSidenavModule,
+    MatSidenavModule,    
     NgxChartsModule,
     MatChipsModule,
     MatSelectModule,
