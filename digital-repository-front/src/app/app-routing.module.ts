@@ -16,6 +16,7 @@ import { MostrarDescargarComponent } from './modulo2/views/descarga-calificacion
 import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/modulo2-component.component';
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
 import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
+import { ConsultaContratos2Component } from './shared-module/components/consulta-contratos2/consulta-contratos2.component';
 import { CargaArchivoComponent } from './modulo2/views/subir-info/carga-archivo/carga-archivo.component';
 import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archivos/cargar-archivos.component';
 import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/subir-archivo.component';
@@ -36,11 +37,13 @@ const routes: Routes = [
       { path: 'descargaFormato', component: DescargaCalificacionesComponent },
       { path: 'calificacion', component: CalificacionProveedorComponent },
       { path: 'Evaluacion/:contrato/:anio', component: MostrarDescargarComponent},
+      //{ path: 'buscarcontrato', component: ConsultaContratos2Component},
       {path: 'buscarcontrato',component: BuscarContratosComponent},
       {path: 'carga-archivo', component: CargaArchivoComponent},
       {path: 'cargar-archivos', component: CargarArchivosComponent},
       {path: 'subir-archivo', component: SubirArchivoComponent},
       {path: 'subir-archivos', component: SubirArchivosComponent}
+
     ] },
   { path: 'createCont', component: CreateContractComponent },
   {

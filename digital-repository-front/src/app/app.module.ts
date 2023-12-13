@@ -102,13 +102,12 @@ import { TablaContratosRangoComponent } from './modulo2/views/dashboard/tabla-co
 import { DescargaCalificacionesComponent } from './modulo2/views/descarga-calificaciones/descarga-calificaciones.component';
 import { MostrarDescargarComponent } from './modulo2/views/descarga-calificaciones/mostrar-descargar/mostrar-descargar.component';
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
+
 import { CargaArchivoComponent } from './modulo2/views/subir-info/carga-archivo/carga-archivo.component';
 import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archivos/cargar-archivos.component';
 import { SubirArchivosComponent } from './modulo2/views/subir-info/subir-archivos/subir-archivos.component';
 import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/subir-archivo.component';
 import { NotifierModule } from 'angular-notifier';
-
-
 
 
 @NgModule({
@@ -156,7 +155,7 @@ import { NotifierModule } from 'angular-notifier';
     CargarArchivosComponent,
     AsideFiltroComponent,
     TablaContratosRangoComponent,
-
+    ConsultaContratos2Component
   ],
   imports: [
 
@@ -243,6 +242,7 @@ import { NotifierModule } from 'angular-notifier';
       }
     }),
     MatTooltipModule,
+    MatRippleModule,
   ],
   providers: [
     IconSetService,

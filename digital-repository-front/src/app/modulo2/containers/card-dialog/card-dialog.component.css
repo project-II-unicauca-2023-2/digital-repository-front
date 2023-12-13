@@ -116,16 +116,15 @@ mat-divider {
 }
 
 .icono-azul {
-  color: rgb(1, 95, 126); 
+  color: rgb(136, 186, 202); 
 }
 
-@media (max-width: 1000px) {              /* se activará cuando el ancho de la pantalla sea igual o menor que 768 píxeles,*/
+@media (max-width: 1300px) {              /* se activará cuando el ancho de la pantalla sea igual o menor que 768 píxeles,*/
   .container {
       flex-direction: column;          /* Cambia la dirección a vertical cuando se alcanza el ancho máximo */
       align-items: flex-start;         /* Alinea los elementos a la izquierda en el eje vertical */
  
   }
-  
 }
 .scroll{
   max-height: 100px; 

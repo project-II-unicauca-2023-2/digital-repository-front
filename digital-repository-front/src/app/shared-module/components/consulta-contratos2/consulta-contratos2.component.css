@@ -1,0 +1,52 @@
+
+.selected-row {
+  font-weight: bold;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.clear-filters-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+mat-grid-tile {
+  display: flex;
+  align-items: center;
+}
+
+/* asas */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.clear-filters-btn {
+  margin-top: 5px;
+}
+
+
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+

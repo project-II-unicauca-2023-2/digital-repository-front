@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-chips',
@@ -7,10 +7,17 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ChipsComponent {
   @Output() emisorCategoriaSeleccionado = new EventEmitter<string>();
+  @Input() anioBusqueda!: string;
   categoria:string;
 
   constructor(){
     this.categoria="todas";
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['anioBusqueda'] && changes['anioBusqueda'].currentValue) {
+      console.log('RECIBIENDO DATOS', this.anioBusqueda);
+      this.categoria = "todas";
+    }
   }
   emitircategoria(){
     //alert("categoria");

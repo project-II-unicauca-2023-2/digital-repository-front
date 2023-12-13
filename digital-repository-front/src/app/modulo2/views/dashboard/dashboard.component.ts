@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router';
 import { DataItem } from '@swimlane/ngx-charts';
+import { forkJoin, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { DasboardService } from 'src/app/services/dasboard.service';
 import { AdvancedPieChartComponent } from '../../componentBasic/advanced-pie-chart/advanced-pie-chart.component';
 import { PieGridChartComponent } from '../../componentBasic/pie-grid-chart/pie-grid-chart.component';
@@ -32,8 +33,66 @@ export class DashboardComponent implements OnInit {
     this.coloresEnviar=this.coloresGraficos;
   }
   ngOnInit(): void {
-    this.promedioCategoriaContrato=this.dashboardService.getPromediosTotales();
-    this.datosGraficar=this.transformarDatos(this.dashboardService.getDatosTodos());
+    this.anioBusqueda= new Date().getFullYear()+"";
+    let sumatoriaProm=0;
+    this.obtenerPromediosYCalcularPromedioTotal();
+    //this.datosGraficar=this.transformarDatos(this.dashboardService.getDatosTodos());
+    this.obtenerTodosLosDatos();
+  }
+  
+  async obtenerPromediosYCalcularPromedioTotal() {
+    try {
+      const [promedioObras, promedioBienes, promedioServicios]: any = await forkJoin(
+        this.dashboardService.getPromediosObras(this.anioBusqueda),
+        this.dashboardService.getPromedioBienes(this.anioBusqueda),
+        this.dashboardService.gePromedioServicios(this.anioBusqueda)
+      )
+        .pipe(
+          catchError((error) => {
+            console.error('Error al obtener promedios:', error);
+            return of(undefined);
+          })
+        )
+        .toPromise();
+
+      console.log('Respuestas de promedios:', promedioObras, promedioBienes, promedioServicios);
+
+      if (promedioObras !== undefined && promedioBienes !== undefined && promedioServicios !== undefined) {
+        const sumatoriaProm = promedioObras + promedioBienes + promedioServicios;
+        this.promedioCategoriaContrato = sumatoriaProm / 3;
+      } else {
+        console.error('Al menos una de las solicitudes de promedio devolvió undefined.');
+      }
+    } catch (error) {
+      console.error('Ocurrió un error al obtener promedios y calcular el promedio total:', error);
+    }
+  }
+  async obtenerTodosLosDatos() {
+    try {
+      const [promedioObras, promedioBienes, promedioServicios]: any = await forkJoin(
+        this.dashboardService.getDatosObras2(this.anioBusqueda),
+        this.dashboardService.getDatosBienes2(this.anioBusqueda),
+        this.dashboardService.getDatosServicios2(this.anioBusqueda)
+      )
+        .pipe(
+          catchError((error) => {
+            console.error('Error al obtener promedios:', error);
+            return of(undefined);
+          })
+        )
+        .toPromise();
+
+      const todos=[...promedioObras,...promedioBienes,...promedioServicios];
+      console.log('Respuestas de todos Unidos:',todos);
+
+      if (promedioObras !== undefined && promedioBienes !== undefined && promedioServicios !== undefined) {
+        this.datosGraficar=this.transformarDatos(todos);
+      } else {
+        console.error('Al menos una de las solicitudes de promedio devolvió undefined.');
+      }
+    } catch (error) {
+      console.error('Ocurrió un error al obtener promedios y calcular el promedio total:', error);
+    }
   }
   mostrarTodasLasGraficas() {
     this.mostrarTodas = !this.mostrarTodas;
@@ -75,39 +134,145 @@ export class DashboardComponent implements OnInit {
   recibidoAnio(anio: string){
     //alert("se selecciona anio"+anio);
     this.anioBusqueda=anio;
+    this.categoriaBusqueda="todas";
+    this.obtenerPromediosYCalcularPromedioTotal();
+    this.refrescoGrafica();
+    this.obtenerTodosLosDatos();
   }
   categoriaBusqueda:string="";
+
   recibidoCategoria(categoriaBusqueda: string){
+    this.promedioCategoriaContrato=0;
+    
     //alert("se selecciona categoria:"+categoriaBusqueda);
     //alert("s");
     let datosCat:datosDashBoardPrincipal[];
     this.categoriaBusqueda=categoriaBusqueda.toLowerCase(); //actualiza la variable mandada al aside y al promedio
     switch (this.categoriaBusqueda) {
       case 'obras':
-        this.subcategorisContrato=this.dashboardService.getSubCategoriasObras();
-        this.promedioCategoriaContrato=this.dashboardService.getPromediosObras();
+        this.dashboardService.getSubCategoriasObras().subscribe(
+          (data: string[]) => {
+            //console.log("habeis recuperado" + JSON.stringify(data));/           
+            this.subcategorisContrato= data;
+          },
+          (error) => {
+            // Manejo de errores
+            this.promedioCategoriaContrato = 0; 
+            console.error('Ocurrió un error al obtener los criterios:', error);
+          }
+        );
+        //this.subcategorisContrato=this.dashboardService.getSubCategoriasObras();
+        this.dashboardService.getPromediosObras(this.anioBusqueda).subscribe(
+          (data: number) => {
+            //console.log("2habeis recuperado" + JSON.stringify(data));            
+            this.promedioCategoriaContrato= data;
+            //console.log(" 2ahora vale" +  this.promedioCategoriaContrato);  
+          },
+          (error) => {
+            // Manejo de errores
+            this.promedioCategoriaContrato = 0; 
+            console.error('Ocurrió un error al obtener  promedio de obras:', error);
+          }
+        );
+        //this.promedioCategoriaContrato=this.dashboardService.getPromediosObras();
         break;
     
       case 'bienes':
-        this.subcategorisContrato=this.dashboardService.getSubCategoriasBienes();
-        this.promedioCategoriaContrato=this.dashboardService.getPromedioBienes();
+        this.dashboardService.getSubCategoriasBienes().subscribe(
+          (data: string[]) => {
+            //console.log("habeis recuperado" + JSON.stringify(data));/            
+            this.subcategorisContrato= data;
+          },
+          (error) => {
+            // Manejo de errores
+            this.promedioCategoriaContrato = 0; 
+            console.error('Ocurrió un error al obtener los criterios:', error);
+          }
+        );
+        //this.subcategorisContrato=this.dashboardService.getSubCategoriasBienes();
+        this.dashboardService.getPromedioBienes(this.anioBusqueda).subscribe(
+          (data: number) => {
+            //console.log("2habeis recuperado" + JSON.stringify(data));            
+            this.promedioCategoriaContrato= data;
+            //console.log(" 2ahora vale" +  this.promedioCategoriaContrato); 
+          },
+          (error) => {
+            // Manejo de errores
+            this.promedioCategoriaContrato = 0; 
+            console.error('Ocurrió un error al obtener  promedio de bienes:', error);
+          }
+        );
+        //this.promedioCategoriaContrato=this.dashboardService.getPromedioBienes();
         break;
     
       case 'servicios':
-        this.subcategorisContrato=this.dashboardService.getSubCategoriasServicios();
-        this.promedioCategoriaContrato=this.dashboardService.gePromedioServicios();
+        this.dashboardService.getSubCategoriasServicios().subscribe(
+          (data: string[]) => {
+            //console.log("habeis recuperado" + JSON.stringify(data));            
+            this.subcategorisContrato= data;
+          },
+          (error) => {
+            // Manejo de errores
+            this.promedioCategoriaContrato = 0; 
+            console.error('Ocurrió un error al obtener los criterios:', error);
+          }
+        );
+        //this.subcategorisContrato=this.dashboardService.getSubCategoriasServicios();
+        this.dashboardService.gePromedioServicios(this.anioBusqueda).subscribe(
+          (data: number) => {
+            this.promedioCategoriaContrato = 0; 
+           // console.log("2habeis recuperado" + JSON.stringify(data));            
+            this.promedioCategoriaContrato= data;
+            //console.log(" 2ahora vale" +  this.promedioCategoriaContrato); 
+          },
+          (error) => {
+            // Manejo de errores
+            this.promedioCategoriaContrato = 0; 
+            console.error('Ocurrió un error al obtener  promedio de servicios:', error);
+          }
+        );
+        //this.promedioCategoriaContrato=this.dashboardService.gePromedioServicios();
         break;
     
       case 'todas':
         this.subcategorisContrato=[];
-        this.promedioCategoriaContrato=this.dashboardService.getPromediosTotales();
+        let sumatoriaProm=0;
+        this.dashboardService.getPromediosObras(this.anioBusqueda).subscribe(
+          (data: number) => {
+            sumatoriaProm=sumatoriaProm+data;
+            this.dashboardService.getPromedioBienes(this.anioBusqueda).subscribe(
+              (data2: number) => {
+                sumatoriaProm=sumatoriaProm+data2;
+                this.dashboardService.gePromedioServicios(this.anioBusqueda).subscribe(
+                  (data3: number) => {                    
+                    sumatoriaProm=sumatoriaProm+data3;
+                    this.promedioCategoriaContrato=sumatoriaProm/3;
+                  },
+                  (error) => {
+                    this.promedioCategoriaContrato = 0; 
+                    console.error('Ocurrió un error al obtener promedioTotal en servicios:', error);
+                  }
+                );
+              },
+              (error) => {
+                this.promedioCategoriaContrato = 0; 
+                console.error('Ocurrió un error a al obtener promedioTotal en Bienes:', error);
+              }
+            );
+          },
+          (error) => {
+            this.promedioCategoriaContrato = 0; 
+            console.error('Ocurrió un error al obtener promedioTotal en obras :', error);
+          }
+        );
+        //this.promedioCategoriaContrato=this.dashboardService.getPromediosTotales();
       break;
       default:
         console.log('Opción no reconocida en la seleccion [obras,servicios,bienes]');
     }
     this.refrescoGrafica();
   }
-  hola="te sakudi";
+
   /**
    * al cambiar los datosGraficar se refresca la grafica por que obtiene nuevos datos
    */
@@ -117,19 +282,75 @@ export class DashboardComponent implements OnInit {
     this.coloresEnviar=this.coloresGraficos.slice(indicePrimerColor-1, indiceUltimoColor+ 1);
     switch (this.categoriaBusqueda) {
       case 'obras':
-        this.datosGraficar=this.transformarDatos(this.dashboardService.getDatosObras());
+        this.dashboardService.getDatosObras2(this.anioBusqueda).subscribe(
+          (data: datosDashBoardPrincipal[]) => {
+            console.log("DATOS PRINCIPALES" +JSON.stringify(data));
+            this.datosGraficar=this.transformarDatos(data);
+          },
+          (error) => {
+            // Manejo de errores
+            console.error('Ocurrió un error al obtener  promedio de servicios:', error);
+          }
+        );
+        //this.datosGraficar=this.transformarDatos(this.dashboardService.getDatosObras());
         break;
     
       case 'bienes':
-        this.datosGraficar=this.transformarDatos(this.dashboardService.getDatosBienes());
+        this.dashboardService.getDatosBienes2(this.anioBusqueda).subscribe(
+          (data: datosDashBoardPrincipal[]) => {
+            console.log("DATOS PRINCIPALES" +JSON.stringify(data));
+            this.datosGraficar=this.transformarDatos(data);
+          },
+          (error) => {
+            // Manejo de errores
+            console.error('Ocurrió un error al obtener  promedio de servicios:', error);
+          }
+        );
+        //this.datosGraficar=this.transformarDatos(this.dashboardService.getDatosBienes());
         break;
     
       case 'servicios':
-        this.datosGraficar=this.transformarDatos(this.dashboardService.getDatosServicios());
+        this.dashboardService.getDatosServicios2(this.anioBusqueda).subscribe(
+          (data: datosDashBoardPrincipal[]) => {
+            console.log("DATOS PRINCIPALES" +JSON.stringify(data));
+            this.datosGraficar=this.transformarDatos(data);
+          },
+          (error) => {
+            // Manejo de errores
+            console.error('Ocurrió un error al obtener  promedio de servicios:', error);
+          }
+        );
+        //console.log("DATOS PRINCIPALES quemados" +JSON.stringify(this.dashboardService.getDatosServicios()));
+        //this.datosGraficar=this.transformarDatos(this.dashboardService.getDatosServicios());
+
         break;
     
       case 'todas':
-        this.datosGraficar=this.transformarDatos(this.dashboardService.getDatosTodos());
+        this.dashboardService.getDatosObras2(this.anioBusqueda).subscribe(
+          (datosObra: datosDashBoardPrincipal[]) => {
+            this.dashboardService.getDatosBienes2(this.anioBusqueda).subscribe(
+              (datosBien: datosDashBoardPrincipal[]) => {
+                this.dashboardService.getDatosServicios2(this.anioBusqueda).subscribe(
+                  (dataServicio: datosDashBoardPrincipal[]) => {
+                    const todos=[...datosObra,...datosBien,...dataServicio];
+                    this.datosGraficar=this.transformarDatos(todos);
+                  },
+                  (error) => {
+                    console.error('Ocurrió un error al obtener  promedio de servicios:', error);
+                  }
+                );
+              },
+              (error) => {
+                console.error('Ocurrió un error al obtener  promedio de servicios:', error);
+              }
+            );
+
+          },
+          (error) => {
+            console.error('Ocurrió un error al obtener  promedio de servicios:', error);
+          }
+        );
+        //this.datosGraficar=this.transformarDatos(this.dashboardService.getDatosTodos());
       break;
       default:
         console.log('Opción no reconocida en la seleccion [obras,servicios,bienes]');
@@ -144,8 +365,8 @@ export class DashboardComponent implements OnInit {
   }
 /**
  * transforma los datos de la base de datos para que pueda ser leido por las graficas
- * @param datos 
- * @returns 
+ * @param datos ingresamos los datos traidos de la bd
+ * @returns retormanos un DataItem que es de la libreria que maneja las graficas
  */
   transformarDatos(datos: datosDashBoardPrincipal[]): DataItem[] {
     const datosTransformados :DataItem[]= Array.from(
@@ -172,7 +393,7 @@ export class DashboardComponent implements OnInit {
           }
         )
       );
-    console.log("losDATOS transformados son:"+JSON.stringify(datosTransformados));
+    //console.log("losDATOS transformados son:"+JSON.stringify(datosTransformados));
 
     this.idGraficados = datosTransformados.reduce((acc, current) => {
       return acc.concat(current.extra);

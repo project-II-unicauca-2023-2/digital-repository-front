@@ -1,14 +1,11 @@
-import { Component, Input, OnInit, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { LocationStrategy } from '@angular/common';
+import { Component, EventEmitter, Output, SimpleChanges } from '@angular/core';
 
-import { PeriodicElement } from 'src/app/class/models/PeriodicElement';
 import { SelectionModel } from '@angular/cdk/collections';
-import { ContractService } from 'src/app/services/contract.service';
-import { FormControl } from '@angular/forms';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { Modality } from 'src/app/class/models/Modality';
+import { FormControl, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ContractType } from 'src/app/class/models/ContractType';
-import { ThisReceiver } from '@angular/compiler';
+import { Modality } from 'src/app/class/models/Modality';
+import { PeriodicElement } from 'src/app/class/models/PeriodicElement';
+import { ContractService } from 'src/app/services/contract.service';
 
 
 
@@ -24,7 +21,7 @@ import { ThisReceiver } from '@angular/compiler';
 export class ListContractComponent {
 
   contracts: PeriodicElement[] = [];
-  displayedColumns: string[] = ['Id', 'Código',  'Id. Contratista','Tipo de Contrato','Modalidad',  'Año de Suscripcion'];
+  displayedColumns: string[] = ['Id', 'Código',  'Id. Contratista','Tipo de Contrato','Modalidad',  'Año de Suscripción'];
   totalElements: number = 0;
   totalPages: number = 1;
   pageSize: number = 5;

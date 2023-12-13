@@ -8,6 +8,7 @@ import { responseDocument } from '../class/models/responseDocument';
 import { datosAside } from '../modulo2/models/datosAside';
 import { descriptionCriteriaContract } from '../modulo2/models/descriptionCriteriaContract';
 import { idContrato } from '../modulo2/models/idContrato';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -208,43 +209,131 @@ export class ContractService {
     })
     )
   }
+  getSubCategoriasBienes(): Observable<string[]> {
+    return this.httpClient.get<any>(this.urlAPIContractType + "/aboutContractType/Bienes").pipe(
+      map((response: any) => {
+        // Verificar que la propiedad 'data' existe en la respuesta antes de acceder a ella
+        if (response && response.data && response.data.contractType) {
+          // Castear la respuesta a un arreglo de strings
+          return response.data.contractType as string[];
+        } else {
+          // Manejar el caso en el que la estructura de la respuesta no sea la esperada
+          throw new Error('La estructura de la respuesta no es la esperada getSubCategoriasBienes'+ JSON.stringify(response.data));
+        }
+      }),
+      catchError((error) => {
+        console.error('Error buscandoCriterios', error);
+        return throwError(error);
+      })
+    );
+  }
+  getSubCategoriasServicios(): Observable<string[]> {
+    return this.httpClient.get<any>(this.urlAPIContractType + "/aboutContractType/Servicios").pipe(
+      map((response: any) => {
+        // Verificar que la propiedad 'data' existe en la respuesta antes de acceder a ella
+        if (response && response.data && response.data.contractType) {
+          // Castear la respuesta a un arreglo de strings
+          return response.data.contractType as string[];
+        } else {
+          // Manejar el caso en el que la estructura de la respuesta no sea la esperada
+          throw new Error('La estructura de la respuesta no es la esperada getSubCategoriasServicios:'+ JSON.stringify(response.data));
+        }
+      }),
+      catchError((error) => {
+        console.error('Error buscandoCriterios', error);
+        return throwError(error);
+      })
+    );
+  }
+  getSubCategoriasObras(): Observable<string[]> {
+    return this.httpClient.get<any>(this.urlAPIContractType + "/aboutContractType/Obras").pipe(
+      map((response: any) => {
+        // Verificar que la propiedad 'data' existe en la respuesta antes de acceder a ella
+        if (response && response.data && response.data.contractType) {
+          // Castear la respuesta a un arreglo de strings
+          return response.data.contractType as string[];
+        } else {
+          // Manejar el caso en el que la estructura de la respuesta no sea la esperada
+          throw new Error('La estructura de la respuesta no es la esperada getSubCategoriasObras'+JSON.stringify(response.data));
+        }
+      }),
+      catchError((error) => {
+        console.error('Error buscandoCriterios', error);
+        return throwError(error);
+      })
+    );
+  }
+  getPromedioBienes(anio:string): Observable<number> {
+
+    return this.httpClient.get<any>(this.urlAPI + "/averageContractType/Bienes/"+anio).pipe(
+      map((response: any) => {
+        // Verificar que la propiedad 'data' existe en la respuesta antes de acceder a ella
+        if (response && response.data && Array.isArray(response.data) && response.data.length > 0 && response.data[0].averageContract) {
+          // Acceder a 'averageContract' dentro del primer elemento del arreglo 'data'
+          return response.data[0].averageContract as number;
+        } else {
+         // Manejar el caso en el que la estructura de la respuesta no sea la esperada
+        console.error(' getPromedioBienes no ha encontrado coincidencias', JSON.stringify(response.data));
+        // Retornar cero en caso de error
+        return 0;}
+      }),
+      catchError((error) => {
+        console.error('Error buscandogetPromedios', error);
+        return throwError(error);
+      })
+    );
+  }
+  gePromedioServicios(anio:string): Observable<number> {
+    //console.log(this.urlAPI + "/averageContractType/Servicios/"+anio);
+    return this.httpClient.get<any>(this.urlAPI + "/averageContractType/Servicios/"+anio).pipe(
+      map((response: any) => {
+        if (response && response.data && Array.isArray(response.data) && response.data.length > 0 && response.data[0].averageContract) {
+          // Acceder a 'averageContract' dentro del primer elemento del arreglo 'data'
+          return response.data[0].averageContract as number;
+        } else {
+          // Manejar el caso en el que la estructura de la respuesta no sea la esperada
+         // Manejar el caso en el que la estructura de la respuesta no sea la esperada
+        console.error('no ha encontrado coincidencias getPromedio Servicios', JSON.stringify(response.data));
+        // Retornar cero en caso de error
+        return 0; }
+      }),
+      catchError((error) => {
+        console.error('Error buscandogetPromedios', error);
+        return throwError(error);
+      })
+    );
+  }
+  getPromediosObras(anio:string): Observable<number> {
+    return this.httpClient.get<any>(this.urlAPI + "/averageContractType/Obras/"+anio).pipe(
+      map((response: any) => {
+        // Verificar que la propiedad 'data' existe en la respuesta antes de acceder a ella
+        if (response && response.data && Array.isArray(response.data) && response.data.length > 0 && response.data[0].averageContract) {
+          // Acceder a 'averageContract' dentro del primer elemento del arreglo 'data'
+          return response.data[0].averageContract as number;
+        } else {
+          // Manejar el caso en el que la estructura de la respuesta no sea la esperada
+        // Manejar el caso en el que la estructura de la respuesta no sea la esperada
+        console.error('no ha encontrado coincidencias getPromediosObras', JSON.stringify(response.data));
+        // Retornar cero en caso de error
+        return 0;
+       }
+      }),
+      catchError((error) => {
+        console.error('Error getPromedios', error);
+        return throwError(error);
+      })
+    );
+  }
+
+  getAllContratosCalificados(page:number, pageSize:number): Observable<Response>{
+
+    // dataExpiredQualifiedContract?pageNo=${page}&pageSize=${pageSize}
+    return this.httpClient.get<Response>(`${this.urlAPI}/dataExpiredQualifiedContract?pageNo=${page}&pageSize=${pageSize}` ).pipe(
+      catchError((e) => {
+        console.log('Error obteniendo todos los contratos', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    )
+  }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

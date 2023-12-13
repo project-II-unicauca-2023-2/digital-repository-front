@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as Excel from 'exceljs';
 import { datosAside } from '../../models/datosAside';
+import { idContrato } from '../../models/idContrato';
 import { totalCriteriaScore } from '../../models/totalCriteriaScore';
 
 @Injectable({
@@ -16,7 +17,7 @@ export class ExcelService {
     this.workbook = new Excel.Workbook();
   }
 
-  async createNewExcel(datos: datosAside, resultadosEvaluacion: totalCriteriaScore): Promise<void> {
+  async createNewExcel(numeroContrato:idContrato ,datos: datosAside, resultadosEvaluacion: totalCriteriaScore): Promise<void> {
     try {
       // Verificar los permisos del archivo base
       const hasPermissions = await this.checkFilePermissions(this.rutaFormato);
@@ -49,6 +50,7 @@ export class ExcelService {
         const fechaFormato = `${day}/${month}/${year}`;
         // Establecer el valor de la celda C6 como la fecha formateada
         worksheet.getCell('C6').value = fechaFormato;
+        worksheet.getCell('C8').value = numeroContrato.mascara+" del "+numeroContrato.anio;
         worksheet.getCell('C9').value = datos.name;
         worksheet.getCell('J9').value = datos.identification;
         worksheet.getCell('C10').value = datos.initialDate;
