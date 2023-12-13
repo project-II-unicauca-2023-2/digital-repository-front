@@ -327,6 +327,7 @@ export class ContractService {
 
   getAllContratosCalificados(page:number, pageSize:number): Observable<Response>{
 
+    // dataExpiredQualifiedContract?pageNo=${page}&pageSize=${pageSize}
     return this.httpClient.get<Response>(`${this.urlAPI}/dataExpiredQualifiedContract?pageNo=${page}&pageSize=${pageSize}` ).pipe(
       catchError((e) => {
         console.log('Error obteniendo todos los contratos', e.error.mensaje, 'error');
@@ -336,41 +337,3 @@ export class ContractService {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

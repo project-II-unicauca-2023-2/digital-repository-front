@@ -20,7 +20,7 @@ import { yearsPerPage } from '@angular/material/datepicker';
 export class ConsultaContratos2Component implements OnInit {
 
   dataSource = new MatTableDataSource<any>(); // DataSource para la tabla
-  displayedColumns: string[] = ['id', 'referencia', 'vendorId', 'contractType', 'modality', 'initialDate', 'finalDate', 'scoreTotal', 'descarga']; // Columnas que se mostrarán
+  displayedColumns: string[] = [ 'referencia', 'contractType', 'modality', 'initialDate', 'finalDate', 'scoreTotal', 'descarga']; // Columnas que se mostrarán
 
   @ViewChild(MatPaginator) paginator?: MatPaginator; // Marca paginator como opcional
 
