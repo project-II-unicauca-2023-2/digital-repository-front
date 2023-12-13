@@ -33,8 +33,8 @@ const routes: Routes = [
       { path: 'descargaFormato', component: DescargaCalificacionesComponent },
       { path: 'calificacion', component: CalificacionProveedorComponent },
       { path: 'Evaluacion/:contrato/:anio', component: MostrarDescargarComponent},
-      {path: 'buscarcontrato',component: BuscarContratosComponent},
-      { path: 'contratos2', component: ConsultaContratos2Component}
+      { path: 'buscarcontrato', component: ConsultaContratos2Component},
+      //{path: 'buscarcontrato',component: BuscarContratosComponent}
     ] },
   { path: 'createCont', component: CreateContractComponent },
   {

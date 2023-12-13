@@ -2,9 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContractService } from 'src/app/services/contract.service';
 import { Response } from 'src/app/class/response'; // Asegúrese de importar el modelo Response si es necesario
 import { KeyValuePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { yearsPerPage } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-consulta-contratos2',
@@ -18,12 +20,12 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ConsultaContratos2Component implements OnInit {
 
   dataSource = new MatTableDataSource<any>(); // DataSource para la tabla
-  displayedColumns: string[] = ['id', 'codigo', 'VendorId','contractType','modality','initialDate']; // Columnas que se mostrarán
+  displayedColumns: string[] = ['id', 'referencia', 'vendorId', 'contractType', 'modality', 'initialDate', 'finalDate', 'scoreTotal', 'descarga']; // Columnas que se mostrarán
 
   @ViewChild(MatPaginator) paginator?: MatPaginator; // Marca paginator como opcional
 
 
-  constructor(private contractService: ContractService) { }
+  constructor(private contractService: ContractService, private ruta: Router) { }
 
   ngOnInit() {
     this.loadContratosCalificados(1, 10);
@@ -38,7 +40,7 @@ export class ConsultaContratos2Component implements OnInit {
           const dataStr = JSON.stringify(data).toLowerCase();
           return dataStr.includes(filter);
         };
-  
+
         if (this.paginator) {
           this.dataSource.paginator = this.paginator;
         }
@@ -57,6 +59,22 @@ export class ConsultaContratos2Component implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  // setIdContract(id: string, anio: Date) {
+  //   this.ruta.navigate(["homePage/Evaluacion", id, anio]);
+  // }
+  
+  setIdContract(id: string, anio: string) {
+    const date = new Date(anio);
+    const year = date.getFullYear();
+    this.ruta.navigate(["homePage/Evaluacion", id, year]);
+  }
+
+
+  selectedRowIndex: number = -1;
+  selectRow(index: number) {
+    this.selectedRowIndex = index;
   }
 
 }

@@ -104,6 +104,7 @@ import { MostrarDescargarComponent } from './modulo2/views/descarga-calificacion
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
 import { ConsultaContratos2Component } from './shared-module/components/consulta-contratos2/consulta-contratos2.component';
 
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -233,6 +234,7 @@ import { ConsultaContratos2Component } from './shared-module/components/consulta
       }
     }),
     MatTooltipModule,
+    MatRippleModule,
   ],
   providers: [
     IconSetService,
