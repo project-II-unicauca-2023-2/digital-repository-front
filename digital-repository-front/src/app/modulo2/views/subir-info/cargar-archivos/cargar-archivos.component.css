@@ -1,6 +1,6 @@
 .upload-container {
     width: -10px;
-    border: 120px solid #ccc;
+    border: 120px solid #B0C4DE;
     padding: 10px;
     margin: 0 auto;
     text-align: center;
@@ -9,8 +9,9 @@
 .upload-container input[type="file"] {
     margin-top: 20px;
     margin-bottom: 20px;
-    color: black;
+    color: black; /* Cambia el color del texto a negro */
     font-size: 18px;
     position: center;
+    height: 40px; /* Ajusta la altura según tus necesidades */
+    width: 300px; /* Ajusta el ancho según tus necesidades */
 }
-

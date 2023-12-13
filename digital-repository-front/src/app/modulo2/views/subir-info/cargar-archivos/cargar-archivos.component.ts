@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType } from '@angular/common/http';
-import { NotifierService } from 'angular-notifier';
 import Swal from 'sweetalert2';
 
 // Define la interfaz para MessageType
@@ -42,39 +41,10 @@ class UploadExcelFileResponse {
 export class CargarArchivosComponent {
   percentDone: number = 0;
   uploadSuccess: boolean = false;
-  private readonly notifier: NotifierService;
   responses!: UploadExcelFileResponse[] | any;
 
   constructor(
-    private http: HttpClient, notifierService: NotifierService) {
-      this.notifier = notifierService;
-    }
-
-    /*printMessages() {
-      if (this.responses) {
-        this.responses.forEach((response: UploadExcelFileResponse) => {
-          console.log('-----------------------');
-          console.log('Reference: ${response.reference}');
-          console.log('MessageType: ${MessageType[response.messageType]}');
-          console.log('Messages:');
-          response.messages.forEach((message: string) => {
-            console.log(`${message}`);
-          });
-          console.log('Contract Info:');
-          console.log(`  Vendor Name: ${response.contractInfo.vendorName}`);
-          console.log(`  Identification: ${response.contractInfo.identification}`);
-          console.log(`  Initial Date: ${response.contractInfo.initialDate}`);
-          console.log(`  Final Date: ${response.contractInfo.finalDate}`);
-          console.log(`  Subject: ${response.contractInfo.subject}`);
-          console.log(`  Contract Type Id: ${response.contractInfo.contractTypeId}`);
-          console.log(`  Quality Rate: ${response.contractInfo.qualityRate}`);
-          console.log(`  Compliance Rate: ${response.contractInfo.complianceRate}`);
-          console.log(`  Excecution Rate: ${response.contractInfo.excecutionRate}`);
-          console.log(`  Total Score: ${response.contractInfo.totalScore}`);
-          console.log('-----------------------');
-        });
-      }
-    }*/
+    private http: HttpClient) {}
 
     printMessage() {
       if (this.responses) {
@@ -100,7 +70,6 @@ export class CargarArchivosComponent {
       if (f.name.endsWith('.xlsx')) {
         formData.append('files', f);
       } else {
-        this.notifier.notify('success','Por favor, selecciona archivos Excel válidos.');
         this.emergency_alert()
       }
     });

@@ -1,13 +1,16 @@
 <div class="upload-container">
-   
     <input type="file" (change)="upload($event)" />
-     {{percentDone}}% <br />
-    
+    {{percentDone}}% <br />
+
     <ng-container *ngIf="uploadSuccess">
-      
+        <div>
+            <h4>Archivos Subidos:</h4>
+            <ul>
+                <li *ngFor="let file of responses">
+                    {{ file.reference }}
+                </li>
+            </ul>
+        </div>
     </ng-container>
-    
-    <notifier-container></notifier-container>
 
 </div>
-  
