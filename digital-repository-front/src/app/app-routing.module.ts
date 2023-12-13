@@ -38,11 +38,11 @@ const routes: Routes = [
       { path: 'calificacion', component: CalificacionProveedorComponent },
       { path: 'Evaluacion/:contrato/:anio', component: MostrarDescargarComponent},
       //{ path: 'buscarcontrato', component: ConsultaContratos2Component},
-      {path: 'buscarcontrato',component: BuscarContratosComponent},
       {path: 'carga-archivo', component: CargaArchivoComponent},
       {path: 'cargar-archivos', component: CargarArchivosComponent},
       {path: 'subir-archivo', component: SubirArchivoComponent},
-      {path: 'subir-archivos', component: SubirArchivosComponent}
+      {path: 'subir-archivos', component: SubirArchivosComponent},
+      { path: 'buscarcontrato', component: ConsultaContratos2Component},
 
     ] },
   { path: 'createCont', component: CreateContractComponent },
