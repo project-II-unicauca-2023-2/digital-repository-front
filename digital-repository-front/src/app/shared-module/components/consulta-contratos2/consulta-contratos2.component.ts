@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { yearsPerPage } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent, yearsPerPage } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-consulta-contratos2',
@@ -15,13 +15,12 @@ import { yearsPerPage } from '@angular/material/datepicker';
   providers: [KeyValuePipe]
 })
 
-
-
 export class ConsultaContratos2Component implements OnInit {
 
   dataSource = new MatTableDataSource<any>(); // DataSource para la tabla
   displayedColumns: string[] = [ 'referencia', 'contractType', 'modality', 'initialDate', 'finalDate', 'scoreTotal', 'descarga']; // Columnas que se mostrarán
-
+  selectedFilter: string | undefined; 
+  
   @ViewChild(MatPaginator) paginator?: MatPaginator; // Marca paginator como opcional
 
 
@@ -76,5 +75,79 @@ export class ConsultaContratos2Component implements OnInit {
   selectRow(index: number) {
     this.selectedRowIndex = index;
   }
+
+
+  applyScoreTotalFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    if (!filterValue) {
+      this.dataSource.filter = '';
+    } else {
+      const filterNumber = parseFloat(filterValue);
+      this.dataSource.filterPredicate = (data, filter) => {
+        return data.scoreTotal === filterNumber;
+      };
+      this.dataSource.filter = filterNumber.toString();
+    }
+  
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  applyDateFilter(event: MatDatepickerInputEvent<Date>) {
+    const selectedDate = event.value;
+    if (selectedDate) {
+      this.dataSource.filterPredicate = (data) => {
+        const initialDate = new Date(data.initialDate);
+        return initialDate.setHours(0, 0, 0, 0) === selectedDate.setHours(0, 0, 0, 0);
+      };
+      this.dataSource.filter = selectedDate.toISOString(); // Actualiza el filtro
+    } else {
+      this.dataSource.filter = '';
+    }
+  
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  applyFinalDateFilter(event: MatDatepickerInputEvent<Date>) {
+    const selectedFinalDate = event.value;
+    if (selectedFinalDate) {
+      this.dataSource.filterPredicate = (data) => {
+        const finalDate = new Date(data.finalDate);
+        return finalDate.setHours(0, 0, 0, 0) === selectedFinalDate.setHours(0, 0, 0, 0);
+      };
+      this.dataSource.filter = selectedFinalDate.toISOString(); // Actualiza el filtro
+    } else {
+      this.dataSource.filter = '';
+    }
+  
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+
+  clearFilters() {
+    // Restablecer el filtro a su estado predeterminado
+    this.dataSource.filterPredicate = (data, filter) => {
+      return true; // Muestra todos los datos
+    };
+    this.dataSource.filter = '';
+  
+    // Restablecer otros controles de filtro si los hay (por ejemplo, sliders, selectores de fecha, etc.)
+    // ... (restablecer valores de controles aquí si es necesario)
+  
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+  
+  
+  
+  
+  
+  
 
 }
