@@ -1,0 +1,13 @@
+<div class="upload-container">
+   
+    <input type="file" (change)="upload($event)" />
+     {{percentDone}}% <br />
+    
+    <ng-container *ngIf="uploadSuccess">
+      
+    </ng-container>
+    
+    <notifier-container></notifier-container>
+
+</div>
+  

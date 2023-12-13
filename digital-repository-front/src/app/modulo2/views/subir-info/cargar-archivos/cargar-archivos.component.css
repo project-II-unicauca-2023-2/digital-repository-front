@@ -1,0 +1,16 @@
+.upload-container {
+    width: -10px;
+    border: 120px solid #ccc;
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.upload-container input[type="file"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: black;
+    font-size: 18px;
+    position: center;
+}
+
