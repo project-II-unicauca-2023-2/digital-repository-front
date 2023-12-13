@@ -14,6 +14,7 @@ export class BuscarProveedorComponent implements OnInit {
 
   contratoValido: idContrato = new idContrato(); //variable que almacena el contrato valido y es emitido
   contratoEncontradoSinEvalucion = false; //bandera que permite continuar a la otra interfaz cuando el contrto no tiene un evaluacion pero existe
+  contratoEncontradoSinEvalucionFinalizado = false;
   AniosComboBox:string[]=[];
   anioSeleccionado!:string;
   @Output() emisorIdContrato = new EventEmitter<idContrato>();
@@ -52,11 +53,29 @@ export class BuscarProveedorComponent implements OnInit {
         this.servicioContrato.getExisteEvaluacion(this.contratoValido).subscribe((existeEvaluacion: boolean) => {//consulta a la bse de datos para saber si el contraro no tiene aun evluacion
   
           if (!existeEvaluacion) {//se permite continuar solo cuando no ha sido registradas evaluaciones 
+
             this.contratoEncontradoSinEvalucion = true;
-          }
+
+          } 
   
           if (this.contratoEncontradoSinEvalucion) {
-            this.emisorIdContrato.emit(this.contratoValido);// hace la emicion de la varible
+              this.servicioContrato.getContratoFinalizado(this.contratoValido).subscribe((finalizadaEvaluacion: boolean) => {//consulta a la bse de datos para saber si el contraro no tiene aun evluacion
+    
+                if (finalizadaEvaluacion) {//se permite continuar solo cuando no ha sido registradas evaluaciones 
+      
+                  this.contratoEncontradoSinEvalucionFinalizado = true;
+      
+                } 
+        
+                if (this.contratoEncontradoSinEvalucionFinalizado) {
+                  this.emisorIdContrato.emit(this.contratoValido);// hace la emicion de la varible
+      
+                } else {
+                  mensajeError=" El no esta disponible para calificar,  ya que la fecha de terminación del contrato debe ser anterior a la fecha actual.";
+                  this.openDialog('500ms', '500ms',mensajeError,"soloOpcionAceptar","")
+               }
+              });
+
           } else {
             mensajeError=" El contrato ya tiene una evaluación registrada.";
             this.openDialog('500ms', '500ms', mensajeError,"preguntaPersonalizable","Abrir Evaluación")// en caso contrario muestr error sin salir de la vista

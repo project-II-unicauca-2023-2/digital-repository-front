@@ -11,6 +11,15 @@ import { totalCriteriaScore } from '../../models/totalCriteriaScore';
 
 export class ExcelService {
   rutaFormato = "assets/documentos/PA-GA-5-FOR-39.xlsx";
+  diccionario: { [key: string]: string } = {
+    '5.5-31.3': 'J16',
+    '5.5-31.6': 'J17',
+    '5.5-31.5': 'J19',
+    '5.5-31.9': 'J20',
+    '5.5-31.1': 'J22',
+    '5.5-31.7': 'J25',
+    '5.5-31.4': 'J26',
+  };
   private workbook: Excel.Workbook;
 
   constructor(private http: HttpClient) {
@@ -65,6 +74,7 @@ export class ExcelService {
           worksheet.getCell(casillasCriterios[j]+'46').value     =resultadosEvaluacion.listaScoreCriteria[j].rate;
           worksheet.getCell(casillasCriteriosName[j]+'45').value =resultadosEvaluacion.listaScoreCriteria[j].name.toUpperCase();
         }
+        worksheet.getCell(this.buscarValor(numeroContrato.mascara)).value="x";
         // worksheet.getCell('C8').value = 'Test';
 
         // Guardar la copia del archivo Excel
@@ -99,5 +109,14 @@ export class ExcelService {
           resolve(false);
         });
     });
+  }
+  buscarValor(cadena: string): string  {
+    for (const key in this.diccionario) {
+      //console.log(key+" ppp "+(cadena)+"="+key.includes(cadena));
+      if (cadena.includes(key)) {
+        return this.diccionario[key];
+      }
+    }
+    return "K26";
   }
 }

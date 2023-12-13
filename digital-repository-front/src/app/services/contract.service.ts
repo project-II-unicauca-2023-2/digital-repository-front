@@ -177,6 +177,16 @@ export class ContractService {
         return throwError(e);
       })
     )
+  } 
+  getContratoFinalizado(id:idContrato): Observable<boolean>{
+    const body = JSON.stringify(id);
+    return this.httpClient.post(this.urlAPI + "/isContractFinalized",body,this.httpHeader).pipe(
+      map((response:any)=> response.data),
+      catchError(e=>{
+        console.log('error en el servicio contrato getfinalizada evaluacion','error');
+        return throwError(e);
+      })
+    )
   }
 
   getExisteContrato(id:idContrato): Observable<boolean>{
