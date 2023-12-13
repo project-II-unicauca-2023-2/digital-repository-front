@@ -15,20 +15,22 @@
 
     <!-- Selector de Tipo de Filtro -->
     <mat-form-field appearance="fill">
-      <mat-label>Seleccionar Tipo de Filtro</mat-label>
+      <mat-label>Tipo de Filtro</mat-label>
+      <mat-icon matPrefix>filter_list</mat-icon>
       <mat-select [(value)]="selectedFilter">
         <mat-option value="calificacion">Calificación</mat-option>
         <mat-option value="fechaInicio">Fecha de Inicio</mat-option>
         <mat-option value="fechaFin">Fecha de Finalización</mat-option>
       </mat-select>
     </mat-form-field>
+    
 
     <!-- Filtros Condicionales -->
     <!-- Filtro por Calificación -->
     <mat-form-field *ngIf="selectedFilter === 'calificacion'" appearance="fill">
       <mat-label>Calificación</mat-label>
       <input type="number" matInput (keyup)="applyScoreTotalFilter($event)" placeholder="Calificación (0 a 5)" min="0"
-        max="5" step="0.5">
+        max="5" step="0.1">
     </mat-form-field>
 
     <!-- Filtro por Fecha de Inicio -->

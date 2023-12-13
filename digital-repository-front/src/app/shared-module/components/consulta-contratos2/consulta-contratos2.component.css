@@ -26,21 +26,43 @@ mat-grid-tile {
   align-items: center;
 }
 
-/* asas */
+/*  */
 
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center; /* Centra los elementos horizontalmente */
   gap: 10px;
   margin-bottom: 10px;
-  
+  background-color: transparent; /* Color de fondo */
+  /* border: 1px solid #ccc; Borde */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: all 0.3s ease; /* Transición */
+
+  /* Ancho y alto */
+  width: 80%;
+  height: 50%; /* Ajusta la altura al contenido */
+  padding: 10px; /* Espacio interior para no apretar los elementos */
+
+  /* Centrado horizontal en el contenedor padre */
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.filter-bar:hover {
+  box-shadow: 2px 2px 10px rgba(0, 0, 102, 0.7); /* sombra al pasar el ratón */
+}
+
+
+
+
+
+
 
 .clear-filters-btn {
   margin-top: 5px;
 }
-
 
 
 mat-card-content {

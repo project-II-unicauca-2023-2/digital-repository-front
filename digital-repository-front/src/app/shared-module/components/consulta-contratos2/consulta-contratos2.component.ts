@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContractService } from 'src/app/services/contract.service';
-import { Response } from 'src/app/class/response'; // Asegúrese de importar el modelo Response si es necesario
 import { KeyValuePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDatepickerInputEvent, yearsPerPage } from '@angular/material/datepicker';
-import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-consulta-contratos2',
@@ -83,9 +82,13 @@ export class ConsultaContratos2Component implements OnInit {
     if (!filterValue) {
       this.dataSource.filter = '';
     } else {
-      const filterNumber = parseFloat(filterValue);
-      this.dataSource.filterPredicate = (data, filter) => {
-        return data.scoreTotal === filterNumber;
+      // Convertir el valor a un número y redondear a un decimal
+      const filterNumber = Math.round(parseFloat(filterValue) * 10) / 10;
+  
+      this.dataSource.filterPredicate = (data) => {
+        // Redondear el valor de la calificación en los datos a un decimal para la comparación
+        const roundedScore = Math.round(data.scoreTotal * 10) / 10;
+        return roundedScore === filterNumber;
       };
       this.dataSource.filter = filterNumber.toString();
     }
@@ -94,6 +97,7 @@ export class ConsultaContratos2Component implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  
 
   applyDateFilter(event: MatDatepickerInputEvent<Date>) {
     const selectedDate = event.value;
@@ -137,13 +141,17 @@ export class ConsultaContratos2Component implements OnInit {
     };
     this.dataSource.filter = '';
   
+    // Restablecer el selector de tipo de filtro a "Ninguno"
+    this.selectedFilter = '';
+  
     // Restablecer otros controles de filtro si los hay (por ejemplo, sliders, selectores de fecha, etc.)
-    // ... (restablecer valores de controles aquí si es necesario)
+    // Aquí puedes restablecer los valores de otros controles de filtro si es necesario
   
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
+  
   
   
   
