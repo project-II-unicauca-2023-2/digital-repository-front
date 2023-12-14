@@ -60,7 +60,11 @@ export class DashboardComponent implements OnInit {
       if (promedioObras !== undefined && promedioBienes !== undefined && promedioServicios !== undefined) {
         const cantidadPromediosNoCero = [promedioObras, promedioBienes, promedioServicios].filter(promedio => promedio !== 0).length;
         const sumatoriaProm = promedioObras + promedioBienes + promedioServicios;
-        this.promedioCategoriaContrato = sumatoriaProm / cantidadPromediosNoCero;
+        if(cantidadPromediosNoCero>0){
+          this.promedioCategoriaContrato = sumatoriaProm / cantidadPromediosNoCero;
+        }else{
+          this.promedioCategoriaContrato =0;
+        }
       } else {
         console.error('Al menos una de las solicitudes de promedio devolvió undefined.');
       }
