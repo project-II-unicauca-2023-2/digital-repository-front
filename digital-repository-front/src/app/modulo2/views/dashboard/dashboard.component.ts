@@ -58,8 +58,9 @@ export class DashboardComponent implements OnInit {
       console.log('Respuestas de promedios:', promedioObras, promedioBienes, promedioServicios);
 
       if (promedioObras !== undefined && promedioBienes !== undefined && promedioServicios !== undefined) {
+        const cantidadPromediosNoCero = [promedioObras, promedioBienes, promedioServicios].filter(promedio => promedio !== 0).length;
         const sumatoriaProm = promedioObras + promedioBienes + promedioServicios;
-        this.promedioCategoriaContrato = sumatoriaProm / 3;
+        this.promedioCategoriaContrato = sumatoriaProm / cantidadPromediosNoCero;
       } else {
         console.error('Al menos una de las solicitudes de promedio devolvió undefined.');
       }
@@ -235,37 +236,7 @@ export class DashboardComponent implements OnInit {
         break;
     
       case 'todas':
-        this.subcategorisContrato=[];
-        let sumatoriaProm=0;
-        this.dashboardService.getPromediosObras(this.anioBusqueda).subscribe(
-          (data: number) => {
-            sumatoriaProm=sumatoriaProm+data;
-            this.dashboardService.getPromedioBienes(this.anioBusqueda).subscribe(
-              (data2: number) => {
-                sumatoriaProm=sumatoriaProm+data2;
-                this.dashboardService.gePromedioServicios(this.anioBusqueda).subscribe(
-                  (data3: number) => {                    
-                    sumatoriaProm=sumatoriaProm+data3;
-                    this.promedioCategoriaContrato=sumatoriaProm/3;
-                  },
-                  (error) => {
-                    this.promedioCategoriaContrato = 0; 
-                    console.error('Ocurrió un error al obtener promedioTotal en servicios:', error);
-                  }
-                );
-              },
-              (error) => {
-                this.promedioCategoriaContrato = 0; 
-                console.error('Ocurrió un error a al obtener promedioTotal en Bienes:', error);
-              }
-            );
-          },
-          (error) => {
-            this.promedioCategoriaContrato = 0; 
-            console.error('Ocurrió un error al obtener promedioTotal en obras :', error);
-          }
-        );
-        //this.promedioCategoriaContrato=this.dashboardService.getPromediosTotales();
+        this.obtenerPromediosYCalcularPromedioTotal();
       break;
       default:
         console.log('Opción no reconocida en la seleccion [obras,servicios,bienes]');

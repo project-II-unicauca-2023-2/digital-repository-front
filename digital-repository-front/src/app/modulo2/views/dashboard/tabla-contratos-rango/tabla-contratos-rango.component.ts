@@ -375,7 +375,7 @@ export class TablaContratosRangoComponent implements OnInit {
  
     
   onSelect( selected :any) {
-    alert("redireccion con valores:"+JSON.stringify(selected.selected[0]));
+    //alert("redireccion con valores:"+JSON.stringify(selected.selected[0]));
   }
 
   onActivate(event:any) {
