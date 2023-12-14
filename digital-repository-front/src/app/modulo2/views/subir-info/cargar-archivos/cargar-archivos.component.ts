@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { measureMemory } from 'vm';
 
 // Define la interfaz para MessageType
 enum MessageType {
@@ -43,6 +44,7 @@ export class CargarArchivosComponent {
   uploadSuccess: boolean = false;
   responses!: UploadExcelFileResponse[] | any;
   cont: number = 0;
+  consoleMessages: string[] = [];
 
   constructor(
     private http: HttpClient) {}
@@ -55,17 +57,18 @@ export class CargarArchivosComponent {
           console.log('All Messages:', allMessages);
 
           this.responses.forEach((response: UploadExcelFileResponse) => {
-            if(MessageType.CONTRACT_NOT_FOUND === 0 || MessageType.EVALUATION_ALREADY_EXISTS === 2 || MessageType.VALIDATION === 3){
-              this.cont ++;
+            if(MessageType[response.messageType] == '0' || MessageType[response.messageType] == '2' || MessageType[response.messageType] == '3'){
+              this.cont = this.cont + 1;
             }
             console.log(`MessageType: ${MessageType[response.messageType]}`);
             });
 
+          console.log(this.cont);
+
           if(this.cont == 0){
             Swal.fire({
               icon: 'success',
-              title: "yei !!",
-              text: `${allMessages}`
+              title: `${allMessages}`
             });
           }else{
             Swal.fire({

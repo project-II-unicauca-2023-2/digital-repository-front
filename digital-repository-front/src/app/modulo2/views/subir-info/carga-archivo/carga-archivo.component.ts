@@ -45,6 +45,7 @@ export class CargaArchivoComponent {
   private readonly notifier: NotifierService;
   responses!: UploadExcelFileResponse[] | any;
   cont: number = 0;
+  consoleMessages: string[] = [];
 
 
   constructor(
@@ -118,17 +119,18 @@ export class CargaArchivoComponent {
       console.log('All Messages:', allMessages);
 
       this.responses.forEach((response: UploadExcelFileResponse) => {
-        if(MessageType.CONTRACT_NOT_FOUND === 0 || MessageType.EVALUATION_ALREADY_EXISTS === 2 || MessageType.VALIDATION === 3){
-          this.cont ++;
+        if(MessageType[response.messageType] == '0' || MessageType[response.messageType] == '2' || MessageType[response.messageType] == '3'){
+          this.cont = this.cont + 1;
         }
         console.log(`MessageType: ${MessageType[response.messageType]}`);
         });
 
+      console.log(this.cont);
+
       if (allMessages.length > 0 && this.cont == 0) {
         Swal.fire({
           icon: 'success',
-          title: "yei !!",
-          text: `${allMessages}`
+          title: `${allMessages}`
         });
       }else if(allMessages.length > 0){
         Swal.fire({
@@ -136,7 +138,7 @@ export class CargaArchivoComponent {
           title: "Se encontraron los siguientes errores al cargar el archivo: \n",
           text: `${allMessages}`
         });
-        this.cont == 0
+        this.cont = 0
       }
     }
   }
