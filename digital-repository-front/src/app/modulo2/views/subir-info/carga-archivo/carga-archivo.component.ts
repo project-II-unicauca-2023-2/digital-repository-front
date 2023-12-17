@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType } from '@angular/common/http';
 import { NotifierService } from 'angular-notifier';
 import Swal from 'sweetalert2';
+import { MatTableModule } from '@angular/material/table';
 
 // Define la interfaz para MessageType
 enum MessageType {
@@ -126,6 +127,7 @@ export class CargaArchivoComponent {
         });
 
       console.log(this.cont);
+      //console.log(`- ${allMessages}`);
 
       if (allMessages.length > 0 && this.cont == 0) {
         Swal.fire({
@@ -133,10 +135,19 @@ export class CargaArchivoComponent {
           title: `${allMessages}`
         });
       }else if(allMessages.length > 0){
+
+        for (let i = 0; i < allMessages.length; i++) {
+          if(allMessages[i] == 'El contrato ha sido creado y la evaluación ha sido registrada correctamente.'){
+            allMessages.splice(i, 1);
+          }
+        }
+
         Swal.fire({
           icon: "error",
           title: "Se encontraron los siguientes errores al cargar el archivo: \n",
-          text: `${allMessages}`
+          html: ` <table>
+                    ${allMessages.map(dato => `<tr><td>${dato}</td></tr>`).join('')}
+                  </table>`
         });
         this.cont = 0
       }
