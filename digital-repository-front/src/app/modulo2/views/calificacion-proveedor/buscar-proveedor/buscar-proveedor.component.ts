@@ -71,7 +71,7 @@ export class BuscarProveedorComponent implements OnInit {
                   this.emisorIdContrato.emit(this.contratoValido);// hace la emicion de la varible
       
                 } else {
-                  mensajeError=" El no esta disponible para calificar,  ya que la fecha de terminación del contrato debe ser anterior a la fecha actual.";
+                  mensajeError=" El contrato no esta disponible para calificar,  ya que la fecha de terminación del contrato debe ser anterior a la fecha actual.";
                   this.openDialog('500ms', '500ms',mensajeError,"soloOpcionAceptar","")
                }
               });
