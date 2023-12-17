@@ -11,14 +11,18 @@ import { totalCriteriaScore } from '../../models/totalCriteriaScore';
 
 export class ExcelService {
   rutaFormato = "assets/documentos/PA-GA-5-FOR-39.xlsx";
+  casillaDefectoX="K15"
   diccionario: { [key: string]: string } = {
-    '5.5-31.3': 'J16',
-    '5.5-31.6': 'J17',
-    '5.5-31.5': 'J19',
-    '5.5-31.9': 'J20',
-    '5.5-31.1': 'J22',
-    '5.5-31.7': 'J25',
-    '5.5-31.4': 'J26',
+    '5.5-31.3/': 'J16',
+    '5.5-31.6/': 'J17',
+    '5.5-31.2/': 'J18',
+    '5.5-31.5/': 'J19',
+    '5.5-31.9/': 'J20',
+    '5.5-31.1/': 'J22',
+    '5.5-31.14/': 'J23',
+    '5.5-31.15/': 'J24',
+    '5.5-31.17/': 'J25',
+    '5.5-31.4/': 'J26',
   };
   private workbook: Excel.Workbook;
 
@@ -74,7 +78,13 @@ export class ExcelService {
           worksheet.getCell(casillasCriterios[j]+'46').value     =resultadosEvaluacion.listaScoreCriteria[j].rate;
           worksheet.getCell(casillasCriteriosName[j]+'45').value =resultadosEvaluacion.listaScoreCriteria[j].name.toUpperCase();
         }
-        worksheet.getCell(this.buscarValor(numeroContrato.mascara)).value="x";
+        let casillaX=this.buscarValor(numeroContrato.mascara)
+        let valorX="x"
+        console.log(casillaX=== this.casillaDefectoX+"-"+casillaX+" ,"+this.casillaDefectoX);
+        if(casillaX=== this.casillaDefectoX){
+          valorX="valor no considerado"
+        }
+        worksheet.getCell(casillaX).value=valorX;
         // worksheet.getCell('C8').value = 'Test';
 
         // Guardar la copia del archivo Excel
@@ -117,6 +127,6 @@ export class ExcelService {
         return this.diccionario[key];
       }
     }
-    return "K26";
+    return this.casillaDefectoX;
   }
 }
