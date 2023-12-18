@@ -109,11 +109,13 @@ import { ConsultaContratos2Component } from './shared-module/components/consulta
 import { MatRippleModule } from '@angular/material/core';
 
 
-import { CargaArchivoComponent } from './modulo2/views/subir-info/carga-archivo/carga-archivo.component';
-import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archivos/cargar-archivos.component';
-import { SubirArchivosComponent } from './modulo2/views/subir-info/subir-archivos/subir-archivos.component';
-import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/subir-archivo.component';
+import { CargaArchivoComponent } from './modulo2/views/subir-info/carga-masiva/carga-archivo.component';
+import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-individuales/cargar-archivos.component';
+import { SubirArchivosComponent } from './modulo2/views/subir-info/view-carga-individual/subir-archivos.component';
+import { SubirArchivoComponent } from './modulo2/views/subir-info/view-carga-masiva/subir-archivo.component';
 import { NotifierModule } from 'angular-notifier';
+import { PaginadorComponent } from './modulo2/views/subir-info/paginador-carga-masiva/paginador.component';
+import { PaginadorCargaIndividualComponent } from './modulo2/views/subir-info/paginador-carga-individual/paginador-carga-individual.component';
 
 
 @NgModule({
@@ -162,6 +164,8 @@ import { NotifierModule } from 'angular-notifier';
     SubirArchivosComponent,
     CargaArchivoComponent,
     CargarArchivosComponent,
+    PaginadorComponent,
+    PaginadorCargaIndividualComponent,
     
   ],
   imports: [

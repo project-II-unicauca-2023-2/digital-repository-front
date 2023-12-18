@@ -26,7 +26,7 @@ footer {
 
 #Texto_1{
     display: block;
-    padding: 6%;
+    padding: 6%;;
 }
 #Texto_2{
     display: block;
@@ -176,4 +176,188 @@ footer {
 	position:absolute;
 	left:214px;
 	top:0px;
+}
+
+@media only screen and (max-width: 768px) {
+
+	*{
+	display: block;
+}
+body { 
+	margin: 0;
+	padding: 0;
+	background-color:rgba(238.00000101327896, 243.00000071525574, 250.00000029802322, 1);
+	position: relative;	
+	font-family:Open Sans;
+}
+footer { 
+	background-color:rgba(238.00000101327896, 235.0000011920929, 235.0000011920929, 1);
+	width:100%;
+	height:324px;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	
+}
+
+.contColorfooter { 
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+
+#Texto_1{
+    display: block;
+    padding: 6%;;
+}
+#Texto_2{
+    display: block;
+    padding: 6%; 
+}
+#Texto_3{
+    display: block;
+    padding: 6%; 
+}
+#Texto_4{
+    display: block;
+    padding: 6%; 
+}
+.barraColor {
+	flex:1 0 20%;
+	max-width: 20%;
+
+}
+.contFooter{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width:100%;
+	flex-wrap: wrap;
+
+}
+.imagenesFooter {
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width:40%;
+	height: 147px;
+	top:49px;
+    left:101px; 
+}
+.imagenesU { 
+	width:30%;
+	height:auto;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.textosFooter { 
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 40%;
+	height: 147px; /* sololo 40% para dejae 10 de margin */
+	
+	color:rgba(0, 0, 0, 0.6000000238418579);	
+	font-size:14px;
+	letter-spacing:0;
+	
+}
+.textoVersion { 
+	position: relative;
+    top:-185px;
+    left:1230px;  
+	width:263px;
+	height:24px;
+}
+.textoDivicion {
+	position: relative;
+    top:-190px;
+    left:1230px;  
+	width:400px;
+	height:24px;
+	
+}
+.textoInfoSistema { 
+	position: relative;
+    top:-195px;
+    left:1230px;  
+	width:263px;
+	height:24px;
+}
+
+.textoVicerrectoria { 
+	position: relative;
+    top:-180px;
+    left:1300px;  
+	width:263px;
+	height:24px;
+}
+.texto_NombreUni { 
+	position: relative;
+    width:191px;
+    height:30px;
+    top:49px;
+    left:101px;  
+}
+.texto_NombreUni_2 { 
+	position: relative;
+    width:191px;
+    height:30px;
+    top:-180px;
+    left:1325px;  
+}
+.texto_Nit { 
+	position: relative;
+    width:191px;
+    height:30px;
+    top:49px;
+    left:101px;
+}
+.numeroTelefonico { 
+	position: relative;
+    top:-175px;
+    left:1350px;  
+	width:263px;
+	height:24px;
+}
+	
+.contTelefono { 
+	position: relative;
+    top:-195px;
+    left:1330px;  
+	width:263px;
+	height:24px;
+	
+}
+.imgTelefono { 
+	width:20px;
+	height:20px;
+	background-image:url(../../../../assets/images/telefono_300x_1.png); /*se dejo aqui por que va a ser remplazado por iconos google */
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.textoInstitucion{
+	position: relative;
+    top: 5px;
+    left:100px;  
+	width:700px;
+	height:24px;
+}
+.textoSoporteTecnico{
+	position: relative;
+    top:10px;
+    left:300px;  
+	width:263px;
+	height:24px;
+}
+.barraDesplazamiento { 
+	transform: rotate(90deg);
+	width:117px;
+	height:0px;
+	position:absolute;
+	left:214px;
+	top:0px;
+}
+
 }

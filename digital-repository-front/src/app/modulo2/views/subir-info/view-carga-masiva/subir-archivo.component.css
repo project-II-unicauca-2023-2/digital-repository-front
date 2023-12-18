@@ -1,0 +1,140 @@
+.Fondo {
+	background-color: rgba(238.00000101327896, 243.00000071525574, 250.00000029802322, 1);
+	width: 100%;
+	height: 720px;
+	position: relative;
+}
+
+.Dropzone {
+	background-color: #E4E4EB;
+	border: 3px solid #E4E4EB;
+	width: 25%;
+	max-width: 350px;
+	height: 260px;
+	position: relative;
+	left: 7%;
+	top: 340px;
+	border-radius: 9px;
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
+}
+
+.Dropzone:hover {
+	background-color: #D8D8E0;
+	border: 3px solid #D8D8E0;
+	width: 25%;
+	max-width: 350px;
+	height: 260px;
+	position: relative;
+	left: 7%;
+	top: 340px;
+	border-radius: 9px;
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
+	transform: scale(1.07);
+}
+
+.Titulo {
+	color: rgba(0, 0, 102.00000151991844, 1);
+	width: 90%;
+	max-width: 423px;
+	height: 67px;
+	position: relative;
+	left: 1px;
+	top: 20px;
+	font-family: sans-serif;
+	text-align: center;
+	font-size: 40px;
+	letter-spacing: 0;
+}
+
+.Informacion {
+	color: rgba(0, 0, 0, 1);
+	width: 800px;
+	height: 48px;
+	position: relative;
+	left: 1px;
+	top: 40px;
+	font-family: sans-serif;
+	text-align: center;
+	font-size: 17px;
+	letter-spacing: 0;
+}
+
+.caja_informacion {
+	background-color: #D6EAF8;
+	border: 3px solid #D6EAF8;
+	width: 85%;
+	height: 170px;
+	position: absolute;
+	left: 100px;
+	top: 40px;
+	border-radius: 9px;
+	box-shadow: 0px 0px 10px 0px #2471A3;
+	text-align: center;
+}
+
+.Paginador {
+	background-color: white;
+	border: 3px solid white;
+	width: 65%;
+	max-width: 850px;
+	height: 400px;
+	position: absolute;
+	left: 34.5%;
+	top: 270px;
+	border-radius: 9px;
+	box-shadow: 0px 0px 10px 0px #4682B4;
+	text-align: center;
+}
+
+.Paginador:hover {
+	width: 65%;
+	max-width: 850px;
+	height: 400px;
+	position: absolute;
+	left: 34.5%;
+	top: 270px;
+	border-radius: 9px;
+	box-shadow: 0px 0px 10px 0px #4682B4;
+	text-align: center;
+	transform: scale(1.02);
+}
+
+.informacion_dropzone {
+	color: rgba(0, 0, 0, 1);
+	width: 85%;
+	height: 100px;
+	position: relative;
+	left: 25px;
+	top: 70px;
+	font-family: sans-serif;
+	text-align: center;
+	font-size: 13px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@media only screen and (max-width: 720px) {
+	.Titulo {
+		font-size: 30px;
+	}
+
+	.Informacion {
+		font-size: 15px;
+	}
+
+	.Dropzone {
+		font-size: 11px;
+	}
+
+	.informacion_dropzone {
+		font-size: 11px;
+	}
+
+	.Paginador {
+		font-size: 11px;
+	}
+	.Paginador:hover{
+		font-size: 11px;
+	}
+}

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { measureMemory } from 'vm';
+import { IndividualDataService } from '../individual-data.service';
+
 
 // Define la interfaz para MessageType
 enum MessageType {
@@ -12,7 +14,7 @@ enum MessageType {
 }
 
 // Define la interfaz para ContractEvaluationInfo
-class ContractEvaluationInfo {
+export class ContractEvaluationInfo {
   vendorName!: string;
   identification!: string;
   initialDate!: Date;
@@ -21,7 +23,7 @@ class ContractEvaluationInfo {
   contractTypeId!: number;
   qualityRate!: number;
   complianceRate!: number;
-  excecutionRate!: number;
+  executionRate!: number;
   totalScore!: number;
 }
 
@@ -47,7 +49,7 @@ export class CargarArchivosComponent {
   consoleMessages: string[] = [];
 
   constructor(
-    private http: HttpClient) {}
+    private http: HttpClient,private dataService: IndividualDataService) {}
 
     printMessage() {
       if (this.responses) {
@@ -102,6 +104,7 @@ export class CargarArchivosComponent {
           } else if (event instanceof HttpResponse) {
             this.uploadSuccess = true;
             this.responses = event.body;
+            this.dataService.updateContractInfo(this.responses);
             this.printMessage();
           }
         });

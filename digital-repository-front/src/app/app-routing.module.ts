@@ -17,10 +17,12 @@ import { Modulo2ComponentComponent } from './modulo2/views/modulo2-component/mod
 import { SubirInfoComponent } from './modulo2/views/subir-info/subir-info.component';
 import { ListContractComponent } from './shared-module/components/list-contract/list-contract.component';
 import { ConsultaContratos2Component } from './shared-module/components/consulta-contratos2/consulta-contratos2.component';
-import { CargaArchivoComponent } from './modulo2/views/subir-info/carga-archivo/carga-archivo.component';
-import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-archivos/cargar-archivos.component';
-import { SubirArchivoComponent } from './modulo2/views/subir-info/subir-archivo/subir-archivo.component';
-import { SubirArchivosComponent } from './modulo2/views/subir-info/subir-archivos/subir-archivos.component';
+import { CargaArchivoComponent } from './modulo2/views/subir-info/carga-masiva/carga-archivo.component';
+import { CargarArchivosComponent } from './modulo2/views/subir-info/cargar-individuales/cargar-archivos.component';
+import { SubirArchivosComponent } from './modulo2/views/subir-info/view-carga-individual/subir-archivos.component';
+import { SubirArchivoComponent } from './modulo2/views/subir-info/view-carga-masiva/subir-archivo.component';
+import { PaginadorComponent } from './modulo2/views/subir-info/paginador-carga-masiva/paginador.component';
+
 
 
 const routes: Routes = [
@@ -42,7 +44,7 @@ const routes: Routes = [
       {path: 'cargar-archivos', component: CargarArchivosComponent},
       {path: 'subir-archivo', component: SubirArchivoComponent},
       {path: 'subir-archivos', component: SubirArchivosComponent},
-      { path: 'buscarcontrato', component: ConsultaContratos2Component},
+      {path: 'buscarcontrato', component: ConsultaContratos2Component},
 
     ] },
   { path: 'createCont', component: CreateContractComponent },

@@ -1,0 +1,23 @@
+.upload-container {
+    width: -10px;
+    height: 100px;
+    border: 25px #E4E4EB;
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.upload-container input[type="file"] {
+    width: 100%;
+    height: 100px;
+    display: block;
+    position: sticky;
+    margin: 10px auto;
+    color: black; 
+    background-color: #F5F5FA;
+    border: 1px solid gray;
+    font-size: 18px;
+}
+
+
+
