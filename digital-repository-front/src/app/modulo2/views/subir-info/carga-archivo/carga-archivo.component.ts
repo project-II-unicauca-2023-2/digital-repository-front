@@ -135,7 +135,7 @@ export class CargaArchivoComponent {
           title: `${allMessages}`
         });
       }else if(allMessages.length > 0){
-
+        //esto es
         for (let i = 0; i < allMessages.length; i++) {
           if(allMessages[i] == 'El contrato ha sido creado y la evaluación ha sido registrada correctamente.'){
             allMessages.splice(i, 1);
