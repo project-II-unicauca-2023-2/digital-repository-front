@@ -13,14 +13,14 @@ import { IndividualDataService } from '../individual-data.service';
 
 export class  PaginadorCargaIndividualComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
-    'ID Contrato',
-    'Clase contrato',
-    'C.C/RUT contratista',
-    'Nombre contratista',
-    'Fecha inicio',
-    'Fecha terminación',
-    'Evaluación',
+    'vendorName',
+    'identification',
+    'initialDate',
+    'finalDate',
+    'contractTypeId',
+    'totalScore'
   ];
+
 
   dataSource = new MatTableDataSource<ContractEvaluationInfo>();
 
@@ -36,6 +36,7 @@ export class  PaginadorCargaIndividualComponent implements OnInit, AfterViewInit
 
   ngOnInit(): void {
     this.dataService.contractInfo$.subscribe((contractInfoArray: ContractEvaluationInfo[]) => {
+      console.log('Datos del contrato:', contractInfoArray);
       this.dataSource.data = contractInfoArray;
     });
   }

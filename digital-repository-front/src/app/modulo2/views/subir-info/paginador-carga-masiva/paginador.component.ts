@@ -20,8 +20,9 @@ export class  PaginadorComponent implements OnInit, AfterViewInit {
     'contractTypeId',
     'totalScore'
   ];
+  
 
-  dataSource = new MatTableDataSource<ContractEvaluationInfo>();
+  dataSource = new MatTableDataSource<any>(); 
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
@@ -34,10 +35,11 @@ export class  PaginadorComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator = this.paginator;
     }
   }
+  
 
   ngOnInit(): void {
     this.dataService.contractInfo$.subscribe((contractInfoArray: ContractEvaluationInfo[]) => {
-      console.log('Datos del contrato:', contractInfoArray);
+      // console.log('Datos del contrato:', contractInfoArray);
       this.dataSource.data = contractInfoArray;
     });
   }
