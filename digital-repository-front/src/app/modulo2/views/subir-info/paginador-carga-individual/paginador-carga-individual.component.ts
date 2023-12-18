@@ -20,6 +20,16 @@ export class  PaginadorCargaIndividualComponent implements OnInit, AfterViewInit
     'contractTypeId',
     'totalScore'
   ];
+  columnNameMapping: { [key: string]: string } = {
+    'vendorName': 'Nombre del proveedor',
+    'identification': 'Identificación',
+    'initialDate': 'Fecha de inicio',
+    'finalDate': 'Fecha de finalización',
+    'contractTypeId': 'Tipo de contrato',
+    'totalScore': 'Puntuación total'
+    // Agrega otros mapeos según sea necesario
+  };
+  
 
 
   dataSource = new MatTableDataSource<ContractEvaluationInfo>();

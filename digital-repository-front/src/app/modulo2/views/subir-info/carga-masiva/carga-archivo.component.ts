@@ -45,7 +45,7 @@ export class CargaArchivoComponent {
   responses!: UploadExcelFileResponse[] | any;
   cont: number = 0;
   consoleMessages: string[] = [];
-  excelData: ContractEvaluationInfo[] = [];
+
 
   constructor(
     private http: HttpClient, private dataService: DataService) {
@@ -72,10 +72,6 @@ export class CargaArchivoComponent {
         this.uploadSuccess = true;
         this.responses = event.body;
         this.dataService.updateContractInfo(this.responses);
-
-        this.extractExcelData();
-        // console.log("excel data", JSON.stringify(this.excelData, null, 2));
-
         this.printMessages();
       }
     });
@@ -146,12 +142,7 @@ export class CargaArchivoComponent {
     }
   }
   
-  extractExcelData() {
-    if (this.responses && this.responses.length > 0) {
-      this.excelData = this.responses.map((response: UploadExcelFileResponse) => response.contractInfo);
-    }
-  }
-
+ 
 
 
 }
