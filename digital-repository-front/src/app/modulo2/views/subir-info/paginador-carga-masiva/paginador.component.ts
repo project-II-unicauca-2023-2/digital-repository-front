@@ -13,29 +13,31 @@ import { DataService } from '../data.service';
 
 export class  PaginadorComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
-    'ID Contrato',
-    'Clase contrato',
-    'C.C/RUT contratista',
-    'Nombre contratista',
-    'Fecha inicio',
-    'Fecha terminación',
-    'Evaluación',
+    'vendorName',
+    'identification',
+    'initialDate',
+    'finalDate',
+    'contractTypeId',
+    'totalScore'
   ];
 
   dataSource = new MatTableDataSource<ContractEvaluationInfo>();
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator?: MatPaginator;
 
   constructor(private dataService: DataService) {}
 
   pageSizes = [5];
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator;
+    }
   }
 
   ngOnInit(): void {
     this.dataService.contractInfo$.subscribe((contractInfoArray: ContractEvaluationInfo[]) => {
+      console.log('Datos del contrato:', contractInfoArray);
       this.dataSource.data = contractInfoArray;
     });
   }
